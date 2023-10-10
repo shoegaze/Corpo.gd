@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using Godot;
 
@@ -7,6 +8,8 @@ namespace Corpo.Scripts;
 
 public class StateService : Service {
   private readonly Stack<GameState> states = new();
+
+  public GameState ActiveState => states.Peek();
 
   public override void _Ready() {
     EnterState(GameState.Base);
@@ -18,20 +21,10 @@ public class StateService : Service {
   }
 
   public void ExitState() {
-    if (!states.Any()) {
-      throw new Exception("No GameState to exit!");
-    }
+    Debug.Assert(states.Any());
 
     var state = states.Pop();
     TearDown(state);
-  }
-
-  public void ReplaceState(GameState state) {
-    if (states.Any()) {
-      ExitState();
-    }
-    
-    EnterState(state);
   }
 
   private void SetUp(GameState state) {
@@ -51,6 +44,9 @@ public class StateService : Service {
       default:
         throw new ArgumentOutOfRangeException(nameof(state), state, "Invalid GameState!");
     }
+    
+    // TODO(spike): Isolate input and process for active game state
+    //  IsolatorService.ActiveScreen += TODO_Screen;
   }
 
   private void TearDown(GameState state) {
@@ -70,5 +66,8 @@ public class StateService : Service {
       default:
         throw new ArgumentOutOfRangeException(nameof(state), state, "Invalid GameState!");
     }
+    
+    // TODO(spike): Isolate input and process for active game state
+    //  IsolatorService.ActiveScreen -= TODO_Screen;
   }
 }
