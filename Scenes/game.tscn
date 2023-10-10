@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dfkyphkul2sil"]
+
+[node name="Game" type="Node"]
+
+[node name="Services" type="Node" parent="."]
+
+[node name="BaseService" type="Node" parent="Services"]
+
+[node name="BattleService" type="Node" parent="Services"]
