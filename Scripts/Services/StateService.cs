@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Godot;
 
-namespace Corpo.Scripts; 
+namespace Corpo.Scripts.Services; 
 
 public sealed class StateService : Service {
   private readonly Stack<GameState> states = new();
