@@ -8,10 +8,9 @@ namespace Corpo.Scripts;
 public sealed class StateService : Service {
   private readonly Stack<GameState> states = new();
 
-  // TODO(spike):
-  // public override void _Ready() {
-  //   EnterState(GameState.Base);
-  // }
+  public StateService() {
+    EnterState(GameState.Base);
+  }
 
   public void EnterState(GameState state) {
     states.Push(state);
