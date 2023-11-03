@@ -1,6 +1,6 @@
 ﻿namespace Corpo.Scripts.Screens; 
 
-public class BattleScreen : Screen {
+public sealed partial class BattleScreen : Screen {
   public override void OnFocus() { }
   public override void OnCreate() { }
   public override void OnDestroy() { }

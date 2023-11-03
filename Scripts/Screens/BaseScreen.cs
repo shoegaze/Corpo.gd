@@ -1,6 +1,10 @@
-﻿namespace Corpo.Scripts.Screens; 
+﻿using Corpo.Scripts.Services;
 
-public class BaseScreen : Screen {
+namespace Corpo.Scripts.Screens; 
+
+public sealed partial class BaseScreen : Screen {
+  // private BaseService baseService;
+  
   public override void OnFocus() { }
 
   public override void OnCreate() {
