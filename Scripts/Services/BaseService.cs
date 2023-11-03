@@ -1,6 +1,6 @@
 ﻿namespace Corpo.Scripts.Services; 
 
-public class BaseService : Service {
+public sealed class BaseService : Service {
   public BaseService() {
     // TODO(spike)
   }

@@ -1,6 +1,6 @@
 ﻿namespace Corpo.Scripts.Services;
 
-public class LoadingService : Service {
+public sealed class LoadingService : Service {
   public bool IsLoading { get; private set; }
 
   public LoadingService() {
