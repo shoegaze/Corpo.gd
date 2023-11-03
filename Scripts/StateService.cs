@@ -5,12 +5,13 @@ using Godot;
 
 namespace Corpo.Scripts; 
 
-public class StateService : Service {
+public sealed class StateService : Service {
   private readonly Stack<GameState> states = new();
 
-  public override void _Ready() {
-    EnterState(GameState.Base);
-  }
+  // TODO(spike):
+  // public override void _Ready() {
+  //   EnterState(GameState.Base);
+  // }
 
   public void EnterState(GameState state) {
     states.Push(state);

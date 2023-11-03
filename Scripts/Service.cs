@@ -2,4 +2,4 @@
 
 namespace Corpo.Scripts;
 
-public abstract class Service : Node { }
+public abstract class Service { }
