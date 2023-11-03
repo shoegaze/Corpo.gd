@@ -1,5 +1,5 @@
 ﻿using Godot;
 
-namespace Corpo.Scripts; 
+namespace Corpo.Scripts;
 
 public abstract class Service : Node { }
