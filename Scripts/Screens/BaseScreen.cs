@@ -12,7 +12,7 @@ public sealed partial class BaseScreen : Screen {
     // TODO(spike): Load packages
   }
 
-  public override void OnDestroy() {
+  public override void OnDismiss() {
     // TODO(spike): Dismiss loading screen
   }
   
