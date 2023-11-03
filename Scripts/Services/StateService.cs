@@ -1,14 +1,18 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Godot;
+using Corpo.Scripts.Screens;
 
 namespace Corpo.Scripts.Services; 
 
 public sealed class StateService : Service {
+  private readonly ScreenService screenService;
+      
   private readonly Stack<GameState> states = new();
 
   public StateService() {
+    screenService = ServiceProvider.Get<ScreenService>();
+    
     EnterState(GameState.Base);
   }
 
@@ -37,15 +41,15 @@ public sealed class StateService : Service {
   private void SetUp(GameState state) {
     switch (state) {
       case GameState.Base: 
-        GD.PrintErr("TODO(spike): Implement `Base` setup");
+        screenService.Create(new BaseScreen());
         return;
       
       case GameState.OverWorld:
-        GD.PrintErr("TODO(spike): Implement `Overworld` setup");
+        screenService.Create(new OverworldScreen());
         return;
       
       case GameState.Battle:
-        GD.PrintErr("TODO(spike): Implement `Battle` setup");
+        screenService.Create(new BattleScreen());
         return;
       
       default:
@@ -54,17 +58,19 @@ public sealed class StateService : Service {
   }
 
   private void TearDown(GameState state) {
+    screenService.Dismiss();
+    
     switch (state) {
       case GameState.Base:
-        GD.PrintErr("TODO(spike): Implement `Base` teardown");
+        // TODO(spike)
         return;
       
       case GameState.OverWorld:
-        GD.PrintErr("TODO(spike): Implement `Overworld` teardown");
+        // TODO(spike)
         return;
       
       case GameState.Battle:
-        GD.PrintErr("TODO(spike): Implement `Battle` teardown");
+        // TODO(spike)
         return;
       
       default:
