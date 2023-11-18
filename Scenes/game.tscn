@@ -1,9 +1,6 @@
-[gd_scene format=3 uid="uid://dfkyphkul2sil"]
+[gd_scene load_steps=2 format=3 uid="uid://dfkyphkul2sil"]
+
+[ext_resource type="Script" path="res://Scripts/Game.cs" id="1_01ae1"]
 
 [node name="Game" type="Node"]
-
-[node name="Services" type="Node" parent="."]
-
-[node name="BaseService" type="Node" parent="Services"]
-
-[node name="BattleService" type="Node" parent="Services"]
+script = ExtResource("1_01ae1")

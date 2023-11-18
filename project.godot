@@ -11,9 +11,15 @@ config_version=5
 [application]
 
 config/name="Corpo"
-run/main_scene="res://Scenes/game.tscn"
+run/main_scene="res://Scenes/Game.tscn"
 config/features=PackedStringArray("4.1", "C#", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://Sprites/djimpp.png"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/size/resizable=false
 
 [dotnet]
 
