@@ -1,7 +1,9 @@
 ﻿namespace Corpo.Scripts.Services; 
 
+// ReSharper disable once ClassNeverInstantiated.Global
 public sealed class BaseService : Service {
-  public BaseService() {
-    // TODO(spike)
-  }
+  // TODO(spike): Inject services
+  public BaseService() { }
+  
+  // TODO(spike)
 }

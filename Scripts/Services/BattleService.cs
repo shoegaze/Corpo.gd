@@ -1,7 +1,8 @@
 ﻿namespace Corpo.Scripts.Services;
 
 public sealed class BattleService : Service {
-  public BattleService() {
-    // TODO(spike)
-  }
+  // TODO(spike): Inject services
+  public BattleService() { }
+  
+  // TODO(spike)
 }

@@ -2,18 +2,19 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Corpo.Scripts.Screens;
+using Godot;
+using BaseScreen = Corpo.Scripts.Screens.BaseScreen;
 
 namespace Corpo.Scripts.Services; 
 
+// ReSharper disable once ClassNeverInstantiated.Global
 public sealed class StateService : Service {
   private readonly ScreenService screenService;
       
   private readonly Stack<GameState> states = new();
 
-  public StateService() {
-    screenService = ServiceProvider.Get<ScreenService>();
-    
-    EnterState(GameState.Base);
+  public StateService(ScreenService screenService) {
+    this.screenService = screenService;
   }
 
   public void EnterState(GameState state) {
@@ -23,7 +24,8 @@ public sealed class StateService : Service {
 
   public void ExitState() {
     if (!states.Any()) {
-      throw new Exception("No GameState to exit!");
+      GD.PrintErr("No GameState to exit");
+      throw new Exception("No GameState to exit");
     }
 
     var state = states.Pop();
@@ -40,19 +42,20 @@ public sealed class StateService : Service {
 
   private void SetUp(GameState state) {
     switch (state) {
-      case GameState.Base: 
-        screenService.Create(new BaseScreen());
+      case GameState.Base:
+        screenService.Enter(new BaseScreen()); 
         return;
       
       case GameState.OverWorld:
-        screenService.Create(new OverworldScreen());
+        screenService.Enter(new OverworldScreen());
         return;
       
       case GameState.Battle:
-        screenService.Create(new BattleScreen());
+        screenService.Enter(new BattleScreen());
         return;
       
       default:
+        GD.PrintErr($"Invalid GameState \"{state}\"");
         throw new ArgumentOutOfRangeException(nameof(state), state, "Invalid GameState!");
     }
   }
@@ -74,6 +77,7 @@ public sealed class StateService : Service {
         return;
       
       default:
+        GD.PrintErr($"Invalid GameState \"{state}\"");
         throw new ArgumentOutOfRangeException(nameof(state), state, "Invalid GameState!");
     }
   }

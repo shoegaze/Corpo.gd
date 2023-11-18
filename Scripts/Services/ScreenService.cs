@@ -1,39 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Godot;
 
 namespace Corpo.Scripts.Services; 
 
+// ReSharper disable once ClassNeverInstantiated.Global
 public sealed class ScreenService : Service {
-  private Stack<Screen> Screens = new();
+  private readonly Stack<Screen> screens = new();
 
-  public Screen CurrentScreen => Screens.Any() ? Screens.Peek() : null;
+  public Screen CurrentScreen => screens.Any() ? screens.Peek() : null;
 
+  // TODO(spike): Inject services
   public ScreenService() { }
 
   public void Tick(float dt) {
     CurrentScreen?.Tick(dt, GameInput.FromGlobal());   
   }
 
-  public void Create(Screen screen) {
-    Screens.Push(screen);
+  public void Enter(Screen screen) {
+    screens.Push(screen);
     screen.OnCreate();
   }
 
   public void Dismiss() {
-    if (Screens.Count == 0) {
+    if (screens.Count == 0) {
       GD.PrintErr("No screen to dismiss!");
     }
     
-    var previousScreen = Screens.Pop();
+    var previousScreen = screens.Pop();
     previousScreen.OnDismiss();
 
-    if (Screens.Count == 0) {
+    if (screens.Count == 0) {
       return;
     }
     
-    var currentScreen = Screens.Peek();
+    var currentScreen = screens.Peek();
     currentScreen.OnFocus();
   }
 }

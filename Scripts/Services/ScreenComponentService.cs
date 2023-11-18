@@ -4,51 +4,52 @@ using Godot;
 
 namespace Corpo.Scripts.Services;
 
-public class ScreenComponentService : Service {
+public sealed class ScreenComponentService : Service {
   // Assert Component ID == index
-  private readonly List<ScreenComponent> Components = new();
-  private int Cursor = -1;
+  private readonly List<ScreenComponent> components = new();
+  private int cursor = -1;
 
-  public ScreenComponent CurrentComponent => Cursor >= 0 ? Components[Cursor] : null;
+  public ScreenComponent CurrentComponent => cursor >= 0 ? components[cursor] : null;
 
+  // TODO(spike): Inject services
   public ScreenComponentService() { }
 
   public int Add(ScreenComponent component) {
     var previousComponent = CurrentComponent;
     previousComponent?.OnUnfocus();
 
-    Components.Add(component);
+    components.Add(component);
     component.OnFocus();
 
-    return Components.Count - 1;
+    return components.Count - 1;
   }
 
   public void RemoveAll() {
-    for (int i = Components.Count - 1; i >= 0; i--) {
-      var component = Components[i];
+    for (int i = components.Count - 1; i >= 0; i--) {
+      var component = components[i];
       component.OnUnfocus();
       component.OnDestroy();
 
-      Components.RemoveAt(Components.Count - 1);
+      components.RemoveAt(components.Count - 1);
     }
 
-    Cursor = -1;
+    cursor = -1;
   }
 
   public void Seek(int index) {
-    if (index < 0 || index >= Components.Count) {
+    if (index < 0 || index >= components.Count) {
       GD.PrintErr($"Cannot seek to the ScreenComponent at index ({index})");
       throw new IndexOutOfRangeException();
     }
 
     CurrentComponent.OnUnfocus();
     
-    Cursor = index;
+    cursor = index;
     CurrentComponent.OnFocus();
   }
 
   public void Tick(float dt) {
-    foreach (ScreenComponent component in Components) {
+    foreach (ScreenComponent component in components) {
       component.Update(dt);
     }
     
