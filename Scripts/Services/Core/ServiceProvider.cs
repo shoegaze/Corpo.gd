@@ -78,7 +78,7 @@ public static class ServiceProvider {
   }
 
   public static void BuildServices() {
-    GD.Print("Initializing Services...");
+    GD.Print("Initializing Services ...");
 
     try {
       GD.Print("> Generating dependency graph:");
@@ -98,6 +98,8 @@ public static class ServiceProvider {
       foreach (Type serviceType in sortedServiceTypes) {
         InstantiateService(serviceType);
       }
+      
+      GD.Print("> Complete!");
     }
     catch (Exception e) {
       GD.PrintErr("Could not initialize Services!");
