@@ -39,12 +39,12 @@ public static class ServiceProvider {
     
     // We have to add dependencies before we get any back
     foreach (var serviceType in serviceTypesCopy) {
-      GD.Print($">> Adding {serviceType}:");
+      GD.Print($" * Adding {serviceType}");
       
       Type[] dependencies = GetConstructorDependencies(serviceType).ToArray();
       
       foreach (Type dependency in dependencies) {
-        GD.Print($" ~> {dependency}");
+        GD.Print($"  - {dependency}");
         
         dependencyGraph.AddDependency(dependency, serviceType);
       }
@@ -54,7 +54,7 @@ public static class ServiceProvider {
   }
 
   private static void InstantiateService(Type serviceType) {
-    GD.Print($">> Instantiating {serviceType}");
+    GD.Print($" * Instantiating {serviceType}");
     
     ConstructorInfo constructor = GetPrimaryConstructor(serviceType);
     ParameterInfo[] parameterTypes = constructor.GetParameters();
@@ -81,7 +81,7 @@ public static class ServiceProvider {
     GD.Print("Initializing Services...");
 
     try {
-      GD.Print("> Generating dependency graph...");
+      GD.Print("> Generating dependency graph:");
     
       Type[] serviceTypes = GetAllServiceSubclasses().ToArray();
       ServiceDependencyGraph serviceDependencyGraph = BuildDependencyGraph(serviceTypes);
@@ -109,6 +109,7 @@ public static class ServiceProvider {
     
     if (service == null) {
       GD.PrintErr($"Service \"{serviceType}\" could not be found!");
+      throw new Exception("Service could not be found");
     }
 
     return service;
