@@ -1,4 +1,5 @@
 ﻿using System;
+using Corpo.Scripts.Services.Core;
 using Godot;
 
 namespace Corpo.Scripts.Services;

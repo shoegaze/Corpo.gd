@@ -1,6 +1,6 @@
 ﻿namespace Corpo.Scripts.Screens; 
 
-public sealed partial class LoadingScreen : Screen {
+public sealed partial class LoadingScreen : Core.Screen {
   public override void OnFocus() { }
   public override void OnCreate() { }
   public override void OnDismiss() { }

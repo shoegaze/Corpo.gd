@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Corpo.Scripts;
+namespace Corpo.Scripts.Services.Core;
 
 // { ServiceType: [ ServiceType ] } = { from: [to] }
 public class ServiceDependencyGraph {
@@ -19,18 +19,16 @@ public class ServiceDependencyGraph {
     }
   }
 
-  public ServiceDependencyGraph(ServiceDependencyGraph serviceDependencyGraph) {
+  private ServiceDependencyGraph(ServiceDependencyGraph serviceDependencyGraph) {
     Graph = new Dictionary<Type, List<Type>>(serviceDependencyGraph.Graph);
   }
 
-  public bool AddType(Type type) {
+  private void AddType(Type type) {
     if (Graph.ContainsKey(type)) {
-      return false;
+      return;
     }
 
     Graph.Add(type, new List<Type>());
-
-    return true;
   }
 
   public void AddDependency(Type from, Type to) {
@@ -38,16 +36,15 @@ public class ServiceDependencyGraph {
       Graph.Add(from, new List<Type>());
     }
 
-    List<Type> dependents = Graph[from];
-    dependents.Add(to);
+    Graph[from].Add(to);
   }
 
-  private bool RemoveDependency(Type from, Type to) {
+  private void RemoveDependency(Type from, Type to) {
     if (!Graph.ContainsKey(from)) {
-      return false;
+      return;
     }
 
-    return Graph[from].Remove(to);
+    Graph[from].Remove(to);
   }
 
   private IEnumerable<Type> GetRoots() {
@@ -56,12 +53,11 @@ public class ServiceDependencyGraph {
   }
 
   public IEnumerable<Type> GetDependencies(Type type) {
-    // TODO(spike): Verify this
     return Graph.Keys
-                .Where(t => 
+                .Where(t =>
                            Graph
-                           .GetValueOrDefault(t, new List<Type>())
-                           .Contains(t));
+                              .GetValueOrDefault(t, new List<Type>())
+                              .Contains(t));
   }
 
   public IEnumerable<Type> TopologicalSort() {
@@ -100,9 +96,9 @@ public class ServiceDependencyGraph {
     if (sorted.Count != Graph.Keys.Count) {
       throw new Exception("The provided graph is not valid. Possibly cyclic?");
     }
-    
+
     sorted.Reverse();
-    
+
     return sorted;
   }
 }

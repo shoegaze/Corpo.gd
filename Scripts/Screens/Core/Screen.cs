@@ -1,6 +1,6 @@
 ﻿using Godot;
 
-namespace Corpo.Scripts; 
+namespace Corpo.Scripts.Screens.Core; 
 
 public abstract partial class Screen : Node {
   public abstract void OnFocus();

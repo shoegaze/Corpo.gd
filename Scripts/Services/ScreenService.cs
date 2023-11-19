@@ -1,14 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Corpo.Scripts.Services.Core;
 using Godot;
 
 namespace Corpo.Scripts.Services; 
 
 // ReSharper disable once ClassNeverInstantiated.Global
 public sealed class ScreenService : Service {
-  private readonly Stack<Screen> screens = new();
+  private readonly Stack<Screens.Core.Screen> screens = new();
 
-  public Screen CurrentScreen => screens.Any() ? screens.Peek() : null;
+  public Screens.Core.Screen CurrentScreen => screens.Any() ? screens.Peek() : null;
 
   // TODO(spike): Inject services
   public ScreenService() { }
@@ -17,7 +18,7 @@ public sealed class ScreenService : Service {
     CurrentScreen?.Tick(dt, GameInput.FromGlobal());   
   }
 
-  public void Enter(Screen screen) {
+  public void Enter(Screens.Core.Screen screen) {
     screens.Push(screen);
     screen.OnCreate();
   }

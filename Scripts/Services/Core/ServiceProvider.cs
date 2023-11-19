@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using Godot;
 
-namespace Corpo.Scripts;
+namespace Corpo.Scripts.Services.Core;
 
 public static class ServiceProvider {
   private static readonly List<Service> services = new();
@@ -18,13 +18,13 @@ public static class ServiceProvider {
 
   private static ConstructorInfo GetPrimaryConstructor(Type serviceType) {
     ConstructorInfo[] constructors = serviceType.GetConstructors();
-    
-    if (constructors.Length == 0) {
-      GD.PrintErr($">>> Service \"{serviceType}\" should have a constructor!");
-      throw new Exception("Service requires a constructor");
+
+    if (constructors.Length != 0) {
+      return constructors.First();
     }
     
-    return constructors.First(); 
+    GD.PrintErr($">>> Service \"{serviceType}\" should have a constructor!");
+    throw new Exception("Service requires a constructor");
   }
 
   private static IEnumerable<Type> GetConstructorDependencies(Type serviceType) {
@@ -34,34 +34,19 @@ public static class ServiceProvider {
   }
 
   private static ServiceDependencyGraph BuildDependencyGraph(IEnumerable<Type> serviceTypes) {
-    GD.Print("> Generating dependency graph...");
-
     Type[] serviceTypesCopy = serviceTypes.ToArray();
     ServiceDependencyGraph dependencyGraph = new(serviceTypesCopy);
     
     // We have to add dependencies before we get any back
     foreach (var serviceType in serviceTypesCopy) {
+      GD.Print($">> Adding {serviceType}:");
+      
       Type[] dependencies = GetConstructorDependencies(serviceType).ToArray();
       
       foreach (Type dependency in dependencies) {
-        dependencyGraph.AddDependency(dependency, serviceType);
-      }
-    }
-
-    foreach (Type serviceType in serviceTypesCopy) {
-      GD.Print($">> Adding {serviceType}:");
-
-      Type[] dependencies = dependencyGraph.GetDependencies(serviceType)
-                                           .ToArray();
-
-      if (!dependencies.Any()) {
-        GD.Print(">>> No dependencies!");
-      }
-
-      foreach (Type dependent in dependencies) {
-        GD.Print($">>> Depends on {dependent}");
+        GD.Print($" ~> {dependency}");
         
-        dependencyGraph.AddDependency(serviceType, dependent);
+        dependencyGraph.AddDependency(dependency, serviceType);
       }
     }
     
@@ -73,9 +58,12 @@ public static class ServiceProvider {
     
     ConstructorInfo constructor = GetPrimaryConstructor(serviceType);
     ParameterInfo[] parameterTypes = constructor.GetParameters();
+    
+    bool allParametersAreServiceSubclasses = parameterTypes
+       .All(t => t.ParameterType.IsSubclassOf(typeof(Service)));
 
     // Only accept Service parameters
-    if (!parameterTypes.All(t => t.ParameterType.IsSubclassOf(typeof(Service)))) {
+    if (!allParametersAreServiceSubclasses) {
       GD.PrintErr($">>> Service \"{serviceType}\" can only have parameters of type Service!");
       throw new Exception("Service can only have Service dependencies");
     }
@@ -93,6 +81,8 @@ public static class ServiceProvider {
     GD.Print("Initializing Services...");
 
     try {
+      GD.Print("> Generating dependency graph...");
+    
       Type[] serviceTypes = GetAllServiceSubclasses().ToArray();
       ServiceDependencyGraph serviceDependencyGraph = BuildDependencyGraph(serviceTypes);
 
@@ -114,7 +104,7 @@ public static class ServiceProvider {
     }
   }
 
-  public static object Get(Type serviceType) {
+  private static object Get(Type serviceType) {
     Service service = services.Find(s => s.GetType() == serviceType);
     
     if (service == null) {

@@ -5,6 +5,5 @@
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="Scenes" />
-    <Folder Include="Scripts\Screens\Base" />
   </ItemGroup>
 </Project>

@@ -2,6 +2,7 @@
 
 namespace Corpo.Scripts;
 
+// TODO(spike): Replace with `InputService`
 public struct GameInput {
   public readonly bool Up;
   public readonly bool Down;

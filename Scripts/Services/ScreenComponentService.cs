@@ -1,20 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using Corpo.Scripts.Services.Core;
 using Godot;
 
 namespace Corpo.Scripts.Services;
 
 public sealed class ScreenComponentService : Service {
   // Assert Component ID == index
-  private readonly List<ScreenComponent> components = new();
+  private readonly List<Screens.Core.ScreenComponent> components = new();
   private int cursor = -1;
 
-  public ScreenComponent CurrentComponent => cursor >= 0 ? components[cursor] : null;
+  public Screens.Core.ScreenComponent CurrentComponent => cursor >= 0 ? components[cursor] : null;
 
   // TODO(spike): Inject services
   public ScreenComponentService() { }
 
-  public int Add(ScreenComponent component) {
+  public int Add(Screens.Core.ScreenComponent component) {
     var previousComponent = CurrentComponent;
     previousComponent?.OnUnfocus();
 
@@ -49,7 +50,7 @@ public sealed class ScreenComponentService : Service {
   }
 
   public void Tick(float dt) {
-    foreach (ScreenComponent component in components) {
+    foreach (Screens.Core.ScreenComponent component in components) {
       component.Update(dt);
     }
     
