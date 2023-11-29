@@ -1,4 +1,5 @@
 ﻿using Corpo.Scripts.Services.Core;
+using Corpo.Scripts.Services.Environment;
 using Godot;
 
 namespace Corpo.Scripts.Services;
@@ -6,6 +7,7 @@ namespace Corpo.Scripts.Services;
 // ReSharper disable once ClassNeverInstantiated.Global
 public class NodeService : Service {
   private readonly EnvironmentService environmentService;
+  // TODO(spike): Load prototypes
 
   public Node RootNode { get; private set; }
 

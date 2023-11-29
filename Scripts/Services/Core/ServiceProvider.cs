@@ -6,6 +6,7 @@ using Godot;
 
 namespace Corpo.Scripts.Services.Core;
 
+// TODO(spike): Support services in subfolders
 public static class ServiceProvider {
   private static readonly List<Service> services = new();
 
