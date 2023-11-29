@@ -4,14 +4,18 @@ using Corpo.Scripts.Services.Core;
 namespace Corpo.Scripts.Screens; 
 
 public sealed partial class BaseScreen : Core.Screen {
-  private BaseService baseService;
-  private NodeService nodeService;
-  private LoadingService loadingService;
+  // private BaseService baseService;
+  // private NodeService nodeService;
+  // private LoadingService loadingService;
+  private StateService stateService;
+
+  public override string ToString() => nameof(BaseScreen);
 
   public override void _Ready() {
-    baseService = ServiceProvider.Get<BaseService>();
-    nodeService = ServiceProvider.Get<NodeService>();
-    loadingService = ServiceProvider.Get<LoadingService>();
+    // baseService = ServiceProvider.Get<BaseService>();
+    // nodeService = ServiceProvider.Get<NodeService>();
+    // loadingService = ServiceProvider.Get<LoadingService>();
+    stateService = ServiceProvider.Get<StateService>();
   }
 
   public override void OnFocus() { }
@@ -21,6 +25,9 @@ public sealed partial class BaseScreen : Core.Screen {
     // TODO(spike): Load packages
     
     // loadingService.RunProcess(LoadPackages);
+    
+    // DEBUG: Enter Battle state
+    stateService.EnterState(GameState.Battle);
   }
 
   public override void OnDismiss() { }
