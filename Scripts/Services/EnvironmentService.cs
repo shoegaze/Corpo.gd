@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using Corpo.Scripts.Services.Core;
+using Corpo.Scripts.Services.Environment;
 using Godot;
 using Newtonsoft.Json;
 
@@ -8,12 +9,6 @@ namespace Corpo.Scripts.Services;
 
 // ReSharper disable once ClassNeverInstantiated.Global
 public class EnvironmentService : Service {
-  // TODO(spike): Generate this
-  public struct EnvironmentJson {
-    // TODO
-    public string Foo { get; set; }
-  }
-
   public enum EnvironmentMode {
     Development = 0,
     Production = 1
