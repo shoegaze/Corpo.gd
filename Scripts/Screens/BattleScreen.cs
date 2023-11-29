@@ -1,6 +1,8 @@
 ﻿namespace Corpo.Scripts.Screens; 
 
 public sealed partial class BattleScreen : Core.Screen {
+  public override string ToString() => nameof(BattleScreen);
+
   public override void OnFocus() { }
   public override void OnCreate() { }
   public override void OnDismiss() { }

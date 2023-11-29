@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Corpo.Scripts.Screens;
+using Corpo.Scripts.Screens.Core;
 using Corpo.Scripts.Services.Core;
 using Godot;
 using BaseScreen = Corpo.Scripts.Screens.BaseScreen;
@@ -42,23 +43,19 @@ public sealed class StateService : Service {
   }
 
   private void SetUp(GameState state) {
-    switch (state) {
-      case GameState.Base:
-        screenService.Enter(new BaseScreen()); 
-        return;
-      
-      case GameState.OverWorld:
-        screenService.Enter(new OverworldScreen());
-        return;
-      
-      case GameState.Battle:
-        screenService.Enter(new BattleScreen());
-        return;
-      
-      default:
-        GD.PrintErr($"Invalid GameState \"{state}\"");
-        throw new ArgumentOutOfRangeException(nameof(state), state, "Invalid GameState!");
+    Screen screen = state switch {
+                      GameState.Base => new BaseScreen(),
+                      GameState.OverWorld => new OverworldScreen(),
+                      GameState.Battle => new BattleScreen(),
+                      _ => null
+                    };
+
+    if (screen == null) {
+      GD.PrintErr($"Invalid GameState to set up: {state}");
+      throw new ArgumentOutOfRangeException($"Invalid GameState to set up: {state}");
     }
+    
+    screenService.Enter(screen);
   }
 
   private void TearDown(GameState state) {
