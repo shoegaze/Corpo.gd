@@ -1,6 +1,8 @@
 ﻿namespace Corpo.Scripts.Screens; 
 
 public sealed partial class OverworldScreen : Core.Screen {
+  public override string ToString() => nameof(OverworldScreen);
+  
   public override void OnFocus() { }
   public override void OnCreate() { }
   public override void OnDismiss() { }
