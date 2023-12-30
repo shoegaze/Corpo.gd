@@ -17,6 +17,8 @@ public partial class Game : Node {
 
     NodeService nodeService = ServiceProvider.Get<NodeService>();
     nodeService.LoadNodes(this);
+
+    // TODO(spike): Attach view updater in rootNode process
   }
 
   // Main
@@ -29,4 +31,6 @@ public partial class Game : Node {
     StateService stateService = ServiceProvider.Get<StateService>();
     stateService.EnterState(GameState.Base);
   }
+  
+  
 }

@@ -2,6 +2,5 @@
 
 // TODO(spike): Generate this
 public struct EnvironmentJson {
-  // TODO
-  public string Foo { get; set; }
+  public EnvironmentPathsJson Paths { get; set; }
 }

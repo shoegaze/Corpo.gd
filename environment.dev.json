@@ -1,3 +1,9 @@
 {
-  "foo": "bar"
+  "paths": {
+	"screens": {
+	  "base": "res://Scenes/Screens/BaseScreen.tscn",
+	  "overworld": "res://Scenes/Screens/OverworldScreen.tscn",
+	  "battle": "res://Scenes/Screens/BattleScreen.tscn"
+	}
+  }
 }

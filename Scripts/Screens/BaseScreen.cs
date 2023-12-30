@@ -1,5 +1,6 @@
 ﻿using Corpo.Scripts.Services;
 using Corpo.Scripts.Services.Core;
+using Godot;
 
 namespace Corpo.Scripts.Screens; 
 
@@ -24,13 +25,13 @@ public sealed partial class BaseScreen : Core.Screen {
     // TODO(spike): Show loading screen
     // TODO(spike): Load packages
     
-    // loadingService.RunProcess(LoadPackages);
+    // loadingService.RunProcess(() => { LoadPackages(); });
     
     // DEBUG: Enter Battle state
-    stateService.EnterState(GameState.Battle);
+    // stateService.EnterState(GameState.Battle);
   }
 
   public override void OnDismiss() { }
-  
+
   public override void Tick(float dt, GameInput? input) { }
 }

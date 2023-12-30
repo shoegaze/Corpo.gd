@@ -8,18 +8,28 @@ namespace Corpo.Scripts.Services;
 // ReSharper disable once ClassNeverInstantiated.Global
 public sealed class ScreenService : Service {
   private readonly NodeService nodeService;
-  
+
   private readonly Stack<Screens.Core.Screen> screens = new();
+  private ulong timePreviousMs = Time.GetTicksMsec();
 
   public Screens.Core.Screen CurrentScreen => screens.Any() ? screens.Peek() : null;
 
   public ScreenService(NodeService nodeService) {
     this.nodeService = nodeService;
   }
-
-  // TODO(spike): Run this in the UI thread/coroutine?
-  public void Tick(float dt) {
+  
+  private void Tick(float dt) {
     CurrentScreen?.Tick(dt, GameInput.FromGlobal());   
+  }
+
+  // TODO(spike):
+  public void UpdateScreen() {
+    ulong timeNowMs = timePreviousMs;
+    float dt = (timeNowMs - timePreviousMs) / 1000.0f;
+    
+    Tick(dt);
+
+    timePreviousMs = timeNowMs;
   }
 
   public void Enter(Screens.Core.Screen screen) {

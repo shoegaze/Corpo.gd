@@ -1,27 +1,34 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Corpo.Scripts.Screens;
-using Corpo.Scripts.Screens.Core;
 using Corpo.Scripts.Services.Core;
+using Corpo.Scripts.State;
 using Godot;
-using BaseScreen = Corpo.Scripts.Screens.BaseScreen;
 
 namespace Corpo.Scripts.Services; 
 
 // ReSharper disable once ClassNeverInstantiated.Global
 public sealed class StateService : Service {
+  private readonly EnvironmentService environmentService;
   private readonly ScreenService screenService;
+  private readonly LoadingService loadingService;
       
   private readonly Stack<GameState> states = new();
+  private IStateLifecycle activeLifecycle;
 
-  public StateService(ScreenService screenService) {
+  public StateService(
+    EnvironmentService environmentService,
+    ScreenService screenService,
+    LoadingService loadingService
+  ) {
+    this.environmentService = environmentService;
     this.screenService = screenService;
+    this.loadingService = loadingService;
   }
 
   public void EnterState(GameState state) {
     states.Push(state);
-    SetUp(state);
+    SetUpLifecycle(state);
   }
 
   public void ExitState() {
@@ -30,53 +37,37 @@ public sealed class StateService : Service {
       throw new Exception("No GameState to exit");
     }
 
-    var state = states.Pop();
-    TearDown(state);
-  }
+    states.Pop();
+    TearDownLifecycle();
 
-  public void ReplaceState(GameState state) {
-    if (states.Any()) {
-      ExitState();
+    if (!states.Any()) {
+      return;
     }
     
-    EnterState(state);
+    GameState stateNext = states.Peek();
+    SetUpLifecycle(stateNext);
   }
 
-  private void SetUp(GameState state) {
-    Screen screen = state switch {
-                      GameState.Base => new BaseScreen(),
-                      GameState.OverWorld => new OverworldScreen(),
-                      GameState.Battle => new BattleScreen(),
-                      _ => null
-                    };
+  private void SetUpLifecycle(GameState state) {
+    activeLifecycle = state switch { 
+                        GameState.Base => new BaseLifecycle(this,
+                                                            environmentService,
+                                                            screenService, 
+                                                            loadingService), 
+                        GameState.OverWorld => new OverworldLifecycle(/* TODO(spike) */),
+                        GameState.Battle => new BattleLifecycle(/* TODO(spike) */),
+                        _ => null
+                      };
 
-    if (screen == null) {
-      GD.PrintErr($"Invalid GameState to set up: {state}");
+    if (activeLifecycle == null) {
+      GD.PrintErr($"Invalid GameState to setup: {state}. Did you forget to register {state}?");
       throw new ArgumentOutOfRangeException($"Invalid GameState to set up: {state}");
     }
     
-    screenService.Enter(screen);
+    activeLifecycle.OnSetUp();
   }
 
-  private void TearDown(GameState state) {
-    screenService.Dismiss();
-    
-    switch (state) {
-      case GameState.Base:
-        // TODO(spike)
-        return;
-      
-      case GameState.OverWorld:
-        // TODO(spike)
-        return;
-      
-      case GameState.Battle:
-        // TODO(spike)
-        return;
-      
-      default:
-        GD.PrintErr($"Invalid GameState \"{state}\"");
-        throw new ArgumentOutOfRangeException(nameof(state), state, "Invalid GameState!");
-    }
+  private void TearDownLifecycle() {
+    activeLifecycle?.OnTearDown();
   }
 }

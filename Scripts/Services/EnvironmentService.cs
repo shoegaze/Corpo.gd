@@ -43,7 +43,6 @@ public class EnvironmentService : Service {
 
     // TODO(spike): Validate JSON object
     EnvironmentJson jsonObject = JsonConvert.DeserializeObject<EnvironmentJson>(jsonString);
-
     Environment = jsonObject;
     
     GD.Print("> Complete!");
