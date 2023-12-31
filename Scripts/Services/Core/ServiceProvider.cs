@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -6,7 +6,6 @@ using Godot;
 
 namespace Corpo.Scripts.Services.Core;
 
-// TODO(spike): Support services in subfolders
 public static class ServiceProvider {
   private static readonly List<Service> services = new();
 
@@ -23,7 +22,7 @@ public static class ServiceProvider {
     if (constructors.Length != 0) {
       return constructors.First();
     }
-    
+
     GD.PrintErr($">>> Service \"{serviceType}\" should have a constructor!");
     throw new Exception("Service requires a constructor");
   }
@@ -37,29 +36,29 @@ public static class ServiceProvider {
   private static ServiceDependencyGraph BuildDependencyGraph(IEnumerable<Type> serviceTypes) {
     Type[] serviceTypesCopy = serviceTypes.ToArray();
     ServiceDependencyGraph dependencyGraph = new(serviceTypesCopy);
-    
+
     // We have to add dependencies before we get any back
     foreach (var serviceType in serviceTypesCopy) {
       GD.Print($" * Adding {serviceType}");
-      
+
       Type[] dependencies = GetConstructorDependencies(serviceType).ToArray();
-      
+
       foreach (Type dependency in dependencies) {
         GD.Print($"  - {dependency}");
-        
+
         dependencyGraph.AddDependency(dependency, serviceType);
       }
     }
-    
+
     return dependencyGraph;
   }
 
   private static void InstantiateService(Type serviceType) {
     GD.Print($" * Instantiating {serviceType}");
-    
+
     ConstructorInfo constructor = GetPrimaryConstructor(serviceType);
     ParameterInfo[] parameterTypes = constructor.GetParameters();
-    
+
     bool allParametersAreServiceSubclasses = parameterTypes
        .All(t => t.ParameterType.IsSubclassOf(typeof(Service)));
 
@@ -70,9 +69,9 @@ public static class ServiceProvider {
     }
 
     object[] parameters = constructor.GetParameters()
-                                .Select(p => p.ParameterType)
-                                .Select(Get) // Assume dependency is already loaded
-                                .ToArray();
+                                     .Select(p => p.ParameterType)
+                                     .Select(Get) // Assume dependency is already loaded
+                                     .ToArray();
 
     Service singleton = constructor.Invoke(parameters) as Service;
     services.Add(singleton);
@@ -81,9 +80,9 @@ public static class ServiceProvider {
   public static void BuildServices() {
     GD.Print("Initializing Services ...");
 
-    try {
+    // try {
       GD.Print("> Generating dependency graph:");
-    
+
       Type[] serviceTypes = GetAllServiceSubclasses().ToArray();
       ServiceDependencyGraph serviceDependencyGraph = BuildDependencyGraph(serviceTypes);
 
@@ -99,17 +98,17 @@ public static class ServiceProvider {
       foreach (Type serviceType in sortedServiceTypes) {
         InstantiateService(serviceType);
       }
-      
+
       GD.Print("> Complete!");
-    }
-    catch (Exception e) {
-      GD.PrintErr("Could not initialize Services!");
-    }
+    // }
+    // catch {
+    //   GD.PrintErr("Could not initialize Services!");
+    // }
   }
 
   private static object Get(Type serviceType) {
     Service service = services.Find(s => s.GetType() == serviceType);
-    
+
     if (service == null) {
       GD.PrintErr($"Service \"{serviceType}\" could not be found!");
       throw new Exception("Service could not be found");
