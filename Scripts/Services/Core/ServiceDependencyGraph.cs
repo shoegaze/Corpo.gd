@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Godot;
 
 namespace Corpo.Scripts.Services.Core;
 
@@ -49,56 +50,66 @@ public class ServiceDependencyGraph {
 
   private IEnumerable<Type> GetRoots() {
     return Graph.Keys
-                .Where(s => !GetDependencies(s).Any());
+                .Where(s => !GetDependents(s).Any());
   }
 
-  public IEnumerable<Type> GetDependencies(Type type) {
+  private IEnumerable<Type> GetDependents(Type type) {
     return Graph.Keys
-                .Where(t =>
-                           Graph
-                              .GetValueOrDefault(t, new List<Type>())
-                              .Contains(t));
+                .Where(t => Graph
+                           .GetValueOrDefault(t, new List<Type>())
+                           .Contains(type));
   }
 
   public IEnumerable<Type> TopologicalSort() {
     ServiceDependencyGraph dg = new(this);
     Stack<Type> toVisit = new();
 
-    { // Initialize `toVisit` stack
-      IEnumerable<Type> roots = dg.GetRoots();
-
-      foreach (Type root in roots) {
-        toVisit.Push(root);
-      }
+    GD.Print("Initial roots: ");
+    foreach (var root in dg.GetRoots()) {
+      GD.Print($">> {root}");
+      
+      toVisit.Push(root);
     }
 
     List<Type> sorted = new();
 
-    while (toVisit.Count > 0) {
-      Type from = toVisit.Pop();
-      sorted.Add(from);
+    {
+      int iterations = 0;
+      int maxIterations = dg.Graph.Count;
 
-      IEnumerable<Type> dependents = GetDependencies(from);
+      while (iterations < maxIterations) {
+        while (toVisit.Any()) {
+          Type from = toVisit.Pop();
+          sorted.Add(from);
+  
+          IEnumerable<Type> dependents = dg.GetDependents(from);
 
-      foreach (var to in dependents) {
-        dg.RemoveDependency(from, to);
+          foreach (Type to in dependents) {
+            dg.RemoveDependency(from, to);
+          }
 
-        // TODO(spike): Do a linear search/cache instead of creating a new set with `GetRoots`
-        IEnumerable<Type> roots = dg.GetRoots();
-
-        if (roots.Contains(to)) {
-          toVisit.Push(to);
+          dg.Graph.Remove(from);
         }
+        
+        // Regenerate `toVisit`s
+        // TODO(spike): Do a linear search/cache instead of creating a new set with `GetRoots`
+        foreach (var root in dg.GetRoots()) {
+          toVisit.Push(root);
+        }
+
+        if (toVisit.Count == 0) {
+          break;
+        }
+        
+        iterations++;
       }
     }
-
+   
     // WARN: Only possible if all nodes are present in graph.Keys
-    if (sorted.Count != Graph.Keys.Count) {
+    if (sorted.Count != Graph.Count) {
       throw new Exception("The provided graph is not valid. Possibly cyclic?");
     }
-
-    sorted.Reverse();
-
+    
     return sorted;
   }
 }
