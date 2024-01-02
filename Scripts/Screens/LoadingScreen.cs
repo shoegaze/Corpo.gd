@@ -1,13 +1,17 @@
-﻿namespace Corpo.Scripts.Screens; 
+using Corpo.Scripts.Screens.Core;
+namespace Corpo.Scripts.Screens; 
 
-public sealed partial class LoadingScreen : Core.Screen {
-  public override string ToString() => nameof(LoadingScreen);
+// ReSharper disable once ClassNeverInstantiated.Global
+public partial class LoadingScreen : Screen {
+  public void OnSetUp() { }
+  
+  public void OnTearDown() { }
   
   public override void OnFocus() { }
+  
   public override void OnCreate() { }
+  
   public override void OnDismiss() { }
   
-  public override void Tick(float dt, GameInput? input) {
-    throw new System.NotImplementedException();
-  }
+  public override void Tick(float dt, GameInput? input) { }
 }

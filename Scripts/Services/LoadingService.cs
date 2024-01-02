@@ -1,28 +1,70 @@
 ﻿using System;
+using Corpo.Scripts.Screens;
+using Corpo.Scripts.Screens.Core;
 using Corpo.Scripts.Services.Core;
+using Corpo.Scripts.Services.Environment;
+using Fractural.Tasks;
 using Godot;
 
 namespace Corpo.Scripts.Services;
 
 // ReSharper disable once ClassNeverInstantiated.Global
 public sealed class LoadingService : Service {
+  private readonly EnvironmentService environmentService;
+  private readonly ScreenService screenService;
+  
   public bool IsLoading { get; private set; }
 
   // TODO(spike): Inject services
-  public LoadingService() {
+  public LoadingService(
+    EnvironmentService environmentService, 
+    ScreenService screenService
+  ) {
+    this.environmentService = environmentService;
+    this.screenService = screenService;
+    
     IsLoading = false;
   }
   
-  public void RunProcess(Action action, Action onComplete) {
+  public async GDTask RunAsync(Func<GDTask> action, Action onComplete) {
     if (IsLoading) {
-      GD.PrintErr("Cannot do process: LoadingService is busy");
+      GD.PrintErr("Cannot run task: LoadingService is busy");
       return;
     }
-    
-    IsLoading = true;
-    
-    // TODO(spike): Run action in another thread/coroutine
 
+    StartLoading();
+    Do(action, onComplete).Forget();
+
+    await GDTask.Yield();
+  }
+
+  private void ShowLoadingScreen() {
+    PackedScene loadingScene = GD.Load<PackedScene>(
+      environmentService.EnvironmentJson.Paths.Screens.Loading);
+    Screen loadingScreen = loadingScene.Instantiate<LoadingScreen>();
+    
+    screenService.Enter(loadingScreen);
+  }
+
+  private void StartLoading() {
+    IsLoading = true;
+    ShowLoadingScreen();
+  }
+
+  private void EndLoading() {
     IsLoading = false;
+    screenService.Dismiss();
+  }
+
+#pragma warning disable CS1998
+  private async GDTask Do(Func<GDTask> action, Action onComplete) {
+#pragma warning restore CS1998
+    action().GetAwaiter()
+            .OnCompleted(() => { 
+               EndLoading();
+               onComplete(); 
+             });
+
+    GDTask.Yield();
   }
 }
