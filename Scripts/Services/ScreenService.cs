@@ -22,7 +22,7 @@ public sealed class ScreenService : Service {
     CurrentScreen?.Tick(dt, GameInput.FromGlobal());   
   }
 
-  // TODO(spike):
+  // TODO(spike): Call this in some _Update method 
   public void UpdateScreen() {
     ulong timeNowMs = timePreviousMs;
     float dt = (timeNowMs - timePreviousMs) / 1000.0f;
@@ -58,6 +58,7 @@ public sealed class ScreenService : Service {
     }
     
     var currentScreen = screens.Peek();
+    nodeService.RootNode.AddChild(currentScreen);
     currentScreen.OnFocus();
   }
 }

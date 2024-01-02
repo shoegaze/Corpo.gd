@@ -1,9 +1,11 @@
-﻿using Corpo.Scripts.Screens;
+﻿using System;
+using Corpo.Scripts.Screens;
 using Corpo.Scripts.Screens.Core;
-using Corpo.Scripts.Services;
+using Corpo.Scripts.Services.Environment;
+using Fractural.Tasks;
 using Godot;
 
-namespace Corpo.Scripts.State; 
+namespace Corpo.Scripts.Services.State.Lifecycle; 
 
 public class BaseLifecycle : IStateLifecycle {
   private readonly StateService stateService;
@@ -25,14 +27,30 @@ public class BaseLifecycle : IStateLifecycle {
   
   public void OnSetUp() {
     // TODO(spike): Create from NodeService.GetBaseScreen(bool cache = true)
-    string baseScenePath = environmentService.Environment.Paths.Screens.Base;
-    PackedScene baseScene = GD.Load<PackedScene>(baseScenePath);
+    PackedScene baseScene = GD.Load<PackedScene>(
+        environmentService.EnvironmentJson.Paths.Screens.Base);
     Screen baseScreen = baseScene.Instantiate<BaseScreen>();
     
     screenService.Enter(baseScreen);
+
+    
+    loadingService.RunAsync(
+      DebugDoLongProcess, 
+      () => { 
+        // DEBUG:
+        stateService.EnterState(GameState.Battle); 
+      }).Forget();
   }
   
   public void OnTearDown() {
     screenService.Dismiss();
+  }
+
+  private static async GDTask DebugDoLongProcess() {
+    GD.Print("Running a long process...");
+  
+    await GDTask.Delay(TimeSpan.FromSeconds(5.0));
+    
+    GD.Print("Process complete!");
   }
 }

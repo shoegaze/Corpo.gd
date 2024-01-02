@@ -1,4 +1,4 @@
-﻿namespace Corpo.Scripts.State; 
+﻿namespace Corpo.Scripts.Services.State; 
 
 public interface IStateLifecycle {
   void OnSetUp();
