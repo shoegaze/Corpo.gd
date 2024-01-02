@@ -1,11 +1,10 @@
 ﻿using System;
 using System.IO;
 using Corpo.Scripts.Services.Core;
-using Corpo.Scripts.Services.Environment;
 using Godot;
 using Newtonsoft.Json;
 
-namespace Corpo.Scripts.Services;
+namespace Corpo.Scripts.Services.Environment;
 
 // ReSharper disable once ClassNeverInstantiated.Global
 public class EnvironmentService : Service {
@@ -14,13 +13,11 @@ public class EnvironmentService : Service {
     Production = 1
   }
 
-  public EnvironmentService() { }
-
   // Cannot be injected since this is a root Service
   private const string environmentFileNamePrefix = "environment";
   private const string environmentFileNameExtension = "json";
 
-  public EnvironmentJson Environment { get; private set; }
+  public Json.EnvironmentJson EnvironmentJson { get; private set; }
 
   private static string MapEnvironmentModeToFileNameFragment(EnvironmentMode mode) {
     return mode switch {
@@ -42,8 +39,8 @@ public class EnvironmentService : Service {
     string jsonString = reader.ReadToEnd();
 
     // TODO(spike): Validate JSON object
-    EnvironmentJson jsonObject = JsonConvert.DeserializeObject<EnvironmentJson>(jsonString);
-    Environment = jsonObject;
+    Json.EnvironmentJson json = JsonConvert.DeserializeObject<Json.EnvironmentJson>(jsonString);
+    EnvironmentJson = json;
     
     GD.Print("> Complete!");
   }

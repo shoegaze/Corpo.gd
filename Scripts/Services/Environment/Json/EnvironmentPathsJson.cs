@@ -1,4 +1,4 @@
-﻿namespace Corpo.Scripts.Services.Environment; 
+﻿namespace Corpo.Scripts.Services.Environment.Json; 
 
 // TODO(spike): Generate this
 public struct EnvironmentPathsJson {

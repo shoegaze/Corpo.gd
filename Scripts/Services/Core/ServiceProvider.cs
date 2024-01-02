@@ -80,7 +80,7 @@ public static class ServiceProvider {
   public static void BuildServices() {
     GD.Print("Initializing Services ...");
 
-    // try {
+    try {
       GD.Print("> Generating dependency graph:");
 
       Type[] serviceTypes = GetAllServiceSubclasses().ToArray();
@@ -100,10 +100,10 @@ public static class ServiceProvider {
       }
 
       GD.Print("> Complete!");
-    // }
-    // catch {
-    //   GD.PrintErr("Could not initialize Services!");
-    // }
+    }
+    catch {
+      GD.PrintErr("Could not initialize Services!");
+    }
   }
 
   private static object Get(Type serviceType) {

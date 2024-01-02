@@ -1,9 +1,7 @@
-﻿namespace Corpo.Scripts.State; 
+﻿namespace Corpo.Scripts.Services.State.Lifecycle; 
 
 public class OverworldLifecycle : IStateLifecycle {
-  public OverworldLifecycle() {
     // TODO(spike): Inject services to use in here
-  }
   
   public void OnSetUp() {
     throw new System.NotImplementedException();

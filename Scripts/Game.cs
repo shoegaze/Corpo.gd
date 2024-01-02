@@ -1,6 +1,7 @@
 using Corpo.Scripts.Services;
 using Corpo.Scripts.Services.Core;
 using Corpo.Scripts.Services.Environment;
+using Corpo.Scripts.Services.State;
 using Godot;
 
 namespace Corpo.Scripts;
@@ -31,6 +32,4 @@ public partial class Game : Node {
     StateService stateService = ServiceProvider.Get<StateService>();
     stateService.EnterState(GameState.Base);
   }
-  
-  
 }

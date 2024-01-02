@@ -58,7 +58,9 @@ public sealed class ScreenService : Service {
     }
     
     var currentScreen = screens.Peek();
-    nodeService.RootNode.AddChild(currentScreen);
+    
+    GD.Print($"* Focusing on {currentScreen}");
+    
     currentScreen.OnFocus();
   }
 }

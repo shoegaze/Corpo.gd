@@ -13,7 +13,6 @@ public sealed class ScreenComponentService : Service {
   public Screens.Core.ScreenComponent CurrentComponent => cursor >= 0 ? components[cursor] : null;
 
   // TODO(spike): Inject services
-  public ScreenComponentService() { }
 
   public int Add(Screens.Core.ScreenComponent component) {
     var previousComponent = CurrentComponent;

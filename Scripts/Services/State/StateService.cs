@@ -2,10 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Corpo.Scripts.Services.Core;
-using Corpo.Scripts.State;
+using Corpo.Scripts.Services.Environment;
+using Corpo.Scripts.Services.State.Lifecycle;
 using Godot;
 
-namespace Corpo.Scripts.Services; 
+namespace Corpo.Scripts.Services.State; 
 
 // ReSharper disable once ClassNeverInstantiated.Global
 public sealed class StateService : Service {
@@ -55,7 +56,9 @@ public sealed class StateService : Service {
                                                             screenService, 
                                                             loadingService), 
                         GameState.OverWorld => new OverworldLifecycle(/* TODO(spike) */),
-                        GameState.Battle => new BattleLifecycle(/* TODO(spike) */),
+                        GameState.Battle => new BattleLifecycle(this, 
+                                                                environmentService, 
+                                                                screenService),
                         _ => null
                       };
 

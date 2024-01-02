@@ -3,6 +3,8 @@ namespace Corpo.Scripts.Screens;
 
 // ReSharper disable once ClassNeverInstantiated.Global
 public partial class LoadingScreen : Screen {
+  public override string ToString() => nameof(LoadingScreen);
+
   public void OnSetUp() { }
   
   public void OnTearDown() { }
