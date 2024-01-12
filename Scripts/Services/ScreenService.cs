@@ -39,11 +39,13 @@ public sealed class ScreenService : Service {
     
     screens.Push(screen);
     screen.OnCreate();
+    screen.OnFocus();
   }
 
   public void Dismiss() {
     if (screens.Count == 0) {
       GD.PrintErr("* No screen to dismiss!");
+      return;
     }
     
     var previousScreen = screens.Pop();

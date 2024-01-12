@@ -1,9 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://foubb731xukc"]
+[gd_scene load_steps=6 format=3 uid="uid://foubb731xukc"]
+
+[ext_resource type="Script" path="res://Scripts/Screens/MainMenuScreen.cs" id="1_knbbf"]
+[ext_resource type="FontFile" uid="uid://cwgmrvn7djnye" path="res://Fonts/IBM-Plex-Mono/IBMPlexMono-Bold.ttf" id="2_jimjo"]
+[ext_resource type="FontFile" uid="uid://bwh5ed2ghc0yr" path="res://Fonts/IBM-Plex-Mono/IBMPlexMono-Regular.ttf" id="3_31rjy"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fdu60"]
-font_size = 64
+font = ExtResource("2_jimjo")
+font_size = 85
+
+[sub_resource type="LabelSettings" id="LabelSettings_ni8xn"]
+font = ExtResource("3_31rjy")
+font_size = 18
 
 [node name="MainMenuScreen" type="Node2D"]
+script = ExtResource("1_knbbf")
 
 [node name="UiRoot" type="Control" parent="."]
 custom_minimum_size = Vector2(1280, 720)
@@ -48,29 +58,90 @@ label_settings = SubResource("LabelSettings_fdu60")
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 
-[node name="Buttons_Layout" type="VBoxContainer" parent="UiRoot/TitleCard_Margin/TitleCard_Layout"]
+[node name="Buttons_Margin" type="MarginContainer" parent="UiRoot/TitleCard_Margin/TitleCard_Layout"]
+layout_mode = 2
+theme_override_constants/margin_right = 50
+
+[node name="Buttons_Layout" type="VBoxContainer" parent="UiRoot/TitleCard_Margin/TitleCard_Layout/Buttons_Margin"]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
+theme_override_constants/separation = 5
 
-[node name="NewGame_Button" type="Button" parent="UiRoot/TitleCard_Margin/TitleCard_Layout/Buttons_Layout"]
+[node name="NewGame_Button" type="Button" parent="UiRoot/TitleCard_Margin/TitleCard_Layout/Buttons_Margin/Buttons_Layout"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+alignment = 0
+
+[node name="Label_Margin" type="MarginContainer" parent="UiRoot/TitleCard_Margin/TitleCard_Layout/Buttons_Margin/Buttons_Layout/NewGame_Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+
+[node name="Label" type="Label" parent="UiRoot/TitleCard_Margin/TitleCard_Layout/Buttons_Margin/Buttons_Layout/NewGame_Button/Label_Margin"]
 layout_mode = 2
 text = "NEW"
+label_settings = SubResource("LabelSettings_ni8xn")
+
+[node name="LoadGame_Button" type="Button" parent="UiRoot/TitleCard_Margin/TitleCard_Layout/Buttons_Margin/Buttons_Layout"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
 alignment = 0
 
-[node name="LoadGame_Button" type="Button" parent="UiRoot/TitleCard_Margin/TitleCard_Layout/Buttons_Layout"]
+[node name="Label_Margin" type="MarginContainer" parent="UiRoot/TitleCard_Margin/TitleCard_Layout/Buttons_Margin/Buttons_Layout/LoadGame_Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+
+[node name="Label" type="Label" parent="UiRoot/TitleCard_Margin/TitleCard_Layout/Buttons_Margin/Buttons_Layout/LoadGame_Button/Label_Margin"]
 layout_mode = 2
 text = "LOAD"
+label_settings = SubResource("LabelSettings_ni8xn")
+
+[node name="Settings_Button" type="Button" parent="UiRoot/TitleCard_Margin/TitleCard_Layout/Buttons_Margin/Buttons_Layout"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
 alignment = 0
 
-[node name="Settings_Button" type="Button" parent="UiRoot/TitleCard_Margin/TitleCard_Layout/Buttons_Layout"]
+[node name="Label_Margin" type="MarginContainer" parent="UiRoot/TitleCard_Margin/TitleCard_Layout/Buttons_Margin/Buttons_Layout/Settings_Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+
+[node name="Label" type="Label" parent="UiRoot/TitleCard_Margin/TitleCard_Layout/Buttons_Margin/Buttons_Layout/Settings_Button/Label_Margin"]
 layout_mode = 2
 text = "SETTINGS"
+label_settings = SubResource("LabelSettings_ni8xn")
+
+[node name="Exit_Button" type="Button" parent="UiRoot/TitleCard_Margin/TitleCard_Layout/Buttons_Margin/Buttons_Layout"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
 alignment = 0
 
-[node name="Exit_Button" type="Button" parent="UiRoot/TitleCard_Margin/TitleCard_Layout/Buttons_Layout"]
+[node name="Label_Margin" type="MarginContainer" parent="UiRoot/TitleCard_Margin/TitleCard_Layout/Buttons_Margin/Buttons_Layout/Exit_Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+
+[node name="Label" type="Label" parent="UiRoot/TitleCard_Margin/TitleCard_Layout/Buttons_Margin/Buttons_Layout/Exit_Button/Label_Margin"]
 layout_mode = 2
 text = "EXIT"
-alignment = 0
+label_settings = SubResource("LabelSettings_ni8xn")
 
 [node name="Fill_1" type="ReferenceRect" parent="UiRoot/TitleCard_Margin/TitleCard_Layout"]
 layout_mode = 2

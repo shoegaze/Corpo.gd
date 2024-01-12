@@ -28,19 +28,19 @@ public class BaseLifecycle : IStateLifecycle {
   public void OnSetUp() {
     // TODO(spike): Create from NodeService.GetBaseScreen(bool cache = true)
     PackedScene baseScene = GD.Load<PackedScene>(
-        environmentService.EnvironmentJson.Paths.Screens.Base
+        environmentService.Environment.Paths.Screens.Base
     );
     Screen baseScreen = baseScene.Instantiate<BaseScreen>();
     
     screenService.Enter(baseScreen);
 
     
-    loadingService.RunAsync(
-      DebugDoLongProcess, 
-      () => { 
-        // DEBUG:
-        stateService.EnterState(GameState.Battle); 
-      }).Forget();
+    // loadingService.RunAsync(
+    //   DebugDoLongProcess, 
+    //   () => { 
+    //     // DEBUG:
+    //     stateService.EnterState(GameState.Battle); 
+    //   }).Forget();
   }
   
   public void OnTearDown() {
