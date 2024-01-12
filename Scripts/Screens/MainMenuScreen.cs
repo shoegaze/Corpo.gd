@@ -1,12 +1,14 @@
 using Corpo.Scripts.Screens.Core;
 using Corpo.Scripts.Services.Core;
 using Corpo.Scripts.Services.Environment;
+using Corpo.Scripts.Services.State;
 using Godot;
 
 namespace Corpo.Scripts; 
 
 public partial class MainMenuScreen : Screen {
   private EnvironmentService environmentService;
+  private StateService stateService;
 
   private Button buttonNewGame;
   private Button buttonLoadGame;
@@ -15,6 +17,7 @@ public partial class MainMenuScreen : Screen {
   
   public override void OnCreate() {
     environmentService = ServiceProvider.Get<EnvironmentService>();
+    stateService = ServiceProvider.Get<StateService>();
     
     // TODO(spike): Get paths from environmentService
     var uiRoot = GetNode("UiRoot");
@@ -30,36 +33,41 @@ public partial class MainMenuScreen : Screen {
   }
 
   public override void OnFocus() {
-    buttonNewGame.Pressed += NewGame;
-    buttonLoadGame.Pressed += LoadGame;
-    buttonSettings.Pressed += Settings;
-    buttonExit.Pressed += Exit;
+    buttonNewGame.Pressed += DoNewGame;
+    // TODO(spike): Disable `buttonLoadGame` if there is no save file
+    buttonLoadGame.Pressed += DoLoadGame;
+    buttonSettings.Pressed += DoSettings;
+    buttonExit.Pressed += DoExit;
   }
 
   public override void OnDismiss() {
-    buttonNewGame.Pressed -= NewGame;
-    buttonLoadGame.Pressed -= LoadGame;
-    buttonSettings.Pressed -= Settings;
-    buttonExit.Pressed -= Exit;
+    buttonNewGame.Pressed -= DoNewGame;
+    buttonLoadGame.Pressed -= DoLoadGame;
+    buttonSettings.Pressed -= DoSettings;
+    buttonExit.Pressed -= DoExit;
   }
   
   public override void Tick(float dt, GameInput? input) { }
 
-  private void NewGame() {
+  private void DoNewGame() {
     GD.Print("Starting new game ...");
     
-    // TODO(spike)
+    // TODO(spike): Create new empty save and load
+    //  DEBUG:
+    stateService.EnterState(GameState.Battle);
   }
 
-  private void LoadGame() {
-    // TODO(spike)
+  private void DoLoadGame() {
+    // TODO(spike): Open the `SavesList` sub-menu
+    GD.Print("TODO(spike): Open the `SavesList` sub-menu");
   }
 
-  private void Settings() {
-    // TODO(spike)
+  private void DoSettings() {
+    // TODO(spike): Open the `Settings` sub-menu
+    GD.Print("TODO(spike): Open the `Settings` sub-menu");
   }
 
-  private void Exit() {
+  private void DoExit() {
     GD.Print("Exiting game ...");
 
     var sceneTree = GetTree();

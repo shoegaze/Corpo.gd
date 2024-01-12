@@ -89,6 +89,7 @@ label_settings = SubResource("LabelSettings_ni8xn")
 [node name="LoadGame_Button" type="Button" parent="UiRoot/TitleCard_Margin/TitleCard_Layout/Buttons_Margin/Buttons_Layout"]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
+disabled = true
 alignment = 0
 
 [node name="Label_Margin" type="MarginContainer" parent="UiRoot/TitleCard_Margin/TitleCard_Layout/Buttons_Margin/Buttons_Layout/LoadGame_Button"]
