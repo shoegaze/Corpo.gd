@@ -17,7 +17,7 @@ public class EnvironmentService : Service {
   private const string environmentFileNamePrefix = "environment";
   private const string environmentFileNameExtension = "json";
 
-  public Json.EnvironmentJson EnvironmentJson { get; private set; }
+  public Json.EnvironmentJson Environment { get; private set; }
 
   private static string MapEnvironmentModeToFileNameFragment(EnvironmentMode mode) {
     return mode switch {
@@ -40,7 +40,7 @@ public class EnvironmentService : Service {
 
     // TODO(spike): Validate JSON object
     Json.EnvironmentJson json = JsonConvert.DeserializeObject<Json.EnvironmentJson>(jsonString);
-    EnvironmentJson = json;
+    Environment = json;
     
     GD.Print("> Complete!");
   }

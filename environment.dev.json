@@ -4,7 +4,8 @@
 	  "loading": "res://Scenes/Screens/LoadingScreen.tscn",
 	  "base": "res://Scenes/Screens/BaseScreen.tscn",
 	  "overworld": "res://Scenes/Screens/OverworldScreen.tscn",
-	  "battle": "res://Scenes/Screens/BattleScreen.tscn"
+	  "battle": "res://Scenes/Screens/BattleScreen.tscn",
+      "mainMenu": "res://Scenes/Screens/MainMenuScreen.tscn"
 	}
   }
 }

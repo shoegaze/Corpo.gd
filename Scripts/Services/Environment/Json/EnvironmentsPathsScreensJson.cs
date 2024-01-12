@@ -6,4 +6,5 @@ public struct EnvironmentsPathsScreensJson {
   public string Base { get; set; }
   public string Overworld { get; set; }
   public string Battle { get; set; }
+  public string MainMenu { get; set; }
 }
