@@ -26,6 +26,7 @@ public sealed class LoadingService : Service {
     IsLoading = false;
   }
   
+  // TODO(spike): Func<Action<double> setLoadingProgress, GDTask action> action 
   public async GDTask RunAsync(Func<GDTask> action, Action onComplete) {
     if (IsLoading) {
       GD.PrintErr("Cannot run task: LoadingService is busy");
@@ -36,6 +37,10 @@ public sealed class LoadingService : Service {
     Do(action, onComplete).Forget();
 
     await GDTask.Yield();
+  }
+
+  public async GDTask RunAsync(Func<GDTask> action) {
+    await RunAsync(action, () => { });
   }
 
   private void ShowLoadingScreen() {
