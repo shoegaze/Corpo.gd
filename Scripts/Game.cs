@@ -11,10 +11,16 @@ public partial class Game : Node {
     GD.Print("Setting up services:");
 
     EnvironmentService environmentService = ServiceProvider.Get<EnvironmentService>();
+    
+#if DEBUG
+    const EnvironmentService.EnvironmentMode environmentMode = EnvironmentService.EnvironmentMode.Development;
+#else
+    const EnvironmentService.EnvironmentMode environmentMode = EnvironmentService.EnvironmentMode.Production;
+#endif
+
     environmentService.LoadEnvironment(
           ProjectSettings.GlobalizePath("res://"),
-          EnvironmentService.EnvironmentMode.Development
-        );
+          environmentMode);
 
     NodeService nodeService = ServiceProvider.Get<NodeService>();
     nodeService.LoadNodes(this);

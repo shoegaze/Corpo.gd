@@ -39,7 +39,10 @@ public sealed class ScreenService : Service {
     
     screens.Push(screen);
     screen.OnCreate();
-    screen.OnFocus();
+
+    if (screen == CurrentScreen) {
+      screen.OnFocus();
+    }
   }
 
   public void Dismiss() {
