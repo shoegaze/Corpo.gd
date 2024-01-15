@@ -1,14 +1,16 @@
 using Corpo.Scripts.Screens.Core;
 using Corpo.Scripts.Services.Core;
 using Corpo.Scripts.Services.Environment;
+using Corpo.Scripts.Services.Screen;
 using Corpo.Scripts.Services.State;
 using Godot;
 
-namespace Corpo.Scripts; 
+namespace Corpo.Scripts.Screens; 
 
 public partial class MainMenuScreen : Screen {
   private EnvironmentService environmentService;
   private StateService stateService;
+  private MainMenuService mainMenuService;
 
   private Button buttonNewGame;
   private Button buttonLoadGame;
@@ -18,18 +20,15 @@ public partial class MainMenuScreen : Screen {
   public override void OnCreate() {
     environmentService = ServiceProvider.Get<EnvironmentService>();
     stateService = ServiceProvider.Get<StateService>();
+    mainMenuService = ServiceProvider.Get<MainMenuService>();
+
+    var mainMenuPaths = environmentService.Environment.Paths.Screens.MainMenu;
+    Node buttonsRoot = GetNode(mainMenuPaths.Buttons.Root);
     
-    // TODO(spike): Get paths from environmentService
-    var uiRoot = GetNode("UiRoot");
-    var buttonsRoot = uiRoot.GetNode(
-      "TitleCard_Margin/TitleCard_Layout/" + 
-      "Buttons_Margin/Buttons_Layout"
-    );
-    
-    buttonNewGame = buttonsRoot.GetNode("NewGame_Button") as Button;
-    buttonLoadGame = buttonsRoot.GetNode("LoadGame_Button") as Button;
-    buttonSettings = buttonsRoot.GetNode("Settings_Button") as Button;
-    buttonExit = buttonsRoot.GetNode("Exit_Button") as Button;
+    buttonNewGame = buttonsRoot.GetNode(mainMenuPaths.Buttons.NewGame) as Button;
+    buttonLoadGame = buttonsRoot.GetNode(mainMenuPaths.Buttons.LoadGame) as Button;
+    buttonSettings = buttonsRoot.GetNode(mainMenuPaths.Buttons.Settings) as Button;
+    buttonExit = buttonsRoot.GetNode(mainMenuPaths.Buttons.Exit) as Button;
   }
 
   public override void OnFocus() {
@@ -58,13 +57,11 @@ public partial class MainMenuScreen : Screen {
   }
 
   private void DoLoadGame() {
-    // TODO(spike): Open the `SavesList` sub-menu
-    GD.Print("TODO(spike): Open the `SavesList` sub-menu");
+    mainMenuService.ToggleSavesSubmenu(this);
   }
 
   private void DoSettings() {
-    // TODO(spike): Open the `Settings` sub-menu
-    GD.Print("TODO(spike): Open the `Settings` sub-menu");
+    mainMenuService.ToggleSettingsSubmenu(this);
   }
 
   private void DoExit() {

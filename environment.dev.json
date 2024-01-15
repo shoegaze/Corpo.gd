@@ -5,7 +5,21 @@
       "loading": "res://Scenes/Screens/LoadingScreen.tscn",
 	  "overworld": "res://Scenes/Screens/OverworldScreen.tscn",
 	  "battle": "res://Scenes/Screens/BattleScreen.tscn",
-      "mainMenu": "res://Scenes/Screens/MainMenuScreen.tscn"
+      "mainMenu": {
+        "root": "res://Scenes/Screens/MainMenuScreen.tscn",
+        "buttons": {
+          "root": "UiRoot/ScreenSplitter/TitleCard_Margin/TitleCard_Layout/Buttons_Margin/Buttons_Layout",
+          "newGame": "NewGame_Button",
+          "loadGame": "LoadGame_Button",
+          "settings": "Settings_Button",
+          "exit": "Exit_Button"
+        },
+        "submenus": {
+          "root": "UiRoot/ScreenSplitter/Submenus_Margin/Submenus",
+          "saves": "Saves_Submenu",
+          "settings": "Settings_Submenu"
+        }
+      }
 	}
   }
 }
