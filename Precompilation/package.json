@@ -1,0 +1,15 @@
+{
+  "name": "corpo-precompilation",
+  "version": "1.0.0",
+  "description": "Precompilation step for Corpo",
+  "main": "index.js",
+  "scripts": {
+    "start": "mkdir -p Sources Generated && ts-json-schema-generator --path \"Sources/**/*.ts\" --type \"*\" | npx quicktype --src-lang schema -l csharp > \"Generated/Definitions.cs\""
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "quicktype": "^23.0.81",
+    "ts-json-schema-generator": "^1.5.0"
+  }
+}
