@@ -12,19 +12,16 @@ namespace Corpo.Scripts.Services.State;
 public sealed class StateService : Service {
   private readonly EnvironmentService environmentService;
   private readonly ScreenService screenService;
-  private readonly LoadingService loadingService;
       
   private readonly Stack<GameState> states = new();
   private IStateLifecycle activeLifecycle;
 
   public StateService(
     EnvironmentService environmentService,
-    ScreenService screenService,
-    LoadingService loadingService
+    ScreenService screenService
   ) {
     this.environmentService = environmentService;
     this.screenService = screenService;
-    this.loadingService = loadingService;
   }
 
   public void EnterState(GameState state) {
@@ -51,13 +48,10 @@ public sealed class StateService : Service {
 
   private void SetUpLifecycle(GameState state) {
     activeLifecycle = state switch { 
-                        GameState.Base => new BaseLifecycle(this,
-                                                            environmentService,
-                                                            screenService, 
-                                                            loadingService), 
+                        GameState.Base => new BaseLifecycle(environmentService, 
+                                                            screenService), 
                         GameState.OverWorld => new OverworldLifecycle(/* TODO(spike) */),
-                        GameState.Battle => new BattleLifecycle(this, 
-                                                                environmentService, 
+                        GameState.Battle => new BattleLifecycle(environmentService, 
                                                                 screenService),
                         _ => null
                       };

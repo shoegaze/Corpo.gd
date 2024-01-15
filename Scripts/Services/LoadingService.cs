@@ -46,7 +46,7 @@ public sealed class LoadingService : Service {
   private void ShowLoadingScreen() {
     PackedScene loadingScene = GD.Load<PackedScene>(
       environmentService.Environment.Paths.Screens.Loading);
-    Screen loadingScreen = loadingScene.Instantiate<LoadingScreen>();
+    Screens.Core.Screen loadingScreen = loadingScene.Instantiate<LoadingScreen>();
     
     screenService.Enter(loadingScreen);
   }

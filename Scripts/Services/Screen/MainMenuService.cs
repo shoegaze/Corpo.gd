@@ -27,7 +27,7 @@ public class MainMenuService : Service {
 
     var subMenuSave = submenusRoot!.GetNode(submenusPaths.Saves);
     
-    // TODO(spike)
+    // TODO(spike): Set up saves UI
   }
 
   public void ToggleSettingsSubmenu(Screens.Core.Screen root) {
@@ -44,5 +44,7 @@ public class MainMenuService : Service {
     submenusRoot!.CurrentTab = 1;
     
     var subMenuSettings = submenusRoot!.GetNode(submenusPaths.Settings);
+    
+    // TODO(spike): Set up settings UI
   }
 }
