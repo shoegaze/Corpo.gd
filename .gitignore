@@ -1,7 +1,14 @@
 # Godot 4+ specific ignores
-.godot/
+.godot/*
+
+# Include .gdignore only
+!.godot/.gdignore
 
 .idea/
 .run/
 .vs/
 .vscode/
+
+Precompilation/*
+!Precompilation/package.json
+!Precompilation/Sources/

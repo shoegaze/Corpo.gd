@@ -1,8 +1,10 @@
 ﻿using System;
 using System.IO;
 using Corpo.Scripts.Services.Core;
+using Corpo.Scripts.Services.Environment.Json;
 using Godot;
 using Newtonsoft.Json;
+using QuickType;
 
 namespace Corpo.Scripts.Services.Environment;
 
@@ -17,7 +19,7 @@ public class EnvironmentService : Service {
   private const string environmentFileNamePrefix = "environment";
   private const string environmentFileNameExtension = "json";
 
-  public Json.EnvironmentJson Environment { get; private set; }
+  public TopLevel Environment { get; private set; }
 
   private static string MapEnvironmentModeToFileNameFragment(EnvironmentMode mode) {
     return mode switch {
@@ -37,10 +39,9 @@ public class EnvironmentService : Service {
     
     using StreamReader reader = new StreamReader(fullFilePath);
     string jsonString = reader.ReadToEnd();
-
-    // TODO(spike): Validate JSON object
-    Json.EnvironmentJson json = JsonConvert.DeserializeObject<Json.EnvironmentJson>(jsonString);
-    Environment = json;
+    
+    // TODO(spike): Validate JSON object from schema
+    Environment = TopLevel.FromJson(jsonString);
     
     GD.Print("> Complete!");
   }
