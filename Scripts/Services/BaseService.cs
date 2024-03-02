@@ -1,6 +1,5 @@
 using Corpo.Scripts.Services.Core;
 using Corpo.Scripts.Services.Environment;
-using Corpo.Scripts.Services.Resource;
 using Godot;
 
 namespace Corpo.Scripts.Services; 
@@ -9,25 +8,20 @@ namespace Corpo.Scripts.Services;
 public sealed class BaseService : Service {
   private readonly EnvironmentService environmentService;
   private readonly LoadingService loadingService;
-  private readonly PackageLoaderService packageLoaderService;
   private readonly ScreenService screenService;
   
   public BaseService(
     EnvironmentService environmentService,
     LoadingService loadingService,
-    PackageLoaderService packageLoaderService,
     ScreenService screenService
   ) {
     this.environmentService = environmentService;
     this.loadingService = loadingService;
-    this.packageLoaderService = packageLoaderService;
     this.screenService = screenService;
   }
 
   public async void LoadPackages() {
-    await loadingService.RunAsync(async () => {
-      await packageLoaderService.LoadPackages();
-    });
+    // TODO(spike): Load packages from disk asynchronously
   }
 
   public void ShowMainMenu() {
