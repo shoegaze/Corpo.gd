@@ -4,7 +4,7 @@
 # Include .gdignore only
 !.godot/.gdignore
 
-.idea/
+#.idea/
 .run/
 .vs/
 .vscode/
