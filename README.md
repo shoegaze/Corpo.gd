@@ -58,3 +58,13 @@ $ PATH_TO_GODOT_EXECUTABLE --path PATH_TO_PROJECT_ROOT
 This will run the project via the commandline.
 
 The equivalent may also be done through the Godot Editor.
+
+## Contributing
+
+### Branching Strategy
+
+- `main` - Release milestone branch
+  - Linear history
+- `dev` - Development branch
+  - Merged into commit when the milestone is reached
+  - Feature branches should branch off of this and merged back into `dev`
