@@ -93,6 +93,7 @@ layout_mode = 2
 theme_override_constants/separation = 5
 
 [node name="NewGame_Button" type="Button" parent="UiRoot/ScreenSplitter/TitleCard_Margin/TitleCard_Layout/Buttons_Margin/Buttons_Layout"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 alignment = 0
@@ -112,6 +113,7 @@ text = "NEW"
 label_settings = SubResource("LabelSettings_ni8xn")
 
 [node name="LoadGame_Button" type="Button" parent="UiRoot/ScreenSplitter/TitleCard_Margin/TitleCard_Layout/Buttons_Margin/Buttons_Layout"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 alignment = 0
@@ -131,6 +133,7 @@ text = "LOAD"
 label_settings = SubResource("LabelSettings_ni8xn")
 
 [node name="Settings_Button" type="Button" parent="UiRoot/ScreenSplitter/TitleCard_Margin/TitleCard_Layout/Buttons_Margin/Buttons_Layout"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 alignment = 0
@@ -150,6 +153,7 @@ text = "SETTINGS"
 label_settings = SubResource("LabelSettings_ni8xn")
 
 [node name="Exit_Button" type="Button" parent="UiRoot/ScreenSplitter/TitleCard_Margin/TitleCard_Layout/Buttons_Margin/Buttons_Layout"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 alignment = 0
@@ -184,11 +188,14 @@ theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 50
 
 [node name="Submenus" type="TabContainer" parent="UiRoot/ScreenSplitter/Submenus_Margin"]
+unique_name_in_owner = true
 visible = false
 layout_mode = 2
 tabs_visible = false
 
 [node name="Saves_Submenu" type="Panel" parent="UiRoot/ScreenSplitter/Submenus_Margin/Submenus"]
+unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 
@@ -341,6 +348,7 @@ label_settings = SubResource("LabelSettings_g82kr")
 vertical_alignment = 1
 
 [node name="Settings_Submenu" type="Panel" parent="UiRoot/ScreenSplitter/Submenus_Margin/Submenus"]
+unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2

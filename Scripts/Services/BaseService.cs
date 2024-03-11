@@ -26,7 +26,8 @@ public sealed class BaseService : Service {
 
   public void ShowMainMenu() {
     PackedScene mainMenuScene = GD.Load<PackedScene>(
-          environmentService.Environment.Paths.Screens.MainMenu.Root);
+          environmentService.Environment.Paths.Screens.MainMenu.Path);
+    
     Screens.Core.Screen mainMenuScreen = mainMenuScene.Instantiate<Screens.MainMenuScreen>();
     
     screenService.Enter(mainMenuScreen);

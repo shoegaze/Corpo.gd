@@ -6,7 +6,7 @@
       overworld: string,
       battle: string,
       mainMenu: {
-        root: string,
+        path: string,
         buttons: {
           root: string,
           newGame: string,

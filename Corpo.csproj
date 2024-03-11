@@ -5,6 +5,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="Precompilation" />
+    <Folder Include="Precompilation\Generated" />
     <Folder Include="Scenes" />
     <Folder Include="Scripts\Game" />
   </ItemGroup>

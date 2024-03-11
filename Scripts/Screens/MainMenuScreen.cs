@@ -23,12 +23,11 @@ public partial class MainMenuScreen : Screen {
     mainMenuService = ServiceProvider.Get<MainMenuService>();
 
     var mainMenuPaths = environmentService.Environment.Paths.Screens.MainMenu;
-    Node buttonsRoot = GetNode(mainMenuPaths.Buttons.Root);
     
-    buttonNewGame = buttonsRoot.GetNode(mainMenuPaths.Buttons.NewGame) as Button;
-    buttonLoadGame = buttonsRoot.GetNode(mainMenuPaths.Buttons.LoadGame) as Button;
-    buttonSettings = buttonsRoot.GetNode(mainMenuPaths.Buttons.Settings) as Button;
-    buttonExit = buttonsRoot.GetNode(mainMenuPaths.Buttons.Exit) as Button;
+    buttonNewGame = GetNode(mainMenuPaths.Buttons.NewGame) as Button;
+    buttonLoadGame = GetNode(mainMenuPaths.Buttons.LoadGame) as Button;
+    buttonSettings = GetNode(mainMenuPaths.Buttons.Settings) as Button;
+    buttonExit = GetNode(mainMenuPaths.Buttons.Exit) as Button;
   }
 
   public override void OnFocus() {
