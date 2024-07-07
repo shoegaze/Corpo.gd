@@ -1,5 +1,6 @@
 {
   "paths": {
+    "packages": "res://Packages",
     "screens": {
       "base": "res://Scenes/Screens/BaseScreen.tscn",
       "loading": "res://Scenes/Screens/LoadingScreen.tscn",
@@ -21,5 +22,11 @@
         }
       }
     }
-  }
+  },
+	"handles": {
+		"packageResource": "{author}.{package}",
+		"sharedResource": "{author}.{package}.shared:{rgroup}:{rid}",
+		"overworldResource": "{author}.{package}.overworld:{rid}",
+		"battleResource": "{author}.{package}.battle:{rid}"
+	}
 }

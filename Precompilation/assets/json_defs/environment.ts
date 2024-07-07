@@ -1,5 +1,6 @@
 ﻿export type Environment = {
   paths: {
+    packages: string,
     screens: {
       base: string,
       loading: string,
@@ -21,5 +22,11 @@
         }
       }
     }
+  },
+  handles: {
+    packageResource: string,
+    sharedResource: string,
+    overworldResource: string,
+    battleResource: string
   }
 };

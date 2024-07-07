@@ -2,14 +2,37 @@
   "name": "corpo-precompilation",
   "version": "1.0.0",
   "description": "Precompilation step for Corpo",
-  "main": "index.js",
   "scripts": {
-    "start": "mkdir -p Sources Generated && ts-json-schema-generator --path \"Sources/**/*.ts\" --type \"*\" | npx quicktype --src-lang schema -l csharp > \"Generated/Definitions.cs\""
+    "app": "ts-node -r tsconfig-paths/register ./src/index.ts",
+    "build-all": "npm run app -- build-all",
+    "build-all:watch": "npm run app -- build-all -w",
+    "build-json": "npm run app -- build-json",
+    "build-json:watch": "npm run app -- build-json -w",
+    "build-csharp": "npm run app -- build-csharp",
+    "build-csharp:watch": "npm run app -- build-csharp -w"
   },
-  "author": "",
+  "author": "Team Sports",
   "license": "ISC",
+  "dependencies": {
+    "app-root-path": "^3.1.0",
+    "camelcase": "^8.0.0",
+    "chokidar": "^3.6.0",
+    "commander": "^12.1.0",
+    "date-fns": "^3.6.0",
+    "dotenv": "^16.4.5",
+    "glob": "^10.4.3",
+    "mkdirp": "^3.0.1",
+    "quicktype": "^23.0.170",
+    "rimraf": "^5.0.8",
+    "touch": "^3.1.1",
+    "ts-json-schema-generator": "^1.5.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.3"
+  },
   "devDependencies": {
-    "quicktype": "^23.0.81",
-    "ts-json-schema-generator": "^1.5.0"
+    "@commander-js/extra-typings": "^12.1.0",
+    "@tsconfig/node16": "^16.1.3",
+    "@types/touch": "^3.1.5",
+    "tsconfig-paths": "^4.2.0"
   }
 }

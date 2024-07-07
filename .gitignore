@@ -9,6 +9,8 @@
 .vs/
 .vscode/
 
-Precompilation/*
-!Precompilation/package.json
-!Precompilation/Sources/
+notes/
+
+Precompilation/node_modules/
+Precompilation/dist/
+#Precompilation/.env
