@@ -1,109 +1,112 @@
 import { promisify } from 'node:util'
-import * as path from 'node:path'
+import { posix } from 'node:path'
 import * as childProcess from 'node:child_process'
-import { writeFile } from 'node:fs/promises'
 
-import { watch } from 'chokidar'
-import { glob } from 'glob'
-const camelCase = (async () => await import('camelcase'))()
-
-import { L, E, LT } from '@core/log'
-import { Path, prepare } from "@core/file"
-
+import { make, walks } from '@core/file'
+import { L, E, LT, W } from '@core/log'
+import { AbsolutePath, base, join, relative, parent, RelativePath } from '@core/path'
 
 const exec = promisify(childProcess.exec)
 
 
-async function buildCSharpClass(fileName: string, dirPath: Path, outPath: Path, depth = 0): Promise<void> {
-  const { default: camelCase } = await import('camelcase')
+const csExtension = '.cs'
+const csNamespaceSeparator = '.'
 
-  const fullSourceFileName = `${fileName}.json`
-  const fullSourcePath: Path = path.join(dirPath, fullSourceFileName)
 
-  const topLevel = camelCase(`${fileName}Json`, {
-    pascalCase: true
+export async function buildAllCSharpClasses(
+  src: AbsolutePath,
+  out: AbsolutePath
+): Promise<void> {
+  LT(`Building all in: '${src}/**/*${csExtension}'`)
+
+  const targets = await walks(src)
+
+  if (targets.length === 0) {
+    W(`Source directory '${src}' was empty; skipping build...`, 1)
+    return
+  }
+
+  targets.forEach(path => {
+    L(`Building: '${path}'`, 1)
   })
 
-  L(`Building C# class for ${fullSourcePath}`, depth)
+  const tasks = targets
+    .map(path => generateCSharpFromDir(path, src, out))
 
-  const cmd = [
-    'npx',
-    'quicktype',
-    '--src-lang schema',
-    '--lang cs',
-    `--src ${fullSourcePath}`,
-    `--top-level ${topLevel}`
+  return Promise.allSettled(tasks)
+    .then(results => {
+      results.forEach(result => {
+        const { status } = result
+
+        if (status === 'fulfilled') {
+          const { outPath } = result.value
+          L(`Wrote ${csExtension} file to: '${outPath}'`, 1)
+
+          return
+        }
+
+        const { reason } = result
+        E(`Failed to write ${csExtension} file; reason: ${reason}`, 1)
+      })
+    })
+}
+
+
+type CSharpName = string & { __brand: 'CSharpName' }
+type CSharpFileName = string & { __brand: 'CSharpFileName' }
+type CSharpNamespace = string & { __brand: 'CSharpNamespace' }
+
+const toCSharpName = async (name: string) => {
+  const camelCase = (await import('camelcase')).default
+
+  return camelCase(name, {
+    pascalCase: true
+  }) as CSharpName
+}
+
+const toCSharpFileName = async (name: string) =>
+  `${await toCSharpName(name)}${csExtension}` as CSharpFileName
+
+const toCSharpNamespace = async (root: AbsolutePath, path: AbsolutePath) =>
+  await Promise.all(
+    relative(root, path)
+      .split(posix.sep)
+      .map(async dir => await toCSharpName(dir))
+  )
+    .then(dirs =>
+      dirs.join(csNamespaceSeparator) as CSharpNamespace
+    )
+
+const generateCSharpFromDir = async (
+  path: AbsolutePath,
+  src: AbsolutePath,
+  out: AbsolutePath
+) => {
+  const name = base(path)
+  const csFileName = await toCSharpFileName(name)
+
+  const srcDir = path
+  const outPath = join(
+    out,
+    relative(src, path),
+    `${csFileName}` as RelativePath
+  )
+  const csNamespace = await toCSharpNamespace(src, path)
+
+  const command = [
+    'npx quicktype',
+    `"${srcDir}"`,
+    `--out "${outPath}"`,
+    `--namespace "${csNamespace}"`,
+    '--framework NewtonSoft',
+    `--src-lang schema`,
+    `--lang csharp`
   ].join(' ')
 
-  L(`$ ${cmd}`, depth + 1)
 
-  return exec(cmd)
-    .then(result => {
-      L(`Build complete: ${fullSourcePath}`, depth + 1)
+  const outDir = parent(outPath)
+  await make(outDir)
 
-      const fullOutFileName = `${topLevel}.cs`
-      const fullOutPath = path.join(
-        outPath,
-        fullOutFileName
-      )
-
-      return writeFile(fullOutPath, result.stdout)
-    })
-    .catch(err => {
-      E(`Build failed: ${dirPath}`, depth + 1)
-      E(`${err}`, depth + 2)
-
-      return Promise.reject()
-    })
-}
-
-export async function buildAllCSharpClasses(srcPath: Path, outPath: Path, depth = 0): Promise<void> {
-  await prepare(srcPath, outPath)
-
-  const buildGlob = path.join(
-    srcPath,
-    '**',
-    '*.json'
-  )
-
-  LT(`Building all: ${buildGlob}`)
-
-  const buildPaths: Path[] = await glob(buildGlob)
-
-  const buildPromises: Promise<void>[] = buildPaths
-    .map(schemaPath => {
-      const {
-        name: fileName,
-        dir: dirPath
-      } = path.parse(schemaPath)
-
-      return buildCSharpClass(fileName, dirPath, outPath, depth + 1)
-    })
-
-  await Promise.allSettled(buildPromises)
-}
-
-export async function buildWatchAllCSharpClasses(srcPath: Path, outPath: Path, depth = 0): Promise<void> {
-  await prepare(srcPath, outPath)
-
-  const watchGlob = path.join(
-    srcPath,
-    '**',
-    '*.json'
-  )
-
-  LT(`Watching files in ${watchGlob}:`)
-
-  watch(watchGlob, {
-    persistent: true
-  }).on('all', (event, filePath) => {
-    L(`Change: [${event}] ${filePath}`, depth + 1)
-
-    const {
-      name: fileName,
-      dir: dirPath
-    } = path.parse(filePath)
-
-    buildCSharpClass(fileName, dirPath, outPath, depth + 1)
-  })
+  return exec(command)
+    .then(() => ({ srcDir, outPath }))
 }

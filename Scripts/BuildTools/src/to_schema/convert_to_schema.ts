@@ -5,10 +5,11 @@ import zodToJsonSchema from 'zod-to-json-schema'
 
 import { make, search, write } from '@core/file'
 import { E, L, LT, W } from '@core/log'
-import { AbsolutePath, RelativePath, join, relative, strip } from '@core/path'
+import { AbsolutePath, RelativePath, join, relative, toDirectory } from '@core/path'
 
 
 const tsExtension = '.ts'
+
 
 export async function buildAllJsonSchema(
   src: AbsolutePath,
@@ -27,7 +28,7 @@ export async function buildAllJsonSchema(
     L(`Building: '${path}'`, 1)
   })
 
-  const imports = targets
+  const tasks = targets
     .map(path => [path, pathToFileURL(path).href] as [AbsolutePath, string])
     .map(([path, url]) =>
       import(url)
@@ -40,7 +41,7 @@ export async function buildAllJsonSchema(
         .then(jsonStrings => writeJsonStrings(jsonStrings, path, src, out))
     )
 
-  return Promise.allSettled(imports)
+  return Promise.allSettled(tasks)
     .then(results => {
       results.forEach(result => {
         const { status } = result
@@ -48,7 +49,7 @@ export async function buildAllJsonSchema(
         if (status === 'fulfilled') {
           result.value.forEach(async path => {
             const p = await path
-            L(`Successfully wrote schema to: '${p}'`, 1)
+            L(`Wrote schema to: '${p}'`, 1)
           })
 
           return
@@ -56,8 +57,6 @@ export async function buildAllJsonSchema(
 
         const { reason } = result
         E(`Failed to write schema; reason: ${reason}`, 1)
-
-        return
       })
     })
 }
@@ -136,16 +135,14 @@ const writeJsonStrings = (
   out: AbsolutePath
 ): Promise<AbsolutePath>[] =>
   jsonStringEntries.map(async ([name, jsonStr]): Promise<AbsolutePath> => {
-    const srcTrail = strip(path)
+    const srcTrail = toDirectory(path)
     const trail = relative(src, srcTrail)
-    const outDir = trail === name ?
-      join(out, name as RelativePath) :
-      join(out, trail)
+    const outDir = join(out, trail)
 
     await make(outDir)
 
-    const outName = `${name}.json` as RelativePath
-    const outPath = join(outDir, outName)
+    const outFile = `${name}.json` as RelativePath
+    const outPath = join(outDir, outFile)
 
     return write(outPath, jsonStr)
       .then(() => outPath)

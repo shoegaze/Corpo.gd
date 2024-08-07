@@ -1,11 +1,9 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "extends": "@tsconfig/node16/tsconfig.json",
-  "ts-node": {
-    "transpileOnly": true,
-    "files": true
-  },
   "compilerOptions": {
+    "target": "es2017",
+    "module": "commonjs",
+    "esModuleInterop": true,
     "strict": true,
     "noImplicitReturns": true,
     "noImplicitAny": true,
@@ -14,8 +12,9 @@
     "strictNullChecks": true,
     "paths": {
       "@core/*": ["./src/core/*"],
-      "@json/*": ["./src/json/*"],
-      "@csharp/*": ["./src/csharp/*"]
+      "@json/*": ["./src/to_schema/*"],
+      "@csharp/*": ["./src/to_csharp/*"]
     }
-  }
+  },
+  "include": ["src/**/*"]
 }

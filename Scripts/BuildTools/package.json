@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "Build tools for Corpo",
   "scripts": {
-    "app": "dotenvx run -- tsx ./src/index.ts",
-    "build-all": "npm run app -- build-all",
-    "build-json": "npm run app -- build-json",
-    "build-csharp": "npm run app -- build-csharp"
+    "start": "dotenvx run -- tsx ./src/index.ts",
+    "build-all": "npm start -- build-all",
+    "build-json": "npm start -- build-json",
+    "build-csharp": "npm start -- build-csharp"
   },
   "author": "Team Sports",
   "license": "ISC",
@@ -16,7 +16,6 @@
     "camelcase": "^8.0.0",
     "commander": "^12.1.0",
     "date-fns": "^3.6.0",
-    "glob": "^10.4.3",
     "globby": "^14.0.2",
     "mkdirp": "^3.0.1",
     "quicktype": "^23.0.170",
@@ -29,6 +28,7 @@
   "devDependencies": {
     "@commander-js/extra-typings": "^12.1.0",
     "@types/rimraf": "^3.0.2",
-    "@types/touch": "^3.1.5"
+    "@types/touch": "^3.1.5",
+    "globals": "^15.9.0"
   }
 }
