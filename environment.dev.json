@@ -1,27 +1,33 @@
 {
   "paths": {
-    "packages": "res://Packages",
-    "screens": {
-      "base": "res://Scenes/Screens/BaseScreen.tscn",
-      "loading": "res://Scenes/Screens/LoadingScreen.tscn",
-      "overworld": "res://Scenes/Screens/OverworldScreen.tscn",
-      "battle": "res://Scenes/Screens/BattleScreen.tscn",
-      "mainMenu": {
-        "path": "res://Scenes/Screens/MainMenuScreen.tscn",
-        "buttons": {
-          "root": "%Buttons_Layout",
-          "newGame": "%NewGame_Button",
-          "loadGame": "%LoadGame_Button",
-          "settings": "%Settings_Button",
-          "exit": "%Exit_Button"
-        },
-        "submenus": {
-          "root": "%Submenus",
-          "saves": "%Saves_Submenu",
-          "settings": "%Settings_Submenu"
-        }
-      }
-    }
+	"logs": "",
+	"packages": {
+	  "root": "packages",
+	  "shared": "shared",
+	  "overworld": "overworld",
+	  "battle": "battle"
+	},
+	"screens": {
+	  "base": "res://Scenes/Screens/BaseScreen.tscn",
+	  "loading": "res://Scenes/Screens/LoadingScreen.tscn",
+	  "overworld": "res://Scenes/Screens/OverworldScreen.tscn",
+	  "battle": "res://Scenes/Screens/BattleScreen.tscn",
+	  "mainMenu": {
+		"path": "res://Scenes/Screens/MainMenuScreen.tscn",
+		"buttons": {
+		  "root": "%Buttons_Layout",
+		  "newGame": "%NewGame_Button",
+		  "loadGame": "%LoadGame_Button",
+		  "settings": "%Settings_Button",
+		  "exit": "%Exit_Button"
+		},
+		"submenus": {
+		  "root": "%Submenus",
+		  "saves": "%Saves_Submenu",
+		  "settings": "%Settings_Submenu"
+		}
+	  }
+	}
   },
 	"handles": {
 		"packageResource": "{author}.{package}",

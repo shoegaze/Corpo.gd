@@ -12,8 +12,8 @@ config_version=5
 
 config/name="Corpo"
 run/main_scene="res://Scenes/Game.tscn"
-config/features=PackedStringArray("4.2", "C#", "Forward Plus")
-config/icon="res://Sprites/djimpp.png"
+config/features=PackedStringArray("4.2", "Forward Plus")
+config/icon="res://Assets/Static/Sprites/djimpp.png"
 
 [display]
 
@@ -24,6 +24,7 @@ window/size/resizable=false
 [dotnet]
 
 project/assembly_name="Corpo"
+project/solution_directory="Scripts"
 
 [input]
 

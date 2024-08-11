@@ -1,0 +1,9 @@
+﻿<Project Sdk="Godot.NET.Sdk/4.2.2">
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <RootNamespace>CorpoFs</RootNamespace>
+    </PropertyGroup>
+    <ItemGroup>
+      <Compile Include="src\Hello.fs" />
+    </ItemGroup>
+</Project>
