@@ -9,6 +9,9 @@ import { AbsolutePath, base, join, relative, parent, RelativePath } from '@core/
 const exec = promisify(childProcess.exec)
 
 
+const namespaceRoot = 'Json' as CSharpName
+
+
 export async function buildAllCSharpClasses(
   src: AbsolutePath,
   out: AbsolutePath
@@ -70,7 +73,8 @@ const toCSharpNamespace = async (root: AbsolutePath, path: AbsolutePath) =>
       .map(async dir => await toCSharpName(dir))
   )
     .then(dirs =>
-      dirs.join(csNamespaceSeparator) as CSharpNamespace
+      [namespaceRoot, ...dirs]
+        .join(csNamespaceSeparator) as CSharpNamespace
     )
 
 const generateCSharpFromDir = async (
