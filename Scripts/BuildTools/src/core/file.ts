@@ -8,6 +8,12 @@ import touch = require('touch')
 import { AbsolutePath, Extension, glob, parent, toPosix } from './path'
 
 
+export const jsonExtension = '.json'
+export const tsExtension = '.ts'
+export const csExtension = '.cs'
+export const csNamespaceSeparator = '.'
+
+
 export const make = async (dir: AbsolutePath): Promise<void> =>
   mkdirp(dir)
     .then()

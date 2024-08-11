@@ -11,10 +11,9 @@ interface BuildJsonParams {
   out: string
 }
 
-const buildJson = async ({ src: srcRelative, out: outRelative }: BuildJsonParams) => {
+export const buildJson = async ({ src: srcRelative, out: outRelative }: BuildJsonParams) => {
   const src = resolve(root, srcRelative as RelativePath)
   const out = resolve(root, outRelative as RelativePath)
-
 
   await Promise.all([
     make(src),
