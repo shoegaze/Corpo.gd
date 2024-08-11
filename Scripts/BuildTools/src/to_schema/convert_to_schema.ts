@@ -3,19 +3,16 @@ import { pathToFileURL } from 'node:url'
 import { ZodSchema } from 'zod'
 import zodToJsonSchema from 'zod-to-json-schema'
 
-import { make, search, write } from '@core/file'
+import { jsonExtension, make, search, tsExtension, write } from '@core/file'
 import { E, L, LT, W } from '@core/log'
 import { AbsolutePath, RelativePath, join, relative, toDirectory } from '@core/path'
-
-
-const tsExtension = '.ts'
 
 
 export async function buildAllJsonSchema(
   src: AbsolutePath,
   out: AbsolutePath
 ): Promise<void> {
-  LT(`Building all in: '${src}/**/*${tsExtension}'`)
+  LT(`Building: '${src}/**/*${tsExtension}'`)
 
   const targets: AbsolutePath[] = await search(src, tsExtension)
 
@@ -49,7 +46,7 @@ export async function buildAllJsonSchema(
         if (status === 'fulfilled') {
           result.value.forEach(async path => {
             const p = await path
-            L(`Wrote schema to: '${p}'`, 1)
+            L(`Wrote to: '${p}'`, 1)
           })
 
           return
@@ -141,7 +138,7 @@ const writeJsonStrings = (
 
     await make(outDir)
 
-    const outFile = `${name}.json` as RelativePath
+    const outFile = `${name}${jsonExtension}` as RelativePath
     const outPath = join(outDir, outFile)
 
     return write(outPath, jsonStr)

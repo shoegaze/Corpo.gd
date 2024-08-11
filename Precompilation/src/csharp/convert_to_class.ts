@@ -2,22 +2,18 @@ import { promisify } from 'node:util'
 import { posix } from 'node:path'
 import * as childProcess from 'node:child_process'
 
-import { make, walks } from '@core/file'
+import { csExtension, csNamespaceSeparator, jsonExtension, make, walks } from '@core/file'
 import { L, E, LT, W } from '@core/log'
 import { AbsolutePath, base, join, relative, parent, RelativePath } from '@core/path'
 
 const exec = promisify(childProcess.exec)
 
 
-const csExtension = '.cs'
-const csNamespaceSeparator = '.'
-
-
 export async function buildAllCSharpClasses(
   src: AbsolutePath,
   out: AbsolutePath
 ): Promise<void> {
-  LT(`Building all in: '${src}/**/*${csExtension}'`)
+  LT(`Building: '${src}/**/*${jsonExtension}'`)
 
   const targets = await walks(src)
 
@@ -40,7 +36,7 @@ export async function buildAllCSharpClasses(
 
         if (status === 'fulfilled') {
           const { outPath } = result.value
-          L(`Wrote ${csExtension} file to: '${outPath}'`, 1)
+          L(`Wrote to: '${outPath}'`, 1)
 
           return
         }

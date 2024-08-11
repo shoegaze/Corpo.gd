@@ -11,10 +11,9 @@ interface BuildCSharpParams {
   out: string
 }
 
-const buildCSharp = async ({ src: srcRelative, out: outRelative }: BuildCSharpParams) => {
+export const buildCSharp = async ({ src: srcRelative, out: outRelative }: BuildCSharpParams) => {
   const src = resolve(root, srcRelative as RelativePath)
   const out = resolve(root, outRelative as RelativePath)
-
 
   await Promise.all([
     make(src),
