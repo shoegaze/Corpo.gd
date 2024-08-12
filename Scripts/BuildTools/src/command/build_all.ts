@@ -1,12 +1,8 @@
 import { Command } from '@commander-js/extra-typings'
-import * as path from 'node:path'
-import appRoot from 'app-root-path'
 
-import { E, ET, LT, W } from '@core/log'
-import { buildAllJsonSchema } from '@json/convert_to_schema'
-import { buildAllCSharpClasses } from '@csharp/convert_to_csharp'
-import { buildJson, buildJsonCommand } from './build_json'
-import { buildCSharp, buildCSharpCommand } from './build_csharp'
+import { LT } from '@core/log'
+import { buildJson } from './build_json'
+import { buildCSharp } from './build_csharp'
 
 
 interface BuildAllParams {

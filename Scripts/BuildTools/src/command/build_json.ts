@@ -3,7 +3,7 @@ import { Command } from '@commander-js/extra-typings'
 import { E, ET, LT } from '@core/log'
 import { RelativePath, resolve, root } from '@core/path'
 import { clean, make } from '@core/file'
-import { buildAllJsonSchema } from '@json/convert_to_schema'
+import { buildAllJsonSchema } from '../json/convert_to_schema'
 
 
 interface BuildJsonParams {

@@ -2,9 +2,9 @@ import { promisify } from 'node:util'
 import { posix } from 'node:path'
 import * as childProcess from 'node:child_process'
 
-import { csExtension, csNamespaceSeparator, jsonExtension, make, walks } from '@core/file'
+import { csExtension, csNamespaceSeparator, jsonExtension, make, search, walks } from '@core/file'
 import { L, E, LT, W } from '@core/log'
-import { AbsolutePath, base, join, relative, parent, RelativePath } from '@core/path'
+import { AbsolutePath, base, join, relative, parent, RelativePath, root } from '@core/path'
 
 const exec = promisify(childProcess.exec)
 
@@ -93,14 +93,22 @@ const generateCSharpFromDir = async (
   )
   const csNamespace = await toCSharpNamespace(src, path)
 
+  // BUG(Quicktype): We have to pass in schemas separately instead of passing as a directory
+  const srcPaths = (await search(srcDir, jsonExtension))
+    .map(path => relative(root, path))
+    .map(path => `"${path}"`)
+    .join(' ')
+
   const command = [
     'npx quicktype',
-    `"${srcDir}"`,
+    `${srcPaths}`,
     `--out "${outPath}"`,
     `--namespace "${csNamespace}"`,
     '--framework NewtonSoft',
-    `--src-lang schema`,
-    `--lang csharp`
+    '--src-lang schema',
+    '--lang csharp',
+    '--csharp-version 6',
+    '--density dense'
   ].join(' ')
 
 

@@ -12,8 +12,8 @@
     "strictNullChecks": true,
     "paths": {
       "@core/*": ["./src/core/*"],
-      "@json/*": ["./src/to_schema/*"],
-      "@csharp/*": ["./src/to_csharp/*"]
+      "@json/*": ["./src/json/*"],
+      "@csharp/*": ["./src/csharp/*"]
     }
   },
   "include": ["src/**/*"]
