@@ -1,15 +1,15 @@
 {
-  "name": "corpo-buildtools",
+  "name": "corpo-prebuild",
   "version": "1.0.0",
-  "description": "Build tools for Corpo",
+  "description": "Prebuild tools for Corpo",
+  "author": "Team Sports",
   "scripts": {
     "start": "dotenvx run -- tsx ./src/index.ts",
+    "clean": "rimraf -g -v 'dist/*'",
     "build-all": "npm start -- build-all",
     "build-json": "npm start -- build-json",
     "build-csharp": "npm start -- build-csharp"
   },
-  "author": "Team Sports",
-  "license": "ISC",
   "dependencies": {
     "@dotenvx/dotenvx": "^1.6.4",
     "app-root-path": "^3.1.0",

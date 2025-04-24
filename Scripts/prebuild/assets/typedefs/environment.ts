@@ -18,7 +18,7 @@ export const environment =
         base: string(),
         loading: string(),
         overworld: string(),
-        batle: string(),
+        battle: string(),
         mainMenu: object({
           path: string(),
           button: object({
