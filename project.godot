@@ -13,7 +13,8 @@ config_version=5
 config/name="Corpo"
 run/main_scene="res://Assets/Static/Scenes/Game.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://Assets/Static/Sprites/djimpp.png"
+config/icon="uid://boukht85ojaew"
+config/windows_native_icon="res://icon.ico"
 
 [display]
 
