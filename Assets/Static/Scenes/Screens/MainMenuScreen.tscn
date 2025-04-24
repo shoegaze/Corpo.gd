@@ -1,15 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://foubb731xukc"]
+[gd_scene load_steps=10 format=3 uid="uid://foubb731xukc"]
 
-[ext_resource type="Script" path="res://Scripts/Screens/MainMenuScreen.cs" id="1_knbbf"]
-[ext_resource type="FontFile" uid="uid://cwgmrvn7djnye" path="res://Fonts/IBM-Plex-Mono/IBMPlexMono-Bold.ttf" id="2_jimjo"]
-[ext_resource type="FontFile" uid="uid://bwh5ed2ghc0yr" path="res://Fonts/IBM-Plex-Mono/IBMPlexMono-Regular.ttf" id="3_31rjy"]
+[sub_resource type="Resource" id="Resource_lapjs"]
+metadata/__load_path__ = "res://Scripts/Screens/MainMenuScreen.cs"
 
 [sub_resource type="LabelSettings" id="LabelSettings_fdu60"]
-font = ExtResource("2_jimjo")
 font_size = 85
 
 [sub_resource type="LabelSettings" id="LabelSettings_ni8xn"]
-font = ExtResource("3_31rjy")
 font_size = 18
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n3he0"]
@@ -17,24 +14,21 @@ bg_color = Color(0.160784, 0.160784, 0.160784, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_00rc5"]
 line_spacing = 0.0
-font = ExtResource("3_31rjy")
 font_size = 32
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lh87u"]
 bg_color = Color(0.15, 0.15, 0.15, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_g82kr"]
-font = ExtResource("3_31rjy")
 font_size = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u5xmk"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fruak"]
-font = ExtResource("3_31rjy")
 font_size = 24
 
 [node name="MainMenuScreen" type="Node2D"]
-script = ExtResource("1_knbbf")
+script = SubResource("Resource_lapjs")
 
 [node name="UiRoot" type="Control" parent="."]
 custom_minimum_size = Vector2(1280, 720)
