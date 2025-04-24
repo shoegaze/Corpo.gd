@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Corpo"
+config/version="0.0.0"
 run/main_scene="res://Assets/Static/Scenes/Game.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="uid://boukht85ojaew"
@@ -18,11 +19,21 @@ config/windows_native_icon="res://icon.ico"
 
 [display]
 
-window/size/viewport_width=1280
-window/size/viewport_height=720
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 window/size/resizable=false
 
 [dotnet]
 
 project/assembly_name="Corpo"
 project/solution_directory="Scripts"
+
+[editor]
+
+naming/node_name_num_separator=2
+naming/script_name_casing=1
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+textures/lossless_compression/force_png=true
