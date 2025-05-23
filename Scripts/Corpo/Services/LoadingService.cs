@@ -5,6 +5,8 @@ using Corpo.Services.Core;
 using Corpo.Services.Environment;
 using Corpo.Services.Screen.Core;
 
+using Fractural.Tasks;
+
 using Godot;
 
 namespace Corpo.Services;
@@ -25,7 +27,7 @@ public sealed class LoadingService : Service {
   }
 
   public bool IsLoading { get; private set; }
-
+  
   /*
   // TODO(shoegaze): Func<Action<double> setLoadingProgress, GDTask action> action 
   public async GDTask RunAsync(Func<GDTask> action, Action onComplete) {
@@ -47,7 +49,7 @@ public sealed class LoadingService : Service {
 
   private void ShowLoadingScreen() {
     var loadingScene = GD.Load<PackedScene>(
-      environmentService.Environment.Path.Screen.Loading);
+      environmentService.Environment.Paths.Screens.Loading);
 
     Screens.Core.Screen loadingScreen = loadingScene.Instantiate<LoadingScreen>();
 

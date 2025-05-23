@@ -1,20 +1,18 @@
-{
+﻿{
   "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
-    "target": "es2017",
-    "module": "commonjs",
+    "target": "es2020",
+    "module": "nodenext",
     "esModuleInterop": true,
+    "resolveJsonModule": true,
     "strict": true,
     "noImplicitReturns": true,
     "noImplicitAny": true,
     "downlevelIteration": true,
     "strictFunctionTypes": true,
-    "strictNullChecks": true,
-    "paths": {
-      "@core/*": ["./src/core/*"],
-      "@json/*": ["./src/json/*"],
-      "@csharp/*": ["./src/csharp/*"]
-    }
+    "strictNullChecks": true
   },
-  "include": ["src/**/*"]
+  "include": [
+    "packages/**/*"
+  ]
 }

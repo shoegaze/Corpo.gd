@@ -29,7 +29,7 @@ public sealed class BaseService : Service {
 
   public void ShowMainMenu() {
     var mainMenuScene = GD.Load<PackedScene>(
-      environmentService.Environment.Paths.Screens.MainMenu.Path);
+      environmentService.Environment.Path.Screen.MainMenu.Path);
 
     Screens.Core.Screen mainMenuScreen = mainMenuScene.Instantiate<MainMenuScreen>();
 

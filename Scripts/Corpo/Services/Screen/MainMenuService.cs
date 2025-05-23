@@ -3,7 +3,7 @@ using Corpo.Services.Environment;
 
 using Godot;
 
-using QuickType;
+using JsonEnv = Json.Environment;
 
 namespace Corpo.Services.Screen;
 
@@ -16,8 +16,8 @@ public sealed class MainMenuService : Service {
   }
 
   public void ToggleSavesSubmenu(Screens.Core.Screen root) {
-    Submenus submenusPaths =
-        environmentService.Environment.Paths.Screens.MainMenu.Submenus;
+    JsonEnv.Submenu submenusPaths =
+        environmentService.Environment.Path.Screen.MainMenu.Submenu;
 
     var submenusRoot = root.GetNode(submenusPaths.Root) as TabContainer;
 
@@ -37,8 +37,8 @@ public sealed class MainMenuService : Service {
   }
 
   public void ToggleSettingsSubmenu(Screens.Core.Screen root) {
-    Submenus submenusPaths =
-        environmentService.Environment.Paths.Screens.MainMenu.Submenus;
+    JsonEnv.Submenu submenusPaths =
+        environmentService.Environment.Path.Screen.MainMenu.Submenu;
 
     var submenusRoot = root.GetNode(submenusPaths.Root) as TabContainer;
 
