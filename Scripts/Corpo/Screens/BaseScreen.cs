@@ -3,7 +3,7 @@ using Corpo.Services.Core;
 
 namespace Corpo.Screens; 
 
-public sealed partial class BaseScreen : Screens.Core.Screen {
+public sealed partial class BaseScreen : Core.Screen {
   private BaseService baseService;
 
   public override string ToString() => nameof(BaseScreen);

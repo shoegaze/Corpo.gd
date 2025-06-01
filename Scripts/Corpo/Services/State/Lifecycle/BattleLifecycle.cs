@@ -21,7 +21,7 @@ public class BattleLifecycle : IStateLifecycle {
   public void OnSetUp() {
     // TODO(shoegaze): Create from NodeService.GetBaseScreen(bool cache = true)
     var battleScene = GD.Load<PackedScene>(
-      environmentService.Environment.Paths.Screens.Battle);
+      environmentService.Environment.Path.Screen.Battle);
 
     Screens.Core.Screen battleScreen = battleScene.Instantiate<BattleScreen>();
 

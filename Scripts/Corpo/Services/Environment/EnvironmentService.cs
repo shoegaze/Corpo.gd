@@ -6,7 +6,7 @@ using Corpo.Services.Environment.Models;
 
 using Godot;
 
-using QuickType;
+using JsonEnv = Json.Environment;
 
 namespace Corpo.Services.Environment;
 
@@ -30,7 +30,7 @@ public class EnvironmentService : Service {
 #endif
 
   // TODO(shoegaze): Refactor into SettingsService
-  public EnvironmentJson Environment { get; private set; }
+  public JsonEnv.Environment Environment { get; private set; }
 
   private static string MapEnvironmentModeToFileNameFragment(EnvironmentMode mode) {
     return mode switch {
@@ -60,7 +60,7 @@ public class EnvironmentService : Service {
     string jsonString = reader.ReadToEnd();
 
     // TODO(shoegaze): Validate JSON object from schema
-    Environment = EnvironmentJson.FromJson(jsonString);
+    Environment = JsonEnv.Environment.FromJson(jsonString);
 
     // TODO: Use LoggerService.Info(...) after this#Initialize() ... Store context info?
     GD.Print("> Complete!");

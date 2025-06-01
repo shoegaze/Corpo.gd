@@ -1,0 +1,17 @@
+{
+  "name": "@corpo/common",
+  "version": "0.0.1",
+  "author": "Team Sports",
+  "description": "Common lib for corpo packages",
+  "private": true,
+  "exports": {
+    "./*": "./src/*.ts"
+  },
+  "dependencies": {
+    "date-fns": "^4.1.0",
+    "fs-extra": "^11.3.0"
+  },
+  "devDependencies": {
+    "@types/touch": "^3.1.5"
+  }
+}

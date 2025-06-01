@@ -1,4 +1,3 @@
-using Corpo.Screens.Core;
 using Corpo.Services.Core;
 using Corpo.Services.Environment;
 using Corpo.Services.Screen;
@@ -6,7 +5,9 @@ using Corpo.Services.State;
 
 using Godot;
 
-using QuickType;
+using JsonEnv = Json.Environment;
+using Screen = Corpo.Screens.Core.Screen;
+using Button = Godot.Button;
 
 namespace Corpo.Screens;
 
@@ -24,13 +25,14 @@ public partial class MainMenuScreen : Screen {
     environmentService = ServiceProvider.Get<EnvironmentService>();
     stateService = ServiceProvider.Get<StateService>();
     mainMenuService = ServiceProvider.Get<MainMenuService>();
+    
+    
+    JsonEnv.MainMenu mainMenuPath = environmentService.Environment.Path.Screen.MainMenu;
 
-    MainMenu mainMenuPaths = environmentService.Environment.Paths.Screens.MainMenu;
-
-    buttonNewGame = GetNode(mainMenuPaths.Buttons.NewGame) as Button;
-    buttonLoadGame = GetNode(mainMenuPaths.Buttons.LoadGame) as Button;
-    buttonSettings = GetNode(mainMenuPaths.Buttons.Settings) as Button;
-    buttonExit = GetNode(mainMenuPaths.Buttons.Exit) as Button;
+    buttonNewGame = GetNode(mainMenuPath.Button.NewGame) as Button;
+    buttonLoadGame = GetNode(mainMenuPath.Button.LoadGame) as Button;
+    buttonSettings = GetNode(mainMenuPath.Button.Settings) as Button;
+    buttonExit = GetNode(mainMenuPath.Button.Exit) as Button;
   }
 
   public override void OnFocus() {

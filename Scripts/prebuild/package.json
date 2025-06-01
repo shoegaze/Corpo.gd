@@ -1,34 +1,29 @@
 {
   "name": "corpo-prebuild",
-  "version": "1.0.0",
   "description": "Prebuild tools for Corpo",
   "author": "Team Sports",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
-    "start": "dotenvx run -- tsx ./src/index.ts",
-    "clean": "rimraf -g -v 'dist/*'",
-    "build-all": "npm start -- build-all",
-    "build-json": "npm start -- build-json",
-    "build-csharp": "npm start -- build-csharp"
-  },
-  "dependencies": {
-    "@dotenvx/dotenvx": "^1.6.4",
-    "app-root-path": "^3.1.0",
-    "camelcase": "^8.0.0",
-    "commander": "^12.1.0",
-    "date-fns": "^3.6.0",
-    "globby": "^14.0.2",
-    "mkdirp": "^3.0.1",
-    "quicktype": "^23.0.170",
-    "rimraf": "^5.0.8",
-    "touch": "^3.1.1",
-    "tsx": "^4.16.2",
-    "zod": "^3.23.8",
-    "zod-to-json-schema": "^3.23.2"
+    "lint:check": "eslint --cache",
+    "lint:fix": "npm run lint:check -- --fix"
   },
   "devDependencies": {
-    "@commander-js/extra-typings": "^12.1.0",
-    "@types/rimraf": "^3.0.2",
-    "@types/touch": "^3.1.5",
-    "globals": "^15.9.0"
+    "@dotenvx/dotenvx": "^1.44.0",
+    "@eslint/js": "^9.26.0",
+    "@stylistic/eslint-plugin": "^4.2.0",
+    "@stylistic/eslint-plugin-ts": "^4.2.0",
+    "@typescript-eslint/eslint-plugin": "^8.32.0",
+    "concurrently": "^9.1.2",
+    "esbuild": "^0.25.4",
+    "eslint": "^9.26.0",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.32.0"
+  },
+  "dependencies": {
+    "winston": "^3.17.0"
   }
 }
