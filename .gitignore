@@ -1,19 +1,12 @@
+.DS_Store
+
+
 # Godot 4+ specific ignores
 .godot/*
 
 # Include .gdignore only
 !.godot/.gdignore
 
-.idea/
-.run/
-.vs/
-.vscode/
-
-notes/
-
-Precompilation/node_modules/
-Precompilation/dist/
-#Precompilation/.env
 addons/*
 !addons/.editorconfig
 .addons/*
