@@ -1,7 +1,7 @@
 import * as childProcess from 'node:child_process'
 import { promisify } from 'node:util'
 
-import fs from 'fs-extra'
+import fs, { writeFile } from 'fs-extra'
 import { glob } from 'glob'
 
 import {
@@ -38,6 +38,8 @@ async function execQuickTypeCSharpGeneration(
     .map(path => `"${path}"`)
     .join(' ')
 
+  logger.info(`Generating QuickType: ${escapedJsonPaths}`)
+
   const command = [
     'npx quicktype',
     escapedJsonPaths,
@@ -45,24 +47,23 @@ async function execQuickTypeCSharpGeneration(
     '--lang csharp',
     '--src-lang schema',
     `--namespace "${ctx.namespace}"`,
-    `--framework ${ctx.framework}`,
-    `--density ${ctx.density}`,
-    `--csharp-version ${ctx.csharpVersion}`,
-    `--features ${ctx.features}`,
-    `--base-class ${ctx.baseClass}`
+    `--framework "${ctx.framework}"`,
+    `--density "${ctx.density}"`,
+    `--csharp-version "${ctx.csharpVersion}"`,
+    `--features "${ctx.features}"`,
+    `--base-class "${ctx.baseClass}"`
   ].join(' ')
 
+  await exec(command)
+    .catch((err) => {
+      logger.error('Failed to execute QuickType', err)
+      throw err
+    })
 
-  logger.info(`Generating QuickType: ${escapedJsonPaths}`)
-
-  const { stderr } = await exec(command)
-
-  if (stderr) {
-    logger.error(stderr)
-    throw new Error(`Failed to execute QuickType: ${stderr}`)
-  }
-
-  logger.info(`Executed QuickType, wrote to: ${csharpFileOutPath}`)
+  logger.info(
+    'Executed QuickType, wrote to: ' +
+    csharpFileOutPath
+  )
 }
 
 

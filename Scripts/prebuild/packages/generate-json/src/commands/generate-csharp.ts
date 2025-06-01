@@ -34,7 +34,7 @@ async function prepare({
   ])
 }
 
-async function generateCSharpImpl({
+export async function generateCSharpImpl({
   srcRoot,
   outRoot,
   namespace
@@ -49,12 +49,14 @@ async function generateCSharpImpl({
   await generateAllCSharpClasses(ctx)
 }
 
-export const generateCSharp = async ({
+export async function generateCSharp({
   dir: root,
   src,
   out,
   namespace
-}: GenerateCSharpParams) => {
+}: GenerateCSharpParams): Promise<void> {
+  logger.info('Generating C#')
+
   if (!isAbsolutePath(root)) {
     throw new Error('Working directory is not an absolute path')
   }

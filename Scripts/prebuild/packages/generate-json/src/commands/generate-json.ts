@@ -32,10 +32,10 @@ async function prepare({
   ])
 }
 
-const generateJsonImpl = async ({
+export async function generateJsonImpl({
   srcRoot,
   outRoot
-}: GenerateJsonImplParams): Promise<void> => {
+}: GenerateJsonImplParams): Promise<void> {
   const ctx: GenerationContext = { srcRoot, outRoot }
 
   await prepare(ctx)
@@ -43,11 +43,13 @@ const generateJsonImpl = async ({
 }
 
 
-export const generateJson = async ({
+export async function generateJson({
   dir: root,
   src,
   out
-}: GenerateJsonCommandParams): Promise<void> => {
+}: GenerateJsonCommandParams): Promise<void> {
+  logger.info('Generating JSON')
+
   if (!isAbsolutePath(root)) {
     throw new Error('Working directory is not an absolute path')
   }

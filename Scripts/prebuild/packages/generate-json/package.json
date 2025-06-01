@@ -10,7 +10,8 @@
     "app:_start": "dotenvx run -- tsx src/index.ts",
     "app:generate-all": "npm run app:_start -- generate-all --dir \"$(pwd)\"",
     "app:generate-json": "npm run app:_start -- generate-json --dir \"$(pwd)\"",
-    "app:generate-csharp": "npm run app:_start -- generate-csharp --dir \"$(pwd)\""
+    "app:generate-csharp": "npm run app:_start -- generate-csharp --dir \"$(pwd)\"",
+    "app:_debug": "dotenvx run -- tsx --inspect-brk src/index.ts"
   },
   "dependencies": {
     "@commander-js/extra-typings": "^13.1.0",
