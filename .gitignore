@@ -1,5 +1,9 @@
 .DS_Store
 
+.vscode/**/*
+!.vscode/launch.json
+!.vscode/tasks.json
+
 
 # Godot 4+ specific ignores
 .godot/*
