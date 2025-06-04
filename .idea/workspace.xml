@@ -5,44 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="26b26cec-aed5-4dc9-9249-666aa2a01d6f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Scripts/BuildTools/eslint.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.godot/.gdignore" beforeDir="false" afterPath="$PROJECT_DIR$/.godot/.gdignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/Packages/corpo/core/about.json" beforeDir="false" afterPath="$PROJECT_DIR$/Data/Packages/corpo/core/about.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fonts/IBM-Plex-Mono/IBMPlexMono-Bold.ttf.import" beforeDir="false" afterPath="$PROJECT_DIR$/Fonts/IBM-Plex-Mono/IBMPlexMono-Bold.ttf.import" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fonts/IBM-Plex-Mono/IBMPlexMono-BoldItalic.ttf.import" beforeDir="false" afterPath="$PROJECT_DIR$/Fonts/IBM-Plex-Mono/IBMPlexMono-BoldItalic.ttf.import" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fonts/IBM-Plex-Mono/IBMPlexMono-ExtraLight.ttf.import" beforeDir="false" afterPath="$PROJECT_DIR$/Fonts/IBM-Plex-Mono/IBMPlexMono-ExtraLight.ttf.import" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fonts/IBM-Plex-Mono/IBMPlexMono-ExtraLightItalic.ttf.import" beforeDir="false" afterPath="$PROJECT_DIR$/Fonts/IBM-Plex-Mono/IBMPlexMono-ExtraLightItalic.ttf.import" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fonts/IBM-Plex-Mono/IBMPlexMono-Italic.ttf.import" beforeDir="false" afterPath="$PROJECT_DIR$/Fonts/IBM-Plex-Mono/IBMPlexMono-Italic.ttf.import" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fonts/IBM-Plex-Mono/IBMPlexMono-Light.ttf.import" beforeDir="false" afterPath="$PROJECT_DIR$/Fonts/IBM-Plex-Mono/IBMPlexMono-Light.ttf.import" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fonts/IBM-Plex-Mono/IBMPlexMono-LightItalic.ttf.import" beforeDir="false" afterPath="$PROJECT_DIR$/Fonts/IBM-Plex-Mono/IBMPlexMono-LightItalic.ttf.import" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fonts/IBM-Plex-Mono/IBMPlexMono-Medium.ttf.import" beforeDir="false" afterPath="$PROJECT_DIR$/Fonts/IBM-Plex-Mono/IBMPlexMono-Medium.ttf.import" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fonts/IBM-Plex-Mono/IBMPlexMono-MediumItalic.ttf.import" beforeDir="false" afterPath="$PROJECT_DIR$/Fonts/IBM-Plex-Mono/IBMPlexMono-MediumItalic.ttf.import" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fonts/IBM-Plex-Mono/IBMPlexMono-Regular.ttf.import" beforeDir="false" afterPath="$PROJECT_DIR$/Fonts/IBM-Plex-Mono/IBMPlexMono-Regular.ttf.import" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fonts/IBM-Plex-Mono/IBMPlexMono-SemiBold.ttf.import" beforeDir="false" afterPath="$PROJECT_DIR$/Fonts/IBM-Plex-Mono/IBMPlexMono-SemiBold.ttf.import" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fonts/IBM-Plex-Mono/IBMPlexMono-SemiBoldItalic.ttf.import" beforeDir="false" afterPath="$PROJECT_DIR$/Fonts/IBM-Plex-Mono/IBMPlexMono-SemiBoldItalic.ttf.import" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fonts/IBM-Plex-Mono/IBMPlexMono-Text.ttf.import" beforeDir="false" afterPath="$PROJECT_DIR$/Fonts/IBM-Plex-Mono/IBMPlexMono-Text.ttf.import" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fonts/IBM-Plex-Mono/IBMPlexMono-TextItalic.ttf.import" beforeDir="false" afterPath="$PROJECT_DIR$/Fonts/IBM-Plex-Mono/IBMPlexMono-TextItalic.ttf.import" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fonts/IBM-Plex-Mono/IBMPlexMono-Thin.ttf.import" beforeDir="false" afterPath="$PROJECT_DIR$/Fonts/IBM-Plex-Mono/IBMPlexMono-Thin.ttf.import" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fonts/IBM-Plex-Mono/IBMPlexMono-ThinItalic.ttf.import" beforeDir="false" afterPath="$PROJECT_DIR$/Fonts/IBM-Plex-Mono/IBMPlexMono-ThinItalic.ttf.import" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Precompilation/.env" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Precompilation/assets/json_defs/environment.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Precompilation/assets/json_defs/package_metadata.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Precompilation/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Precompilation/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Precompilation/src/core/file.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Precompilation/src/core/log.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Precompilation/src/csharp/convert_to_class.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Precompilation/src/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Precompilation/src/json/convert_to_schema.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Precompilation/tsconfig.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scenes/game.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/game.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/BuildTools/assets/typedefs/package/packages.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/BuildTools/assets/typedefs/package/packages.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/BuildTools/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/BuildTools/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/BuildTools/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/BuildTools/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/BuildTools/src/command/build_all.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/BuildTools/src/command/build_all.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/BuildTools/src/command/build_json.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/BuildTools/src/command/build_json.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project.godot" beforeDir="false" afterPath="$PROJECT_DIR$/project.godot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +27,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "dev",
+    "git-widget-placeholder": "47-fix-buildcompilation-issues",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/spike/Documents/projects/godot/Corpo.gd",
     "node.js.detected.package.eslint": "true",
@@ -72,6 +35,9 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "preferences.editor.code.editing",
     "ts.external.directory.path": "/Users/spike/Documents/projects/godot/Corpo.gd/Scripts/BuildTools/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
@@ -81,6 +47,19 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Scripts/BuildTools" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="Corpo.gd" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="Corpo.gd" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -100,6 +79,8 @@
       <workItem from="1741271649708" duration="56000" />
       <workItem from="1741271707199" duration="53000" />
       <workItem from="1741271764347" duration="7720000" />
+      <workItem from="1748787258727" duration="638000" />
+      <workItem from="1749015525446" duration="26000" />
     </task>
     <servers />
   </component>
