@@ -77,9 +77,14 @@ export function detach(
 ): RelativePath {
   assert(path.startsWith(root))
 
-  const detachedPath = path.replace(root, '') as RelativePath
+  const detachedPath = path.replace(root, '')
 
-  return detachedPath
+  if (isAbsolutePath(detachedPath)) {
+    return detachedPath
+      .replace(nodePath.posix.sep, '') as RelativePath
+  }
+
+  return detachedPath as RelativePath
 }
 
 /**

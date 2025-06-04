@@ -1,18 +1,23 @@
 import * as childProcess from 'node:child_process'
 import { promisify } from 'node:util'
 
-import fs, { writeFile } from 'fs-extra'
+import fs from 'fs-extra'
 import { glob } from 'glob'
 
 import {
+  detach,
   getNodeStrippedName,
-  joinPaths,
-  rebase
+  joinPaths
 } from '@corpo/common/path'
 import logger from '@corpo/common/log'
-import { toCSharpFileName } from './util'
 
-import type { AbsolutePath, RelativePath } from '@corpo/common/path'
+import {
+  convertPathToCSharpNamespace,
+  convertPathToCSharpPackages,
+  toCSharpFileName
+} from './util'
+
+import type { AbsolutePath } from '@corpo/common/path'
 import type { GenerationContext } from './context'
 
 const exec = promisify(childProcess.exec)
@@ -94,35 +99,49 @@ async function generateCSharpFromDir(
   }
 
 
+  const csharpOutDirDetached = detach(targetDir, srcRoot)
+  const csharpOutDirAsPackages = convertPathToCSharpPackages(
+    csharpOutDirDetached,
+    ctx.namespace
+  )
+
+  const csharpOutDir = joinPaths(
+    outRoot,
+    csharpOutDirAsPackages
+  )
+
   const targetDirName = getNodeStrippedName(targetDir)
-
-  const csharpOutDir = rebase(targetDir, srcRoot, outRoot)
   const csharpOutFileName = toCSharpFileName(targetDirName)
-
-  const csharpFileOutPath = joinPaths(
+  const csharpOutFilePathFull = joinPaths(
     csharpOutDir,
-    csharpOutFileName as RelativePath
+    csharpOutFileName
+  )
+
+  // Calculate full namespace to avoid method collisions
+  const namespace = convertPathToCSharpNamespace(
+    csharpOutDirDetached,
+    ctx.namespace
   )
 
   const quickTypeCtx: QuickTypeCsharpGenerationContext = {
-    namespace: ctx.namespace,
+    namespace,
     // TODO: Switch to 'SystemTextJson'
     framework: 'NewtonSoft',
     // TODO: Switch to 'dense' when env='prod'
     density: 'normal',
     csharpVersion: 6,
-    features: 'complete',
+    features: 'complete', // TODO: 'attributes-only'
     baseClass: 'Object'
   }
 
   await fs.ensureDir(csharpOutDir)
   await execQuickTypeCSharpGeneration(
     jsonFileSourcePaths,
-    csharpFileOutPath,
+    csharpOutFilePathFull,
     quickTypeCtx
   )
 
-  return csharpFileOutPath
+  return csharpOutFilePathFull
 }
 
 
