@@ -1,6 +1,6 @@
 ﻿namespace Corpo.Screens; 
 
-public sealed partial class BattleScreen : Screens.Core.Screen {
+public sealed partial class BattleScreen : Core.Screen {
   public override string ToString() => nameof(BattleScreen);
 
   public override void OnFocus() { }

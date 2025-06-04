@@ -2,53 +2,40 @@
 using System.IO;
 
 using Corpo.Services.Core;
-using Corpo.Services.Environment.Models;
 
 using Godot;
 
-using QuickType;
+using EnvironmentMode = Corpo.Services.Environment.Models.Environment.EnvironmentMode;
+using Json = Corpo.Generated.Json;
+
 
 namespace Corpo.Services.Environment;
 
+
 // ReSharper disable once ClassNeverInstantiated.Global
-public class EnvironmentService : Service {
-  // Can't be injected since this is a root* service
-  private const string environmentFileNamePrefix = "environment";
-  private const string environmentFileNameExtension = "json";
-
-  public const EnvironmentMode Mode =
-#if DEBUG
-      EnvironmentMode.Development;
-
-  // TODO(shoegaze): Pre environment mode
-  // #elif PREPRODUCTION
-  //       EnvironmentMode.Preproduction;
-
-  // TODO(shoegaze): #elif RELEASE for production mode
-#else 
-      EnvironmentMode.Production;
-#endif
-
+public sealed class EnvironmentService : Service {
+  public readonly EnvironmentMode Mode = 
+      Models.Environment.GetEnvironmentMode();
+  
   // TODO(shoegaze): Refactor into SettingsService
-  public EnvironmentJson Environment { get; private set; }
+  public Json.Environment.Environment Environment { get; private set; }
 
+  
   private static string MapEnvironmentModeToFileNameFragment(EnvironmentMode mode) {
     return mode switch {
       EnvironmentMode.Development => "dev",
-      // TODO(shoegaze): Pre environment mode
-      // EnvironmentMode.Pre => "pre",
-      EnvironmentMode.Production => string.Empty,
+      EnvironmentMode.Staging => "stg",
+      EnvironmentMode.Production => "prod",
       _ => throw new ArgumentOutOfRangeException(
-             nameof(mode),
-             $"Environment mode '{mode}' not supported")
+            nameof(mode),
+            $"Environment mode '{mode}' not supported"
+          )
     };
   }
 
   public void Initialize(string rootPath) {
     string modeName = MapEnvironmentModeToFileNameFragment(Mode);
-
-    string fullFileName =
-        $"{environmentFileNamePrefix}.{modeName}.{environmentFileNameExtension}";
+    string fullFileName = $"env.{modeName}.json";
 
     string fullFilePath = Path.Combine(rootPath, fullFileName);
 
@@ -60,7 +47,7 @@ public class EnvironmentService : Service {
     string jsonString = reader.ReadToEnd();
 
     // TODO(shoegaze): Validate JSON object from schema
-    Environment = EnvironmentJson.FromJson(jsonString);
+    Environment = Json.Environment.Environment.FromJson(jsonString);
 
     // TODO: Use LoggerService.Info(...) after this#Initialize() ... Store context info?
     GD.Print("> Complete!");

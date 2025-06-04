@@ -1,12 +1,13 @@
 using Corpo.Screens.Core;
 using Corpo.Services.Core;
 using Corpo.Services.Environment;
-using Corpo.Services.Screen;
-using Corpo.Services.State;
+using Corpo.Services.Screens;
+using Corpo.Services.States;
 
 using Godot;
 
-using QuickType;
+using Button = Godot.Button;
+
 
 namespace Corpo.Screens;
 
@@ -24,13 +25,14 @@ public partial class MainMenuScreen : Screen {
     environmentService = ServiceProvider.Get<EnvironmentService>();
     stateService = ServiceProvider.Get<StateService>();
     mainMenuService = ServiceProvider.Get<MainMenuService>();
+    
+    
+    var mainMenuPath = environmentService.Environment.Path.Screen.MainMenu;
 
-    MainMenu mainMenuPaths = environmentService.Environment.Paths.Screens.MainMenu;
-
-    buttonNewGame = GetNode(mainMenuPaths.Buttons.NewGame) as Button;
-    buttonLoadGame = GetNode(mainMenuPaths.Buttons.LoadGame) as Button;
-    buttonSettings = GetNode(mainMenuPaths.Buttons.Settings) as Button;
-    buttonExit = GetNode(mainMenuPaths.Buttons.Exit) as Button;
+    buttonNewGame = GetNode(mainMenuPath.Button.NewGame) as Button;
+    buttonLoadGame = GetNode(mainMenuPath.Button.LoadGame) as Button;
+    buttonSettings = GetNode(mainMenuPath.Button.Settings) as Button;
+    buttonExit = GetNode(mainMenuPath.Button.Exit) as Button;
   }
 
   public override void OnFocus() {
@@ -79,7 +81,7 @@ public partial class MainMenuScreen : Screen {
     // TODO(shoegaze): Run method from service
     sceneTree
        .Root
-       .PropagateNotification((int)NotificationWMCloseRequest);
+       .PropagateNotification((int)Node.NotificationWMCloseRequest);
 
     sceneTree.Quit();
   }

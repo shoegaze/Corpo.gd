@@ -1,0 +1,16 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "app:generate-all",
+			"path": "packages/generate-json",
+			"problemMatcher": [],
+			"options": {
+				"cwd": "${workspaceFolder}/packages/generate-json"
+			},
+			"label": "Prebuild: Generate all JSON C# classes",
+			"detail": "@corpo/generate-json : generate-all"
+		}
+	]
+}

@@ -2,6 +2,7 @@
 
 using Godot;
 
+
 namespace Corpo.Services;
 
 // ReSharper disable once ClassNeverInstantiated.Global

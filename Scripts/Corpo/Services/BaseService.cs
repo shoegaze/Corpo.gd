@@ -1,9 +1,11 @@
 using Corpo.Screens;
+using Corpo.Screens.Core;
 using Corpo.Services.Core;
 using Corpo.Services.Environment;
-using Corpo.Services.Screen.Core;
+using Corpo.Services.Screens.Core;
 
 using Godot;
+
 
 namespace Corpo.Services;
 
@@ -29,9 +31,9 @@ public sealed class BaseService : Service {
 
   public void ShowMainMenu() {
     var mainMenuScene = GD.Load<PackedScene>(
-      environmentService.Environment.Paths.Screens.MainMenu.Path);
+      environmentService.Environment.Path.Screen.MainMenu.Path);
 
-    Screens.Core.Screen mainMenuScreen = mainMenuScene.Instantiate<MainMenuScreen>();
+    Screen mainMenuScreen = mainMenuScene.Instantiate<MainMenuScreen>();
 
     screenService.Enter(mainMenuScreen);
   }

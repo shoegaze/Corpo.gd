@@ -1,13 +1,7 @@
-﻿using System;
-
-using Corpo.Screens;
-using Corpo.Services.Core;
+﻿using Corpo.Services.Core;
 using Corpo.Services.Environment;
-using Corpo.Services.Screen.Core;
+using Corpo.Services.Screens.Core;
 
-using Fractural.Tasks;
-
-using Godot;
 
 namespace Corpo.Services;
 
@@ -27,7 +21,8 @@ public sealed class LoadingService : Service {
   }
 
   public bool IsLoading { get; private set; }
-
+  
+  /*
   // TODO(shoegaze): Func<Action<double> setLoadingProgress, GDTask action> action 
   public async GDTask RunAsync(Func<GDTask> action, Action onComplete) {
     if (IsLoading) {
@@ -76,4 +71,5 @@ public sealed class LoadingService : Service {
 
     GDTask.Yield();
   }
+  */
 }

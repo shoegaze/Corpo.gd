@@ -1,0 +1,29 @@
+{
+  "name": "corpo-prebuild",
+  "description": "Prebuild tools for Corpo",
+  "author": "Team Sports",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "lint:check": "eslint --cache",
+    "lint:fix": "npm run lint:check -- --fix"
+  },
+  "devDependencies": {
+    "@dotenvx/dotenvx": "^1.44.0",
+    "@eslint/js": "^9.26.0",
+    "@stylistic/eslint-plugin": "^4.2.0",
+    "@stylistic/eslint-plugin-ts": "^4.2.0",
+    "@typescript-eslint/eslint-plugin": "^8.32.0",
+    "concurrently": "^9.1.2",
+    "esbuild": "^0.25.4",
+    "eslint": "^9.26.0",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.32.0"
+  },
+  "dependencies": {
+    "winston": "^3.17.0"
+  }
+}

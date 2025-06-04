@@ -4,6 +4,7 @@ using System.Linq;
 
 using Godot;
 
+
 namespace Corpo.Services.Core;
 
 // { ServiceType: [ ServiceType ] } = { from: [to] }

@@ -1,5 +1,6 @@
 ﻿using Godot;
 
+
 namespace Corpo.Screens.Core; 
 
 public abstract partial class ScreenComponent : Node {

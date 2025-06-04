@@ -1,0 +1,30 @@
+{
+  "name": "@corpo/generate-json",
+  "description": "JSON defs to C# class auto generator",
+  "author": "Team Sports",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "lint:check": "eslint . --cache",
+    "lint:fix": "eslint . --cache --fix",
+    "app:_start": "dotenvx run -- tsx src/index.ts",
+    "app:generate-all": "npm run app:_start -- generate-all --dir \"$(pwd)\"",
+    "app:generate-json": "npm run app:_start -- generate-json --dir \"$(pwd)\"",
+    "app:generate-csharp": "npm run app:_start -- generate-csharp --dir \"$(pwd)\"",
+    "app:_debug": "dotenvx run -- tsx --inspect-brk src/index.ts"
+  },
+  "dependencies": {
+    "@commander-js/extra-typings": "^13.1.0",
+    "@corpo/common": "^0.0.1",
+    "camelcase": "^8.0.0",
+    "fs-extra": "^11.3.0",
+    "glob": "^11.0.2",
+    "quicktype": "^23.2.6",
+    "zod": "^3.24.4",
+    "zod-to-json-schema": "^3.24.5"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "@types/klaw": "^3.0.6"
+  }
+}

@@ -1,6 +1,6 @@
 ﻿namespace Corpo.Screens; 
 
-public sealed partial class OverworldScreen : Core.Screen {
+public sealed partial class OverworldScreen : Screens.Core.Screen {
   public override string ToString() => nameof(OverworldScreen);
   
   public override void OnFocus() { }
