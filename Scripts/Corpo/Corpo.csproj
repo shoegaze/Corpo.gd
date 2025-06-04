@@ -12,7 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <!-- Include prebuild generated sources -->
-    <Compile Include="..\prebuild\packages\generate-json\dist\csharp\**\*.cs">
+    <Compile Include="..\prebuild\packages\generate-json\.build\dist\csharp\**\*.cs">
       <Link>csharp\%(Compile.RecursiveDir)\%(Compile.Filename)%(Compile.Extension)</Link>
     </Compile>
   </ItemGroup>

@@ -1,5 +1,6 @@
 using Corpo.Screens.Core;
 
+
 namespace Corpo.Screens; 
 
 // ReSharper disable once ClassNeverInstantiated.Global

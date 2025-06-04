@@ -1,13 +1,7 @@
-﻿using System;
-
-using Corpo.Screens;
-using Corpo.Services.Core;
+﻿using Corpo.Services.Core;
 using Corpo.Services.Environment;
-using Corpo.Services.Screen.Core;
+using Corpo.Services.Screens.Core;
 
-using Fractural.Tasks;
-
-using Godot;
 
 namespace Corpo.Services;
 

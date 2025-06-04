@@ -1,13 +1,13 @@
+using Corpo.Screens.Core;
 using Corpo.Services.Core;
 using Corpo.Services.Environment;
-using Corpo.Services.Screen;
-using Corpo.Services.State;
+using Corpo.Services.Screens;
+using Corpo.Services.States;
 
 using Godot;
 
-using JsonEnv = Json.Environment;
-using Screen = Corpo.Screens.Core.Screen;
 using Button = Godot.Button;
+
 
 namespace Corpo.Screens;
 
@@ -27,7 +27,7 @@ public partial class MainMenuScreen : Screen {
     mainMenuService = ServiceProvider.Get<MainMenuService>();
     
     
-    JsonEnv.MainMenu mainMenuPath = environmentService.Environment.Path.Screen.MainMenu;
+    var mainMenuPath = environmentService.Environment.Path.Screen.MainMenu;
 
     buttonNewGame = GetNode(mainMenuPath.Button.NewGame) as Button;
     buttonLoadGame = GetNode(mainMenuPath.Button.LoadGame) as Button;
@@ -81,7 +81,7 @@ public partial class MainMenuScreen : Screen {
     // TODO(shoegaze): Run method from service
     sceneTree
        .Root
-       .PropagateNotification((int)NotificationWMCloseRequest);
+       .PropagateNotification((int)Node.NotificationWMCloseRequest);
 
     sceneTree.Quit();
   }

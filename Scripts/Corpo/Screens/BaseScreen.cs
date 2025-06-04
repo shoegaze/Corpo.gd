@@ -1,6 +1,7 @@
 ﻿using Corpo.Services;
 using Corpo.Services.Core;
 
+
 namespace Corpo.Screens; 
 
 public sealed partial class BaseScreen : Core.Screen {

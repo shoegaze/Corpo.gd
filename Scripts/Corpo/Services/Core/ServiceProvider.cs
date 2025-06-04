@@ -5,10 +5,11 @@ using System.Reflection;
 
 using Godot;
 
+
 namespace Corpo.Services.Core;
 
 public static class ServiceProvider {
-  private static readonly List<Service> services = new();
+  private static readonly List<Service> Services = new();
 
   private static IEnumerable<Type> GetAllServiceSubclasses() {
     return Assembly
@@ -39,7 +40,7 @@ public static class ServiceProvider {
     ServiceDependencyGraph dependencyGraph = new(serviceTypesCopy);
 
     // We have to add dependencies before we get any back
-    foreach (var serviceType in serviceTypesCopy) {
+    foreach (Type serviceType in serviceTypesCopy) {
       GD.Print($" * Adding {serviceType}");
 
       Type[] dependencies = GetConstructorDependencies(serviceType).ToArray();
@@ -75,7 +76,7 @@ public static class ServiceProvider {
                                      .ToArray();
 
     Service singleton = constructor.Invoke(parameters) as Service;
-    services.Add(singleton);
+    Services.Add(singleton);
   }
 
   public static void BuildServices() {
@@ -108,7 +109,7 @@ public static class ServiceProvider {
   }
 
   private static object Get(Type serviceType) {
-    Service service = services.Find(s => s.GetType() == serviceType);
+    Service service = Services.Find(s => s.GetType() == serviceType);
 
     if (service == null) {
       GD.PrintErr($"Service \"{serviceType}\" could not be found!");
