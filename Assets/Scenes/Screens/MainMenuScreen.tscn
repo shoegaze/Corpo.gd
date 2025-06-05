@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://foubb731xukc"]
 
-[ext_resource type="FontFile" uid="uid://cwgmrvn7djnye" path="res://Assets/Fonts/IBM-Plex-Mono/IBMPlexMono-Bold.ttf" id="2_jimjo"]
-[ext_resource type="FontFile" uid="uid://bwh5ed2ghc0yr" path="res://Assets/Fonts/IBM-Plex-Mono/IBMPlexMono-Regular.ttf" id="3_31rjy"]
+[ext_resource type="FontFile" uid="uid://cwgmrvn7djnye" path="res://Assets/Text/Fonts/IBM-Plex-Mono/IBMPlexMono-Bold.ttf" id="2_jimjo"]
+[ext_resource type="FontFile" uid="uid://bwh5ed2ghc0yr" path="res://Assets/Text/Fonts/IBM-Plex-Mono/IBMPlexMono-Regular.ttf" id="3_31rjy"]
 
 [sub_resource type="Resource" id="Resource_5sdfv"]
 metadata/__load_path__ = "res://Scripts/Screens/MainMenuScreen.cs"
