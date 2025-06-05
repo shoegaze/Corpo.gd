@@ -11,9 +11,9 @@ config_version=5
 [application]
 
 config/name="Corpo"
-run/main_scene="uid://b2nm2gkooltgj"
+run/main_scene="uid://ct82scqrh1x11"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://Assets/Static/Sprites/djimpp.png"
+config/icon="uid://ce2045pqwt0jk"
 
 [display]
 
