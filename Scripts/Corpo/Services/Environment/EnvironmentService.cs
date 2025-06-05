@@ -35,7 +35,7 @@ public sealed class EnvironmentService : Service {
 
   public void Initialize(string rootPath) {
     string modeName = MapEnvironmentModeToFileNameFragment(Mode);
-    string fullFileName = $"env.{modeName}.json";
+    string fullFileName = $".env.{modeName}.json";
 
     string fullFilePath = Path.Combine(rootPath, fullFileName);
 
