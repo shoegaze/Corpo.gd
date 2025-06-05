@@ -9,7 +9,7 @@ using Godot;
 namespace Corpo;
 
 public partial class Game : Node {
-  // Entry
+  // Main entrypoint
   public override void _Ready() {
 	// TODO(shoegaze): ServiceProvider.BuildLayer(layer); layer == 0 => Root Layer
 	//  IEnumerable<bool> ServiceProvider.BuildServiceLayer(int layer >= 0)
