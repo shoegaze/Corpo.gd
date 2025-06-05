@@ -1,7 +1,3 @@
-[gd_scene load_steps=2 format=3 uid="uid://dfkyphkul2sil"]
-
-[sub_resource type="Resource" id="Resource_2poj3"]
-metadata/__load_path__ = "res://Scripts/Game.cs"
+[gd_scene format=3 uid="uid://dfkyphkul2sil"]
 
 [node name="Game" type="Node"]
-script = SubResource("Resource_2poj3")
