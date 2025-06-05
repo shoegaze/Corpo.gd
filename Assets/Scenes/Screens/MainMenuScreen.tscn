@@ -1,0 +1,437 @@
+[gd_scene load_steps=12 format=3 uid="uid://foubb731xukc"]
+
+[ext_resource type="FontFile" uid="uid://cwgmrvn7djnye" path="res://Assets/Fonts/IBM-Plex-Mono/IBMPlexMono-Bold.ttf" id="2_jimjo"]
+[ext_resource type="FontFile" uid="uid://bwh5ed2ghc0yr" path="res://Assets/Fonts/IBM-Plex-Mono/IBMPlexMono-Regular.ttf" id="3_31rjy"]
+
+[sub_resource type="Resource" id="Resource_5sdfv"]
+metadata/__load_path__ = "res://Scripts/Screens/MainMenuScreen.cs"
+
+[sub_resource type="LabelSettings" id="LabelSettings_fdu60"]
+font = ExtResource("2_jimjo")
+font_size = 85
+
+[sub_resource type="LabelSettings" id="LabelSettings_ni8xn"]
+font = ExtResource("3_31rjy")
+font_size = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n3he0"]
+bg_color = Color(0.160784, 0.160784, 0.160784, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_00rc5"]
+line_spacing = 0.0
+font = ExtResource("3_31rjy")
+font_size = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lh87u"]
+bg_color = Color(0.15, 0.15, 0.15, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_g82kr"]
+font = ExtResource("3_31rjy")
+font_size = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u5xmk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fruak"]
+font = ExtResource("3_31rjy")
+font_size = 24
+
+[node name="MainMenuScreen" type="Node2D"]
+script = SubResource("Resource_5sdfv")
+
+[node name="UiRoot" type="Control" parent="."]
+custom_minimum_size = Vector2(1280, 720)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Background" type="ColorRect" parent="UiRoot"]
+custom_minimum_size = Vector2(1280, 720)
+layout_mode = 1
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.0705882, 0.0705882, 0.0705882, 1)
+
+[node name="ScreenSplitter" type="HBoxContainer" parent="UiRoot"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleCard_Margin" type="MarginContainer" parent="UiRoot/ScreenSplitter"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+
+[node name="TitleCard_Layout" type="VBoxContainer" parent="UiRoot/ScreenSplitter/TitleCard_Margin"]
+layout_mode = 2
+
+[node name="Fill_0" type="ReferenceRect" parent="UiRoot/ScreenSplitter/TitleCard_Margin/TitleCard_Layout"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Title_Margin" type="MarginContainer" parent="UiRoot/ScreenSplitter/TitleCard_Margin/TitleCard_Layout"]
+layout_mode = 2
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_bottom = 128
+
+[node name="Title" type="Label" parent="UiRoot/ScreenSplitter/TitleCard_Margin/TitleCard_Layout/Title_Margin"]
+layout_mode = 2
+text = "CORPO"
+label_settings = SubResource("LabelSettings_fdu60")
+
+[node name="Separator" type="ReferenceRect" parent="UiRoot/ScreenSplitter/TitleCard_Margin/TitleCard_Layout"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+
+[node name="Buttons_Margin" type="MarginContainer" parent="UiRoot/ScreenSplitter/TitleCard_Margin/TitleCard_Layout"]
+layout_mode = 2
+theme_override_constants/margin_right = 50
+
+[node name="Buttons_Layout" type="VBoxContainer" parent="UiRoot/ScreenSplitter/TitleCard_Margin/TitleCard_Layout/Buttons_Margin"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="NewGame_Button" type="Button" parent="UiRoot/ScreenSplitter/TitleCard_Margin/TitleCard_Layout/Buttons_Margin/Buttons_Layout"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+alignment = 0
+
+[node name="Label_Margin" type="MarginContainer" parent="UiRoot/ScreenSplitter/TitleCard_Margin/TitleCard_Layout/Buttons_Margin/Buttons_Layout/NewGame_Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+
+[node name="Label" type="Label" parent="UiRoot/ScreenSplitter/TitleCard_Margin/TitleCard_Layout/Buttons_Margin/Buttons_Layout/NewGame_Button/Label_Margin"]
+layout_mode = 2
+text = "NEW"
+label_settings = SubResource("LabelSettings_ni8xn")
+
+[node name="LoadGame_Button" type="Button" parent="UiRoot/ScreenSplitter/TitleCard_Margin/TitleCard_Layout/Buttons_Margin/Buttons_Layout"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+alignment = 0
+
+[node name="Label_Margin" type="MarginContainer" parent="UiRoot/ScreenSplitter/TitleCard_Margin/TitleCard_Layout/Buttons_Margin/Buttons_Layout/LoadGame_Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+
+[node name="Label" type="Label" parent="UiRoot/ScreenSplitter/TitleCard_Margin/TitleCard_Layout/Buttons_Margin/Buttons_Layout/LoadGame_Button/Label_Margin"]
+layout_mode = 2
+text = "LOAD"
+label_settings = SubResource("LabelSettings_ni8xn")
+
+[node name="Settings_Button" type="Button" parent="UiRoot/ScreenSplitter/TitleCard_Margin/TitleCard_Layout/Buttons_Margin/Buttons_Layout"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+alignment = 0
+
+[node name="Label_Margin" type="MarginContainer" parent="UiRoot/ScreenSplitter/TitleCard_Margin/TitleCard_Layout/Buttons_Margin/Buttons_Layout/Settings_Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+
+[node name="Label" type="Label" parent="UiRoot/ScreenSplitter/TitleCard_Margin/TitleCard_Layout/Buttons_Margin/Buttons_Layout/Settings_Button/Label_Margin"]
+layout_mode = 2
+text = "SETTINGS"
+label_settings = SubResource("LabelSettings_ni8xn")
+
+[node name="Exit_Button" type="Button" parent="UiRoot/ScreenSplitter/TitleCard_Margin/TitleCard_Layout/Buttons_Margin/Buttons_Layout"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+alignment = 0
+
+[node name="Label_Margin" type="MarginContainer" parent="UiRoot/ScreenSplitter/TitleCard_Margin/TitleCard_Layout/Buttons_Margin/Buttons_Layout/Exit_Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+
+[node name="Label" type="Label" parent="UiRoot/ScreenSplitter/TitleCard_Margin/TitleCard_Layout/Buttons_Margin/Buttons_Layout/Exit_Button/Label_Margin"]
+layout_mode = 2
+text = "EXIT"
+label_settings = SubResource("LabelSettings_ni8xn")
+
+[node name="Fill_1" type="ReferenceRect" parent="UiRoot/ScreenSplitter/TitleCard_Margin/TitleCard_Layout"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Fill_0" type="ReferenceRect" parent="UiRoot/ScreenSplitter"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Submenus_Margin" type="MarginContainer" parent="UiRoot/ScreenSplitter"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="Submenus" type="TabContainer" parent="UiRoot/ScreenSplitter/Submenus_Margin"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+tabs_visible = false
+
+[node name="Saves_Submenu" type="Panel" parent="UiRoot/ScreenSplitter/Submenus_Margin/Submenus"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+
+[node name="Settings_Layout" type="VBoxContainer" parent="UiRoot/ScreenSplitter/Submenus_Margin/Submenus/Saves_Submenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title_Panel" type="Panel" parent="UiRoot/ScreenSplitter/Submenus_Margin/Submenus/Saves_Submenu/Settings_Layout"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_n3he0")
+
+[node name="Title_Margin" type="MarginContainer" parent="UiRoot/ScreenSplitter/Submenus_Margin/Submenus/Saves_Submenu/Settings_Layout/Title_Panel"]
+layout_mode = 2
+offset_right = 500.0
+offset_bottom = 42.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 4
+
+[node name="Title" type="Label" parent="UiRoot/ScreenSplitter/Submenus_Margin/Submenus/Saves_Submenu/Settings_Layout/Title_Panel/Title_Margin"]
+layout_mode = 2
+text = "Settings"
+label_settings = SubResource("LabelSettings_00rc5")
+vertical_alignment = 1
+
+[node name="Saves_Layout" type="VBoxContainer" parent="UiRoot/ScreenSplitter/Submenus_Margin/Submenus/Saves_Submenu/Settings_Layout"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Save__0" type="MarginContainer" parent="UiRoot/ScreenSplitter/Submenus_Margin/Submenus/Saves_Submenu/Settings_Layout/Saves_Layout"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_right = 4
+
+[node name="Save_Panel" type="Panel" parent="UiRoot/ScreenSplitter/Submenus_Margin/Submenus/Saves_Submenu/Settings_Layout/Saves_Layout/Save__0"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lh87u")
+
+[node name="Save_Layout" type="HBoxContainer" parent="UiRoot/ScreenSplitter/Submenus_Margin/Submenus/Saves_Submenu/Settings_Layout/Saves_Layout/Save__0/Save_Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Name_Margin" type="MarginContainer" parent="UiRoot/ScreenSplitter/Submenus_Margin/Submenus/Saves_Submenu/Settings_Layout/Saves_Layout/Save__0/Save_Panel/Save_Layout"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="Name" type="Label" parent="UiRoot/ScreenSplitter/Submenus_Margin/Submenus/Saves_Submenu/Settings_Layout/Saves_Layout/Save__0/Save_Panel/Save_Layout/Name_Margin"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Save 0"
+label_settings = SubResource("LabelSettings_g82kr")
+vertical_alignment = 1
+
+[node name="Fill" type="ReferenceRect" parent="UiRoot/ScreenSplitter/Submenus_Margin/Submenus/Saves_Submenu/Settings_Layout/Saves_Layout/Save__0/Save_Panel/Save_Layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PlayTime_Margin" type="MarginContainer" parent="UiRoot/ScreenSplitter/Submenus_Margin/Submenus/Saves_Submenu/Settings_Layout/Saves_Layout/Save__0/Save_Panel/Save_Layout"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="PlayTime" type="Label" parent="UiRoot/ScreenSplitter/Submenus_Margin/Submenus/Saves_Submenu/Settings_Layout/Saves_Layout/Save__0/Save_Panel/Save_Layout/PlayTime_Margin"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "1:2:3.456"
+label_settings = SubResource("LabelSettings_g82kr")
+vertical_alignment = 1
+
+[node name="LastUpdatedDate_Margin2" type="MarginContainer" parent="UiRoot/ScreenSplitter/Submenus_Margin/Submenus/Saves_Submenu/Settings_Layout/Saves_Layout/Save__0/Save_Panel/Save_Layout"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="LastUpdatedDate" type="Label" parent="UiRoot/ScreenSplitter/Submenus_Margin/Submenus/Saves_Submenu/Settings_Layout/Saves_Layout/Save__0/Save_Panel/Save_Layout/LastUpdatedDate_Margin2"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "2024.1.1"
+label_settings = SubResource("LabelSettings_g82kr")
+vertical_alignment = 1
+
+[node name="Save__1" type="MarginContainer" parent="UiRoot/ScreenSplitter/Submenus_Margin/Submenus/Saves_Submenu/Settings_Layout/Saves_Layout"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_right = 4
+
+[node name="Save_Panel" type="Panel" parent="UiRoot/ScreenSplitter/Submenus_Margin/Submenus/Saves_Submenu/Settings_Layout/Saves_Layout/Save__1"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lh87u")
+
+[node name="Save_Layout" type="HBoxContainer" parent="UiRoot/ScreenSplitter/Submenus_Margin/Submenus/Saves_Submenu/Settings_Layout/Saves_Layout/Save__1/Save_Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Name_Margin" type="MarginContainer" parent="UiRoot/ScreenSplitter/Submenus_Margin/Submenus/Saves_Submenu/Settings_Layout/Saves_Layout/Save__1/Save_Panel/Save_Layout"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="Name" type="Label" parent="UiRoot/ScreenSplitter/Submenus_Margin/Submenus/Saves_Submenu/Settings_Layout/Saves_Layout/Save__1/Save_Panel/Save_Layout/Name_Margin"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Save 1"
+label_settings = SubResource("LabelSettings_g82kr")
+vertical_alignment = 1
+
+[node name="Fill" type="ReferenceRect" parent="UiRoot/ScreenSplitter/Submenus_Margin/Submenus/Saves_Submenu/Settings_Layout/Saves_Layout/Save__1/Save_Panel/Save_Layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PlayTime_Margin" type="MarginContainer" parent="UiRoot/ScreenSplitter/Submenus_Margin/Submenus/Saves_Submenu/Settings_Layout/Saves_Layout/Save__1/Save_Panel/Save_Layout"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="PlayTime" type="Label" parent="UiRoot/ScreenSplitter/Submenus_Margin/Submenus/Saves_Submenu/Settings_Layout/Saves_Layout/Save__1/Save_Panel/Save_Layout/PlayTime_Margin"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "0:0:0.000"
+label_settings = SubResource("LabelSettings_g82kr")
+vertical_alignment = 1
+
+[node name="LastUpdatedDate_Margin2" type="MarginContainer" parent="UiRoot/ScreenSplitter/Submenus_Margin/Submenus/Saves_Submenu/Settings_Layout/Saves_Layout/Save__1/Save_Panel/Save_Layout"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="LastUpdatedDate" type="Label" parent="UiRoot/ScreenSplitter/Submenus_Margin/Submenus/Saves_Submenu/Settings_Layout/Saves_Layout/Save__1/Save_Panel/Save_Layout/LastUpdatedDate_Margin2"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "2024.1.1"
+label_settings = SubResource("LabelSettings_g82kr")
+vertical_alignment = 1
+
+[node name="Settings_Submenu" type="Panel" parent="UiRoot/ScreenSplitter/Submenus_Margin/Submenus"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+
+[node name="Settings_Layout" type="VBoxContainer" parent="UiRoot/ScreenSplitter/Submenus_Margin/Submenus/Settings_Submenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title_Panel" type="Panel" parent="UiRoot/ScreenSplitter/Submenus_Margin/Submenus/Settings_Submenu/Settings_Layout"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_n3he0")
+
+[node name="Title_Margin" type="MarginContainer" parent="UiRoot/ScreenSplitter/Submenus_Margin/Submenus/Settings_Submenu/Settings_Layout/Title_Panel"]
+layout_mode = 2
+offset_right = 500.0
+offset_bottom = 42.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 4
+
+[node name="Title" type="Label" parent="UiRoot/ScreenSplitter/Submenus_Margin/Submenus/Settings_Submenu/Settings_Layout/Title_Panel/Title_Margin"]
+layout_mode = 2
+text = "Settings"
+label_settings = SubResource("LabelSettings_00rc5")
+vertical_alignment = 1
+
+[node name="Settings" type="TabContainer" parent="UiRoot/ScreenSplitter/Submenus_Margin/Submenus/Settings_Submenu/Settings_Layout"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Game" type="VBoxContainer" parent="UiRoot/ScreenSplitter/Submenus_Margin/Submenus/Settings_Submenu/Settings_Layout/Settings"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Setting_Margin" type="MarginContainer" parent="UiRoot/ScreenSplitter/Submenus_Margin/Submenus/Settings_Submenu/Settings_Layout/Settings/Game"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_right = 4
+
+[node name="Setting_Panel" type="Panel" parent="UiRoot/ScreenSplitter/Submenus_Margin/Submenus/Settings_Submenu/Settings_Layout/Settings/Game/Setting_Margin"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_u5xmk")
+
+[node name="Setting_Layout" type="HBoxContainer" parent="UiRoot/ScreenSplitter/Submenus_Margin/Submenus/Settings_Submenu/Settings_Layout/Settings/Game/Setting_Margin/Setting_Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Setting_Checkbox" type="CheckButton" parent="UiRoot/ScreenSplitter/Submenus_Margin/Submenus/Settings_Submenu/Settings_Layout/Settings/Game/Setting_Margin/Setting_Panel/Setting_Layout"]
+layout_mode = 2
+
+[node name="Setting_Label" type="Label" parent="UiRoot/ScreenSplitter/Submenus_Margin/Submenus/Settings_Submenu/Settings_Layout/Settings/Game/Setting_Margin/Setting_Panel/Setting_Layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "TODO"
+label_settings = SubResource("LabelSettings_fruak")
+vertical_alignment = 1
+
+[node name="Sound" type="VBoxContainer" parent="UiRoot/ScreenSplitter/Submenus_Margin/Submenus/Settings_Submenu/Settings_Layout/Settings"]
+visible = false
+layout_mode = 2
+
+[node name="Graphics" type="VBoxContainer" parent="UiRoot/ScreenSplitter/Submenus_Margin/Submenus/Settings_Submenu/Settings_Layout/Settings"]
+visible = false
+layout_mode = 2
+
+[node name="Controls" type="VBoxContainer" parent="UiRoot/ScreenSplitter/Submenus_Margin/Submenus/Settings_Submenu/Settings_Layout/Settings"]
+visible = false
+layout_mode = 2
+
+[node name="Fill_1" type="ReferenceRect" parent="UiRoot/ScreenSplitter"]
+layout_mode = 2
+size_flags_horizontal = 3
