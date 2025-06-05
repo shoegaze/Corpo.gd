@@ -125,12 +125,11 @@ async function generateCSharpFromDir(
 
   const quickTypeCtx: QuickTypeCsharpGenerationContext = {
     namespace,
-    // TODO: Switch to 'SystemTextJson'
-    framework: 'NewtonSoft',
+    framework: 'SystemTextJson',
     // TODO: Switch to 'dense' when env='prod'
     density: 'normal',
     csharpVersion: 6,
-    features: 'complete', // TODO: 'attributes-only'
+    features: 'complete',
     baseClass: 'Object'
   }
 
