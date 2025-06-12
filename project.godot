@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Corpo"
 run/main_scene="uid://ct82scqrh1x11"
-config/features=PackedStringArray("4.4", "Forward Plus")
+config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="uid://ce2045pqwt0jk"
 
 [display]
@@ -24,7 +24,6 @@ window/size/resizable=false
 [dotnet]
 
 project/assembly_name="Corpo"
-project/solution_directory="Scripts"
 
 [input]
 

@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="1cfa76da-9f88-4e39-b08f-7017f06f6194" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../Assets/Scenes/Game.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/../Assets/Scenes/Game.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assets/Scenes/Screens/MainMenuScreen.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/../Assets/Scenes/Screens/MainMenuScreen.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assets/Sprites/Actors/djimpp.png.import" beforeDir="false" afterPath="$PROJECT_DIR$/../Assets/Sprites/Actors/djimpp.png.import" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assets/Sprites/Actors/error.png.import" beforeDir="false" afterPath="$PROJECT_DIR$/../Assets/Sprites/Actors/error.png.import" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assets/Sprites/Actors/floton.png.import" beforeDir="false" afterPath="$PROJECT_DIR$/../Assets/Sprites/Actors/floton.png.import" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assets/Sprites/Actors/kabey.png.import" beforeDir="false" afterPath="$PROJECT_DIR$/../Assets/Sprites/Actors/kabey.png.import" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assets/Sprites/Actors/oeur.png.import" beforeDir="false" afterPath="$PROJECT_DIR$/../Assets/Sprites/Actors/oeur.png.import" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assets/Sprites/Actors/tackle.png.import" beforeDir="false" afterPath="$PROJECT_DIR$/../Assets/Sprites/Actors/tackle.png.import" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assets/Sprites/Actors/vijm.png.import" beforeDir="false" afterPath="$PROJECT_DIR$/../Assets/Sprites/Actors/vijm.png.import" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assets/Sprites/Portraits/berserk.png.import" beforeDir="false" afterPath="$PROJECT_DIR$/../Assets/Sprites/Portraits/berserk.png.import" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assets/Sprites/Portraits/doom.png.import" beforeDir="false" afterPath="$PROJECT_DIR$/../Assets/Sprites/Portraits/doom.png.import" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assets/Sprites/Portraits/dream.png.import" beforeDir="false" afterPath="$PROJECT_DIR$/../Assets/Sprites/Portraits/dream.png.import" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assets/Sprites/Portraits/hysteria.png.import" beforeDir="false" afterPath="$PROJECT_DIR$/../Assets/Sprites/Portraits/hysteria.png.import" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assets/Sprites/Portraits/king_alien.png.import" beforeDir="false" afterPath="$PROJECT_DIR$/../Assets/Sprites/Portraits/king_alien.png.import" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assets/Sprites/Portraits/melancholy.png.import" beforeDir="false" afterPath="$PROJECT_DIR$/../Assets/Sprites/Portraits/melancholy.png.import" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assets/Sprites/Tiles/active_0.png.import" beforeDir="false" afterPath="$PROJECT_DIR$/../Assets/Sprites/Tiles/active_0.png.import" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assets/Sprites/Tiles/active_1.png.import" beforeDir="false" afterPath="$PROJECT_DIR$/../Assets/Sprites/Tiles/active_1.png.import" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assets/Sprites/Tiles/active_2.png.import" beforeDir="false" afterPath="$PROJECT_DIR$/../Assets/Sprites/Tiles/active_2.png.import" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assets/Sprites/Tiles/debug__Edge_0.png.import" beforeDir="false" afterPath="$PROJECT_DIR$/../Assets/Sprites/Tiles/debug__Edge_0.png.import" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assets/Sprites/Tiles/debug__Edge_1.png.import" beforeDir="false" afterPath="$PROJECT_DIR$/../Assets/Sprites/Tiles/debug__Edge_1.png.import" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assets/Sprites/Tiles/debug__Floor_0.png.import" beforeDir="false" afterPath="$PROJECT_DIR$/../Assets/Sprites/Tiles/debug__Floor_0.png.import" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assets/Sprites/Tiles/debug__Floor_1.png.import" beforeDir="false" afterPath="$PROJECT_DIR$/../Assets/Sprites/Tiles/debug__Floor_1.png.import" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assets/Sprites/Tiles/debug__Floor_2.png.import" beforeDir="false" afterPath="$PROJECT_DIR$/../Assets/Sprites/Tiles/debug__Floor_2.png.import" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assets/Sprites/Tiles/debug__Floor_3.png.import" beforeDir="false" afterPath="$PROJECT_DIR$/../Assets/Sprites/Tiles/debug__Floor_3.png.import" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assets/Sprites/Tiles/debug__Floor_4.png.import" beforeDir="false" afterPath="$PROJECT_DIR$/../Assets/Sprites/Tiles/debug__Floor_4.png.import" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assets/Text/Fonts/IBM-Plex-Mono/IBMPlexMono-Bold.ttf.import" beforeDir="false" afterPath="$PROJECT_DIR$/../Assets/Text/Fonts/IBM-Plex-Mono/IBMPlexMono-Bold.ttf.import" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assets/Text/Fonts/IBM-Plex-Mono/IBMPlexMono-BoldItalic.ttf.import" beforeDir="false" afterPath="$PROJECT_DIR$/../Assets/Text/Fonts/IBM-Plex-Mono/IBMPlexMono-BoldItalic.ttf.import" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assets/Text/Fonts/IBM-Plex-Mono/IBMPlexMono-ExtraLight.ttf.import" beforeDir="false" afterPath="$PROJECT_DIR$/../Assets/Text/Fonts/IBM-Plex-Mono/IBMPlexMono-ExtraLight.ttf.import" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assets/Text/Fonts/IBM-Plex-Mono/IBMPlexMono-ExtraLightItalic.ttf.import" beforeDir="false" afterPath="$PROJECT_DIR$/../Assets/Text/Fonts/IBM-Plex-Mono/IBMPlexMono-ExtraLightItalic.ttf.import" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assets/Text/Fonts/IBM-Plex-Mono/IBMPlexMono-Italic.ttf.import" beforeDir="false" afterPath="$PROJECT_DIR$/../Assets/Text/Fonts/IBM-Plex-Mono/IBMPlexMono-Italic.ttf.import" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assets/Text/Fonts/IBM-Plex-Mono/IBMPlexMono-Light.ttf.import" beforeDir="false" afterPath="$PROJECT_DIR$/../Assets/Text/Fonts/IBM-Plex-Mono/IBMPlexMono-Light.ttf.import" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assets/Text/Fonts/IBM-Plex-Mono/IBMPlexMono-LightItalic.ttf.import" beforeDir="false" afterPath="$PROJECT_DIR$/../Assets/Text/Fonts/IBM-Plex-Mono/IBMPlexMono-LightItalic.ttf.import" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assets/Text/Fonts/IBM-Plex-Mono/IBMPlexMono-Medium.ttf.import" beforeDir="false" afterPath="$PROJECT_DIR$/../Assets/Text/Fonts/IBM-Plex-Mono/IBMPlexMono-Medium.ttf.import" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assets/Text/Fonts/IBM-Plex-Mono/IBMPlexMono-MediumItalic.ttf.import" beforeDir="false" afterPath="$PROJECT_DIR$/../Assets/Text/Fonts/IBM-Plex-Mono/IBMPlexMono-MediumItalic.ttf.import" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assets/Text/Fonts/IBM-Plex-Mono/IBMPlexMono-Regular.ttf.import" beforeDir="false" afterPath="$PROJECT_DIR$/../Assets/Text/Fonts/IBM-Plex-Mono/IBMPlexMono-Regular.ttf.import" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assets/Text/Fonts/IBM-Plex-Mono/IBMPlexMono-SemiBold.ttf.import" beforeDir="false" afterPath="$PROJECT_DIR$/../Assets/Text/Fonts/IBM-Plex-Mono/IBMPlexMono-SemiBold.ttf.import" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assets/Text/Fonts/IBM-Plex-Mono/IBMPlexMono-SemiBoldItalic.ttf.import" beforeDir="false" afterPath="$PROJECT_DIR$/../Assets/Text/Fonts/IBM-Plex-Mono/IBMPlexMono-SemiBoldItalic.ttf.import" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assets/Text/Fonts/IBM-Plex-Mono/IBMPlexMono-Text.ttf.import" beforeDir="false" afterPath="$PROJECT_DIR$/../Assets/Text/Fonts/IBM-Plex-Mono/IBMPlexMono-Text.ttf.import" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assets/Text/Fonts/IBM-Plex-Mono/IBMPlexMono-TextItalic.ttf.import" beforeDir="false" afterPath="$PROJECT_DIR$/../Assets/Text/Fonts/IBM-Plex-Mono/IBMPlexMono-TextItalic.ttf.import" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assets/Text/Fonts/IBM-Plex-Mono/IBMPlexMono-Thin.ttf.import" beforeDir="false" afterPath="$PROJECT_DIR$/../Assets/Text/Fonts/IBM-Plex-Mono/IBMPlexMono-Thin.ttf.import" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assets/Text/Fonts/IBM-Plex-Mono/IBMPlexMono-ThinItalic.ttf.import" beforeDir="false" afterPath="$PROJECT_DIR$/../Assets/Text/Fonts/IBM-Plex-Mono/IBMPlexMono-ThinItalic.ttf.import" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Corpo/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Corpo/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Corpo/.idea/indexLayout.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Corpo/.idea/jsonSchemas.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Corpo/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.run/Prebuild - JSON Generate All.run.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo.sln" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo.sln.DotSettings" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Corpo.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Game.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Game.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/GameInput.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/GameInput.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/GameState.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/GameState.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Screens/BaseScreen.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Screens/BaseScreen.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Screens/BattleScreen.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Screens/BattleScreen.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Screens/Core/Screen.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Screens/Core/Screen.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Screens/Core/ScreenComponent.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Screens/Core/ScreenComponent.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Screens/LoadingScreen.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Screens/LoadingScreen.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Screens/MainMenuScreen.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Screens/MainMenuScreen.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Screens/OverworldScreen.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Screens/OverworldScreen.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/BaseService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/BaseService.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/Battle/BattleService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/Battle/BattleService.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/Core/Modules/Module.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/Core/Modules/Module.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/Core/Modules/ModuleVisibility.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/Core/Modules/ModuleVisibility.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/Core/Service.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/Core/Service.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/Core/ServiceDependencyGraph.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/Core/ServiceDependencyGraph.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/Core/ServiceProvider.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/Core/ServiceProvider.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/Core/ServiceTiming.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/Core/ServiceTiming.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/Environment/EnvironmentService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/Environment/EnvironmentService.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/Environment/Models/Environment.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/Environment/Models/Environment.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/Loaders/BattleResourcesService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/Loaders/BattleResourcesService.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/Loaders/Models/IResourceLoader.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/Loaders/Models/IResourceLoader.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/Loaders/Models/LoaderContext.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/Loaders/Models/LoaderContext.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/Loaders/OverworldResourcesService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/Loaders/OverworldResourcesService.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/Loaders/PackageResourcesService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/Loaders/PackageResourcesService.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/Loaders/ResourcesLoaderService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/Loaders/ResourcesLoaderService.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/Loaders/SharedResourcesService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/Loaders/SharedResourcesService.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/LoadingService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/LoadingService.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/Logging/LoggerService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/Logging/LoggerService.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/Logging/Models/GodotSink.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/Logging/Models/GodotSink.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/NodeService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/NodeService.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/Overworld/OverworldService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/Overworld/OverworldService.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/Screens/Core/ScreenComponentService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/Screens/Core/ScreenComponentService.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/Screens/Core/ScreenService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/Screens/Core/ScreenService.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/Screens/MainMenuService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/Screens/MainMenuService.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/Settings/SettingsService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/Settings/SettingsService.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/States/IStateLifecycle.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/States/IStateLifecycle.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/States/Lifecycle/BaseLifecycle.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/States/Lifecycle/BaseLifecycle.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/States/Lifecycle/BattleLifecycle.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/States/Lifecycle/BattleLifecycle.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/States/Lifecycle/OverworldLifecycle.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/States/Lifecycle/OverworldLifecycle.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/States/StateService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Corpo/Services/States/StateService.cs.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Engine/Engine.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prebuild/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prebuild/.nvmrc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prebuild/.vscode/launch.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prebuild/.vscode/tasks.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prebuild/eslint.config.mjs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prebuild/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prebuild/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prebuild/packages/common/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prebuild/packages/common/src/file.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prebuild/packages/common/src/log.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prebuild/packages/common/src/path.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prebuild/packages/common/tsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prebuild/packages/generate-json/.env.default" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prebuild/packages/generate-json/assets/types/environment/environment.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prebuild/packages/generate-json/assets/types/package/about.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prebuild/packages/generate-json/assets/types/package/packages.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prebuild/packages/generate-json/assets/types/settings/settings.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prebuild/packages/generate-json/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prebuild/packages/generate-json/src/commands/generate-all.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prebuild/packages/generate-json/src/commands/generate-csharp.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prebuild/packages/generate-json/src/commands/generate-json.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prebuild/packages/generate-json/src/commands/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prebuild/packages/generate-json/src/csharp/context.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prebuild/packages/generate-json/src/csharp/convert.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prebuild/packages/generate-json/src/csharp/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prebuild/packages/generate-json/src/csharp/util.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prebuild/packages/generate-json/src/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prebuild/packages/generate-json/src/json/context.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prebuild/packages/generate-json/src/json/convert.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prebuild/packages/generate-json/src/json/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prebuild/packages/generate-json/tsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prebuild/tsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../project.godot" beforeDir="false" afterPath="$PROJECT_DIR$/../project.godot" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="directory" />
+      <option value="repository" />
+    </option>
+  </component>
+  <component name="EditorConfigPreviewManager">
+    <editorConfig file="$PROJECT_DIR$/../.editorconfig" previewFile="$PROJECT_DIR$/../.env.dev.json" />
+  </component>
+  <component name="Git.Settings">
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$/.." source="dev" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="dev" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;shoegaze&quot;
+  }
+}</component>
+  <component name="GitRewordedCommitMessages">
+    <option name="commitMessagesMapping">
+      <RewordedCommitMessageMapping>
+        <option name="originalMessage" value="chore: update IDEA attached folder settings" />
+        <option name="rewordedMessage" value="chore: update IDEA attached folder settings" />
+      </RewordedCommitMessageMapping>
+    </option>
+    <option name="currentCommit" value="1" />
+    <option name="onto" value="670fc0cb0b5f27e94a8e7f4e0c6114220779fbd2" />
+  </component>
+  <component name="GithubProjectSettings">
+    <option name="branchProtectionPatterns">
+      <list>
+        <option value="dev" />
+        <option value="master" />
+      </list>
+    </option>
+  </component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/shoegaze/Corpo.gd.git&quot;,
+    &quot;accountId&quot;: &quot;ef5b60a8-4652-4bef-b642-091ed99ca9d0&quot;
+  }
+}</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$APPLICATION_HOME_DIR$/lib/modules/intellij.rider.jar!/schemas/msbuild/Microsoft.Build.Commontypes.xsd" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../.godot/mono/temp/obj/Debug/.NETCoreApp,Version=v8.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/scratches/ServiceAttribute.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file:///usr/local/share/dotnet/sdk/9.0.200/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="SWEA" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;415b77fc&quot;
+}</component>
+  <component name="ProjectId" id="2y33Vo1qX58CTlxO6589UHK9wE8" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feat/39-refactor-separate-engine-code-from-game&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.Prebuild - JSON Generate All.executor&quot;: &quot;Run&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;CppCodeCompletionOptionsId&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/spike/Documents/projects/godot/Corpo.gd/Scripts/prebuild/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;PLAIN_TEXT&quot;
+    ]
+  }
+}</component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1cfa76da-9f88-4e39-b08f-7017f06f6194" name="Changes" comment="" />
+      <created>1749049457010</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1749049457010</updated>
+      <workItem from="1749049458136" duration="3911000" />
+      <workItem from="1749111506232" duration="2566000" />
+      <workItem from="1749124093163" duration="6872000" />
+      <workItem from="1749196485150" duration="1844000" />
+      <workItem from="1749199110475" duration="6404000" />
+      <workItem from="1749569502599" duration="3703000" />
+      <workItem from="1749652629723" duration="25000" />
+    </task>
+    <task id="LOCAL-00001" summary="docs(game): clarify main entrypoint in comment">
+      <option name="closed" value="true" />
+      <created>1749111635880</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1749111635880</updated>
+    </task>
+    <task id="LOCAL-00002" summary="fix(project): fix icon path">
+      <option name="closed" value="true" />
+      <created>1749111963090</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1749111963090</updated>
+    </task>
+    <task id="LOCAL-00003" summary="chore: update IDEA attached folder settings">
+      <option name="closed" value="true" />
+      <created>1749111995990</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1749111995990</updated>
+    </task>
+    <task id="LOCAL-00004" summary="fix(game): make .env.dev.json follow JSON schema">
+      <option name="closed" value="true" />
+      <created>1749126691672</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1749126691672</updated>
+    </task>
+    <task id="LOCAL-00005" summary="feat(project): add .editorconfig">
+      <option name="closed" value="true" />
+      <created>1749128496809</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1749128496809</updated>
+    </task>
+    <task id="LOCAL-00006" summary="style(game): reformat JSON files to follow .editorconfig settings">
+      <option name="closed" value="true" />
+      <created>1749128542609</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1749128542609</updated>
+    </task>
+    <task id="LOCAL-00007" summary="build(game): use System.Text.Json in place of NewtonSoft.Json">
+      <option name="closed" value="true" />
+      <created>1749129366947</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1749129366947</updated>
+    </task>
+    <task id="LOCAL-00008" summary="feat(prebuild): use System.Text.Json in QuickType generation">
+      <option name="closed" value="true" />
+      <created>1749129399853</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1749129399853</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="dev" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="dev" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="docs(game): clarify main entrypoint in comment" />
+    <MESSAGE value="fix(project): fix icon path" />
+    <MESSAGE value="fix(game): reflect new asset paths in environment file" />
+    <MESSAGE value="chore: update IDEA attached folder settings" />
+    <MESSAGE value="fix(game): make .env.dev.json follow JSON schema" />
+    <MESSAGE value="feat(project): add .editorconfig" />
+    <MESSAGE value="style(game): reformat JSON files to follow .editorconfig settings" />
+    <MESSAGE value="build(game): use System.Text.Json in place of NewtonSoft.Json" />
+    <MESSAGE value="feat(prebuild): use System.Text.Json in QuickType generation" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(prebuild): use System.Text.Json in QuickType generation" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.OperationCanceledException" breakIfHandledByOtherCode="false" displayValue="System.OperationCanceledException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.Threading.Tasks.TaskCanceledException" breakIfHandledByOtherCode="false" displayValue="System.Threading.Tasks.TaskCanceledException" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="3" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
