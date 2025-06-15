@@ -14,7 +14,7 @@ using Corpo.Services.States;
 namespace Corpo;
 
 
-public partial class Game : Node {
+public partial class Main : Node {
   // Main entrypoint
   public override void _Ready() {
 	// TODO(shoegaze): ServiceProvider.BuildLayer(layer); layer == 0 => Root Layer
