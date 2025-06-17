@@ -1,7 +1,7 @@
 using Engine.Screens;
 
 
-namespace Corpo.Screens;
+namespace Corpo.Adaptors.Godot;
 
 
 public abstract class GodotScreenComponent : ScreenComponent<GameInput> {

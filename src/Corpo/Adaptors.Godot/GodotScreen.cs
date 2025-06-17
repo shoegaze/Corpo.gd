@@ -1,9 +1,9 @@
-using Godot;
-
 using Engine.Screens;
 
+using Godot;
 
-namespace Corpo.Screens;
+
+namespace Corpo.Adaptors.Godot;
 
 
 public abstract partial class GodotScreen : Node, IScreen<GameInput> {

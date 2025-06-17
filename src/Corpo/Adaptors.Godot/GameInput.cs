@@ -1,7 +1,7 @@
 ﻿using Godot;
 
 
-namespace Corpo;
+namespace Corpo.Adaptors.Godot;
 
 
 // TODO(shoegaze): Replace with `InputService`
@@ -32,13 +32,12 @@ public struct GameInput(
     bool cycle = Input.IsActionJustPressed("ui_focus_next");
 
     return new GameInput(
-          up,
-          down,
-          right,
-          left,
-          accept,
-          cancel,
-          cycle
-        );
+      up,
+      down,
+      right,
+      left,
+      accept,
+      cancel,
+      cycle);
   }
 }
