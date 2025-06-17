@@ -3,6 +3,8 @@
 using System;
 using System.IO;
 
+using Corpo.Adaptors.Godot.Logging;
+
 using Serilog;
 
 using ILogger = Engine.ILogger;
@@ -16,14 +18,7 @@ namespace Corpo.Logging;
 
 // ReSharper disable once ClassNeverInstantiated.Global
 public sealed class Logger : ILogger {
-  // TODO
-  // private record LogInfo(
-  //   LogEventLevel Level,
-  //   string Message,
-  //   Exception? Exception
-  // );
-
-  private const string LogOutPath = "logs";
+  private const string LogSinkOutPath = "logs";
 
   private const string FileOutTemplate =
       "{Timestamp:yyyy-MM-dd HH:mm:ss.fff} [{Level:u3}] {Message}{NewLine}{Exception}";
@@ -35,23 +30,23 @@ public sealed class Logger : ILogger {
   }
 
   public void Debug(string message) {
-    logger.Debug("{}", message);
+    logger.Debug("{Message}", message);
   }
 
   public void Info(string message) {
-    logger.Information("{}", message);
+    logger.Information("{Message}", message);
   }
 
   public void Warn(string message) {
-    logger.Warning("{}", message);
+    logger.Warning("{Message}", message);
   }
 
   public void Error(string message) {
-    logger.Error("{}", message);
+    logger.Error("{Message}", message);
   }
 
   public void Fatal(string message) {
-    logger.Fatal("{}", message);
+    logger.Fatal("{Message}", message);
   }
 
   private Serilog.ILogger GetLogger() {
@@ -74,47 +69,54 @@ public sealed class Logger : ILogger {
     EnvironmentMode mode = Environment.GetEnvironmentMode();
 
     if (mode == EnvironmentMode.Production) {
-      return "log.txt";
+      return "log-.txt";
     }
 
     string envName = Environment.GetEnvironmentModeAsName();
 
-    return $"log.{envName}.txt";
+    return $"log.{envName}-.txt";
   }
 
   private Serilog.ILogger MakeDevelopmentLogger() {
-    string logFilePath = Path.Combine(LogOutPath, GetLogFileName());
-    // TODO
-    // var godotSink = new GodotLoggerSink();
+    string logFilePath = Path.Combine(LogSinkOutPath, GetLogFileName());
 
     // TODO: Add log formatting (timestamp etc.)
+    // TODO: Route to separate loggers for each level
+    //  * level >= Warn => Log File
+    //  * level < Warn  => GodotSink
     Serilog.Core.Logger developmentLogger =
         new LoggerConfiguration()
            .MinimumLevel.Debug()
-           .WriteTo.File(logFilePath, outputTemplate: FileOutTemplate)
-            // .WriteTo.Sink(godotSink)
+           .WriteTo.File(
+              logFilePath,
+              outputTemplate: FileOutTemplate,
+              rollingInterval: RollingInterval.Day,
+              rollOnFileSizeLimit: true)
+           .WriteTo.GodotSink()
            .CreateLogger();
 
     return developmentLogger;
   }
 
   private Serilog.ILogger MakeStagingLogger() {
-    string logFilePath = Path.Combine(LogOutPath, GetLogFileName());
-    // TODO
-    // var godotSink = new GodotLoggerSink();
+    string logFilePath = Path.Combine(LogSinkOutPath, GetLogFileName());
 
     Serilog.Core.Logger stagingLogger =
         new LoggerConfiguration()
            .MinimumLevel.Warning()
-           .WriteTo.File(logFilePath, outputTemplate: FileOutTemplate)
-            // .WriteTo.Sink(godotSink)
+           .WriteTo.File(
+              logFilePath,
+              outputTemplate: FileOutTemplate,
+              rollingInterval: RollingInterval.Day,
+              rollOnFileSizeLimit: true)
+           .WriteTo.GodotSink()
            .CreateLogger();
 
     return stagingLogger;
   }
 
   private Serilog.ILogger MakeProductionLogger() {
-    string logFilePath = Path.Combine(LogOutPath, GetLogFileName());
+    string logFilePath = Path.Combine(LogSinkOutPath, GetLogFileName());
 
     Serilog.ILogger productionLogger =
         new LoggerConfiguration()
