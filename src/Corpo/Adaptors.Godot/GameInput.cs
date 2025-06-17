@@ -4,7 +4,7 @@
 namespace Corpo.Adaptors.Godot;
 
 
-// TODO(shoegaze): Replace with `InputService`
+// TODO: Replace with `InputService`
 public struct GameInput(
   bool up,
   bool down,

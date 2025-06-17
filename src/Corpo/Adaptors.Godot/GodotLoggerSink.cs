@@ -25,37 +25,37 @@ public sealed class GodotLoggerSink : ILogEventSink {
     // 
     // switch (logEvent.Level) {
     //   case LogEventLevel.Verbose:
-    //     // TODO(shoegaze);
+    //     // TODO;
     //     GD.Print("Verbose: TODO");
     // 
     //     break;
     // 
     //   case LogEventLevel.Debug:
-    //     // TODO(shoegaze);
+    //     // TODO;
     //     GD.Print("Debug: TODO");
     // 
     //     break;
     // 
     //   case LogEventLevel.Information:
-    //     // TODO(shoegaze);
+    //     // TODO;
     //     GD.Print("Info: TODO");
     // 
     //     break;
     // 
     //   case LogEventLevel.Warning:
-    //     // TODO(shoegaze);
+    //     // TODO;
     //     GD.PushWarning("Warn: TODO");
     // 
     //     break;
     // 
     //   case LogEventLevel.Error:
-    //     // TODO(shoegaze);
+    //     // TODO;
     //     GD.PrintErr("Error: TODO");
     // 
     //     break;
     // 
     //   case LogEventLevel.Fatal:
-    //     // TODO(shoegaze);
+    //     // TODO;
     //     GD.PrintErr("Fatal: TODO");
     // 
     //     break;
