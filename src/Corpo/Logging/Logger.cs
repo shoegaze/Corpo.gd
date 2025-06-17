@@ -41,12 +41,12 @@ public sealed class Logger : ILogger {
     logger.Warning("{Message}", message);
   }
 
-  public void Error(string message) {
-    logger.Error("{Message}", message);
+  public void Error(string message, Exception? exception = null) {
+    logger.Error("{Message}{Exception}", message, exception);
   }
 
-  public void Fatal(string message) {
-    logger.Fatal("{Message}", message);
+  public void Fatal(string message, Exception? exception = null) {
+    logger.Fatal("{Message}{Exception}", message, exception);
   }
 
   private Serilog.ILogger GetLogger() {
@@ -80,7 +80,6 @@ public sealed class Logger : ILogger {
   private Serilog.ILogger MakeDevelopmentLogger() {
     string logFilePath = Path.Combine(LogSinkOutputPath, GetLogFileName());
 
-    // TODO: Add log formatting (timestamp etc.)
     // TODO: Route to separate loggers for each level
     //  * level >= Warn => Log File
     //  * level < Warn  => GodotSink
