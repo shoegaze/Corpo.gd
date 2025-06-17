@@ -15,7 +15,8 @@ namespace Corpo;
 
 
 public partial class Main : Node {
-  public static Container BaseContainer;
+  public static Container BaseContainer { get; private set; }
+
 
   // Main entrypoint
   public override void _Ready() {
