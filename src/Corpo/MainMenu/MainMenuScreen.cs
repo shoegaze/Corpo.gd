@@ -13,21 +13,21 @@ namespace Corpo.MainMenu;
 
 
 public partial class MainMenuScreen : GodotScreen {
-
   private Button buttonExit;
   private Button buttonLoadGame;
   private Button buttonNewGame;
   private Button buttonSettings;
+
   private IEnvironmentService environmentService;
   private ILogger logger;
   private IMainMenuService mainMenuService;
   private IStateService stateService;
 
   public override void OnCreate() {
-    logger = Main.BaseContainer.GetInstance<ILogger>();
     environmentService = Main.BaseContainer.GetInstance<IEnvironmentService>();
-    stateService = Main.BaseContainer.GetInstance<IStateService>();
+    logger = Main.BaseContainer.GetInstance<ILogger>();
     mainMenuService = Main.BaseContainer.GetInstance<IMainMenuService>();
+    stateService = Main.BaseContainer.GetInstance<IStateService>();
 
 
     Generated.Json.Environment.MainMenu mainMenuPath =
@@ -79,7 +79,7 @@ public partial class MainMenuScreen : GodotScreen {
 
   // TODO: Rename to ExitGame()
   private void DoExit() {
-    GD.Print("Exiting game ...");
+    logger.Info("Exiting game...");
 
     // TODO: GameService#ExitGame() => ServiceProvider.CloseAll()
     SceneTree sceneTree = GetTree();

@@ -1,6 +1,8 @@
 using System;
 using System.IO;
 
+using Engine;
+
 using Godot;
 
 using Environment = Corpo.Generated.Json.Environment.Environment;
@@ -12,7 +14,9 @@ namespace Corpo.Base.Environments;
 
 
 // ReSharper disable once ClassNeverInstantiated.Global
-public sealed class EnvironmentService : IEnvironmentService {
+public sealed class EnvironmentService(
+  ILogger logger
+) : IEnvironmentService {
   public EnvironmentMode Mode => Models.Environment.GetEnvironmentMode();
 
 
@@ -27,18 +31,15 @@ public sealed class EnvironmentService : IEnvironmentService {
     string rootPath = ProjectSettings.GlobalizePath("res://");
     string fullFilePath = Path.Combine(rootPath, fullFileName);
 
-    // TODO: Use LoggerService.Info(...)
-    GD.Print("Loading environment file ...");
-    GD.Print($" * {fullFilePath}");
+    logger.Info("Loading environment file ...");
+    logger.Debug($" * {fullFilePath}");
 
     using var reader = new StreamReader(fullFilePath);
     string jsonString = reader.ReadToEnd();
 
-    // TODO: Validate JSON object from schema
     Environment = Environment.FromJson(jsonString);
 
-    // TODO: Use LoggerService.Info(...) after this#Initialize() ... Store context info?
-    GD.Print("> Complete!");
+    logger.Info("> Complete!");
   }
 
   private static string MapEnvironmentModeToFileNameFragment(
