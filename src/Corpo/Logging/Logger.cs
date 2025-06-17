@@ -42,11 +42,11 @@ public sealed class Logger : ILogger {
   }
 
   public void Error(string message, Exception? exception = null) {
-    logger.Error("{Message}{Exception}", message, exception);
+    logger.Error("{Message}{NewLine}{Exception}", message, '\n', exception);
   }
 
   public void Fatal(string message, Exception? exception = null) {
-    logger.Fatal("{Message}{Exception}", message, exception);
+    logger.Fatal("{Message}{NewLine}{Exception}", message, '\n', exception);
   }
 
   private Serilog.ILogger GetLogger() {

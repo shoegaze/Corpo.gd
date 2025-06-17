@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 using Corpo.Adaptors.Godot;
 using Corpo.Base.Nodes;
@@ -49,7 +50,7 @@ public sealed class ScreenService(
 
   public void Dismiss() {
     if (screens.Count == 0) {
-      logger.Error("No screen to dismiss");
+      logger.Error("No screen to dismiss", new InvalidOperationException());
 
       return;
     }

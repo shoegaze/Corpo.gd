@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 using Corpo.Base.Environments;
@@ -28,7 +29,7 @@ public sealed class StateService(
 
   public void ExitState() {
     if (states.Count == 0) {
-      logger.Error("No GameState to exit");
+      logger.Error("No GameState to exit", new InvalidOperationException());
 
       return;
     }
@@ -66,7 +67,8 @@ public sealed class StateService(
 
     if (activeLifecycle == null) {
       logger.Error(
-        $"Invalid game state setup: {state} ; Did you register {state}?");
+        $"Invalid game state setup: {state} ; Did you register {state}?",
+        new InvalidOperationException());
 
       return;
     }

@@ -46,9 +46,10 @@ public sealed class ScreenComponentService(
   public void Seek(int index) {
     if (index < 0 || index >= components.Count) {
       logger.Error(
-        $"Cannot seek to the GodotScreenComponent at index={index:?}");
+        $"Cannot seek to the GodotScreenComponent at index={index:?}",
+        new IndexOutOfRangeException());
 
-      throw new IndexOutOfRangeException();
+      return;
     }
 
     CurrentComponent.OnUnfocus();
