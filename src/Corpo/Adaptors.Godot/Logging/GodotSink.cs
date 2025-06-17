@@ -1,45 +1,51 @@
 ﻿#nullable enable
 
 using System;
+using System.IO;
 
 using Godot;
 
 using Serilog.Core;
 using Serilog.Events;
+using Serilog.Formatting;
 
 
 namespace Corpo.Adaptors.Godot.Logging;
 
 
 public sealed class GodotSink(
-  // TODO:
-  // ITextFormatter? textFormatter,
-  IFormatProvider? formatProvider
+  ITextFormatter? textFormatter = null,
+  IFormatProvider? formatProvider = null
 ) : ILogEventSink {
+  private readonly ITextFormatter textFormatter =
+      textFormatter ??
+      new GodotTextFormatter();
 
   public void Emit(LogEvent logEvent) {
-    string message = logEvent.RenderMessage(formatProvider);
-    string color = GetColor(logEvent.Level).ToHtml();
+    var output = new StringWriter();
 
-    GD.PrintRich($"[color=#{color}]{message}[/color]");
+    textFormatter.Format(logEvent, output);
+    output.Flush();
+
+    string[] lines = output.ToString().Split('\n');
+
+    foreach (string line in lines) {
+      string colorCode = GetColor(logEvent.Level).ToHtml();
+
+      GD.PrintRich($"[color=#{colorCode}]{line}[/color]");
+    }
 
     if (logEvent.Exception is null) {
       return;
     }
 
-    switch (logEvent.Level) {
-      case LogEventLevel.Warning: {
-        GD.PushWarning(logEvent.Exception);
+    if (logEvent.Level >= LogEventLevel.Error) {
+      GD.PushError(logEvent.Exception);
 
-        return;
-      }
-
-      case >= LogEventLevel.Error: {
-        GD.PushError(logEvent.Exception);
-
-        return;
-      }
+      return;
     }
+
+    GD.PushWarning(logEvent.Exception);
   }
 
   private static Color GetColor(LogEventLevel eventLevel) {

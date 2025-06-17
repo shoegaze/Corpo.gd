@@ -18,9 +18,9 @@ namespace Corpo.Logging;
 
 // ReSharper disable once ClassNeverInstantiated.Global
 public sealed class Logger : ILogger {
-  private const string LogSinkOutPath = "logs";
+  private const string LogSinkOutputPath = "logs";
 
-  private const string FileOutTemplate =
+  private const string FileOutputTemplate =
       "{Timestamp:yyyy-MM-dd HH:mm:ss.fff} [{Level:u3}] {Message}{NewLine}{Exception}";
 
   private readonly Serilog.ILogger logger;
@@ -78,7 +78,7 @@ public sealed class Logger : ILogger {
   }
 
   private Serilog.ILogger MakeDevelopmentLogger() {
-    string logFilePath = Path.Combine(LogSinkOutPath, GetLogFileName());
+    string logFilePath = Path.Combine(LogSinkOutputPath, GetLogFileName());
 
     // TODO: Add log formatting (timestamp etc.)
     // TODO: Route to separate loggers for each level
@@ -89,7 +89,7 @@ public sealed class Logger : ILogger {
            .MinimumLevel.Debug()
            .WriteTo.File(
               logFilePath,
-              outputTemplate: FileOutTemplate,
+              outputTemplate: FileOutputTemplate,
               rollingInterval: RollingInterval.Day,
               rollOnFileSizeLimit: true)
            .WriteTo.GodotSink()
@@ -99,14 +99,14 @@ public sealed class Logger : ILogger {
   }
 
   private Serilog.ILogger MakeStagingLogger() {
-    string logFilePath = Path.Combine(LogSinkOutPath, GetLogFileName());
+    string logFilePath = Path.Combine(LogSinkOutputPath, GetLogFileName());
 
     Serilog.Core.Logger stagingLogger =
         new LoggerConfiguration()
            .MinimumLevel.Warning()
            .WriteTo.File(
               logFilePath,
-              outputTemplate: FileOutTemplate,
+              outputTemplate: FileOutputTemplate,
               rollingInterval: RollingInterval.Day,
               rollOnFileSizeLimit: true)
            .WriteTo.GodotSink()
@@ -116,12 +116,12 @@ public sealed class Logger : ILogger {
   }
 
   private Serilog.ILogger MakeProductionLogger() {
-    string logFilePath = Path.Combine(LogSinkOutPath, GetLogFileName());
+    string logFilePath = Path.Combine(LogSinkOutputPath, GetLogFileName());
 
     Serilog.ILogger productionLogger =
         new LoggerConfiguration()
            .MinimumLevel.Error()
-           .WriteTo.File(logFilePath, outputTemplate: FileOutTemplate)
+           .WriteTo.File(logFilePath, outputTemplate: FileOutputTemplate)
            .CreateLogger();
 
     return productionLogger;
