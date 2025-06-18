@@ -1,7 +1,6 @@
-using Corpo.Generated.Json.Environment;
-
 using Engine.Services;
 
+using Environment = Corpo.Generated.Json.Environment.Environment;
 using EnvironmentMode =
     Corpo.Base.Environments.Models.Environment.EnvironmentMode;
 
