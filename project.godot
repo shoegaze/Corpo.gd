@@ -15,6 +15,10 @@ run/main_scene="uid://ct82scqrh1x11"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="uid://ce2045pqwt0jk"
 
+[autoload]
+
+ImGuiRoot="*res://addons/imgui-godot/data/ImGuiRoot.tscn"
+
 [display]
 
 window/size/viewport_width=1280
@@ -27,11 +31,10 @@ project/assembly_name="Corpo"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/gdUnit4/plugin.cfg")
+enabled=PackedStringArray("res://addons/gdUnit4/plugin.cfg", "res://addons/imgui-godot/plugin.cfg")
 
 [gdunit4]
 
-settings/test/test_lookup_folder="test"
 ui/toolbar/run_overall=true
 templates/testsuite/CSharpScript="// GdUnit generated TestSuite
 

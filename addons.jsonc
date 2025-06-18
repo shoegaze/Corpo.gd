@@ -4,9 +4,14 @@
   "cache": ".addons", // default
   "addons": {
     "gdUnit4": {
-      "url": "https://github.com/MikeSchulze/gdUnit4.git",
+      "url": "https://github.com/MikeSchulze/gdUnit4",
       "checkout": "master",
       "subfolder": "addons/gdUnit4"
+    },
+    "imgui-godot": {
+      "url": "https://github.com/pkdawson/imgui-godot",
+      "checkout": "6.x",
+      "subfolder": "addons/imgui-godot"
     }
   }
 }
