@@ -18,9 +18,9 @@
     <EmbeddedResource Remove="test\**"/>
 
     <!-- Refer to Engine project -->
-    <ProjectReference Include="src\Engine\Engine.csproj"/>
-    <EmbeddedResource Remove="src\Engine\**"/>
-    <Compile Remove="src\Engine\**"/>
+    <ProjectReference Include="src\TeamSports\TeamSports.csproj"/>
+    <EmbeddedResource Remove="src\TeamSports\**"/>
+    <Compile Remove="src\TeamSports\**"/>
 
     <!-- Include prebuild generated sources -->
     <Compile Include="src\prebuild\packages\generate-json\.build\dist\csharp\**\*.cs"/>

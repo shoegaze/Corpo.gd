@@ -1,7 +1,7 @@
 using Corpo.Overworld.Resources.Overworld.Implementations;
 using Corpo.Overworld.Resources.Overworld.Models;
 
-using Engine.Repositories;
+using TeamSports.Repositories;
 
 
 namespace Corpo.Overworld.Resources.Overworld;

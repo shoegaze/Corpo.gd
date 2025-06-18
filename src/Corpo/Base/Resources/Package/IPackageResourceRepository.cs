@@ -1,6 +1,6 @@
 using Corpo.Base.Resources.Package.Models;
 
-using Engine.Repositories;
+using TeamSports.Repositories;
 
 
 namespace Corpo.Base.Resources.Package;

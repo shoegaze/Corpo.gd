@@ -1,4 +1,4 @@
-namespace Engine.Services;
+namespace TeamSports.Services;
 
 
 public interface IStartable {

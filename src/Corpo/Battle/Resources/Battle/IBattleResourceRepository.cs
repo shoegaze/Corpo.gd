@@ -1,6 +1,6 @@
 using Corpo.Battle.Resources.Battle.Models;
 
-using Engine.Repositories;
+using TeamSports.Repositories;
 
 
 namespace Corpo.Battle.Resources.Battle;

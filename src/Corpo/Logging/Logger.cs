@@ -7,7 +7,7 @@ using Corpo.Adaptors.Godot.Logging;
 
 using Serilog;
 
-using ILogger = Engine.ILogger;
+using ILogger = TeamSports.ILogger;
 using Environment = Corpo.Base.Environments.Models.Environment;
 using EnvironmentMode =
     Corpo.Base.Environments.Models.Environment.EnvironmentMode;

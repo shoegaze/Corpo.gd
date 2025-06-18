@@ -9,7 +9,8 @@ using Corpo.Battle.Core.Models;
 using Corpo.Overworld;
 using Corpo.Overworld.Core.Models;
 
-using Engine;
+using TeamSports;
+using TeamSports.Repositories.Handles;
 
 
 namespace Corpo.Base.States.Implementations;

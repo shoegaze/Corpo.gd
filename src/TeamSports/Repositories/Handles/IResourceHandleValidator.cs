@@ -1,4 +1,4 @@
-namespace Engine.Repositories;
+namespace TeamSports.Repositories.Handles;
 
 
 public interface IResourceHandleValidator {

@@ -1,8 +1,8 @@
-﻿namespace Engine.Screens;
+﻿namespace TeamSports.Screens;
 
 
 public abstract class ScreenComponent<TInput>
-    where TInput : struct {
+where TInput : struct {
 
   // public abstract void OnCreate();
   public abstract void OnFocus();

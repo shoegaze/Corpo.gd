@@ -1,8 +1,8 @@
-namespace Engine.Screens;
+namespace TeamSports.Screens;
 
 
 public interface IScreen<TInput>
-    where TInput : struct {
+where TInput : struct {
 
   public void OnCreate();
   public void OnFocus();

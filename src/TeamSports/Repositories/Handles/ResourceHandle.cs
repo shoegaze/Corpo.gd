@@ -1,4 +1,4 @@
-namespace Engine.Repositories;
+namespace TeamSports.Repositories.Handles;
 
 
 public abstract class ResourceHandle<TValidator> : IResourceHandle

@@ -1,4 +1,4 @@
-namespace Engine.Repositories;
+namespace TeamSports.Repositories;
 
 
 public interface ILoader {

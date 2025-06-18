@@ -1,4 +1,7 @@
-namespace Engine.Repositories;
+using TeamSports.Repositories.Handles;
+
+
+namespace TeamSports.Repositories;
 
 
 public interface IRepository<out TResource, THandle> : IDisposable

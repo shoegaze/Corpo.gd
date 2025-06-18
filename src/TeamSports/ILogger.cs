@@ -1,6 +1,6 @@
 // ReSharper disable UnusedMember.Global
 
-namespace Engine;
+namespace TeamSports;
 
 
 public interface ILogger {
