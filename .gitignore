@@ -6,7 +6,8 @@ addons/*
 !addons/.editorconfig
 
 # Project
-logs/
+logs/*
+gdunit4_testadapter/*
 
 # Created by https://www.toptal.com/developers/gitignore/api/godot
 # Edit at https://www.toptal.com/developers/gitignore?templates=godot
