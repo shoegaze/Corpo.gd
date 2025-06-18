@@ -25,6 +25,33 @@ window/size/resizable=false
 
 project/assembly_name="Corpo"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/gdUnit4/plugin.cfg")
+
+[gdunit4]
+
+settings/test/test_lookup_folder="test"
+ui/toolbar/run_overall=true
+templates/testsuite/CSharpScript="// GdUnit generated TestSuite
+
+using GdUnit4;
+
+using Godot;
+
+namespace ${name_space} {
+  using static Assertions;
+  using static Utils;
+
+  [TestSuite]
+  public class ${suite_class_name} {
+    // TestSuite generated from
+    private const string sourceClazzPath = \"${source_resource_path}\";
+
+  }
+}
+"
+
 [input]
 
 ui_accept={
