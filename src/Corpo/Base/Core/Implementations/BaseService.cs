@@ -1,5 +1,3 @@
-using System;
-
 using Corpo.Adaptors.Godot;
 using Corpo.Base.Environments;
 using Corpo.Base.Screens;
@@ -17,7 +15,8 @@ public sealed class BaseService(
   IScreenService screenService
 ) : IBaseService {
   public void LoadPackages() {
-    throw new NotImplementedException();
+    // DEBUG:
+    // throw new NotImplementedException();
   }
 
   public void ShowMainMenu() {
