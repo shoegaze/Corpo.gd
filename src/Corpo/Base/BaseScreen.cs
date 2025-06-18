@@ -1,6 +1,7 @@
 ﻿using System;
 
 using Corpo.Adaptors.Godot;
+using Corpo.Base.Core;
 
 
 namespace Corpo.Base;

@@ -1,4 +1,4 @@
-using Corpo.Loading;
+using Corpo.Loading.Core.Models;
 
 using Engine.Services;
 
