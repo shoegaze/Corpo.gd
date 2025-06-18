@@ -27,11 +27,13 @@ public partial class Main : Node {
     StartGame(logger);
   }
 
+  // TODO: Refactor into separate static class
   private ILogger BuildLogger() {
     return new Container(new LoggerRegistry())
        .GetInstance<ILogger>();
   }
 
+  // TODO: Refactor into separate static class
   private Container BuildBaseServices(ILogger logger) {
     logger.Info("Building base services...");
 

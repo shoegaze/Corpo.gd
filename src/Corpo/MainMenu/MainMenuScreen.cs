@@ -5,31 +5,55 @@ using Corpo.Base.States.Implementations;
 using Corpo.MainMenu.Core;
 
 using Engine;
+using Engine.Services;
 
 using Godot;
 
 using Button = Godot.Button;
+using Container = Lamar.Container;
 
 
 namespace Corpo.MainMenu;
 
 
 public partial class MainMenuScreen : GodotScreen {
+  public Container MainMenuContainer { get; private set; }
+
+
+  // Dependencies
+  private ILogger logger;
+  private IEnvironmentService environmentService;
+  private IStateService stateService;
+  private IMainMenuService mainMenuService;
+
+  // UI components
   private Button buttonExit;
   private Button buttonLoadGame;
   private Button buttonNewGame;
   private Button buttonSettings;
 
-  private IEnvironmentService environmentService;
-  private ILogger logger;
-  private IMainMenuService mainMenuService;
-  private IStateService stateService;
+  public override string ToString() {
+    return nameof(MainMenuScreen);
+  }
 
   public override void OnCreate() {
-    environmentService = Main.BaseContainer.GetInstance<IEnvironmentService>();
     logger = Main.BaseContainer.GetInstance<ILogger>();
-    mainMenuService = Main.BaseContainer.GetInstance<IMainMenuService>();
-    stateService = Main.BaseContainer.GetInstance<IStateService>();
+
+    MainMenuContainer =
+        new Container(services => {
+          logger.Debug("Including main menu services...");
+          services.IncludeRegistry<MainMenuRegistry>();
+
+          services.For<IStartable>()
+             .OnCreationForAll((_, startable) => {
+                logger.Debug($"Starting service: {startable}");
+                startable.Start();
+              });
+        });
+
+    environmentService = MainMenuContainer.GetInstance<IEnvironmentService>();
+    stateService = MainMenuContainer.GetInstance<IStateService>();
+    mainMenuService = MainMenuContainer.GetInstance<IMainMenuService>();
 
 
     Generated.Json.Environment.MainMenu mainMenuPath =
