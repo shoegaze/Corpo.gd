@@ -14,16 +14,15 @@
   </ItemGroup>
   <ItemGroup>
     <!-- Testing -->
-    <PackageReference Include="gdUnit4.api" Version="4.2.*"/>
     <Compile Remove="test\**"/>
     <EmbeddedResource Remove="test\**"/>
 
     <!-- Refer to Engine project -->
     <ProjectReference Include="src\Engine\Engine.csproj"/>
     <EmbeddedResource Remove="src\Engine\**"/>
+    <Compile Remove="src\Engine\**"/>
 
     <!-- Include prebuild generated sources -->
     <Compile Include="src\prebuild\packages\generate-json\.build\dist\csharp\**\*.cs"/>
-    <Compile Remove="src\Engine\**"/>
   </ItemGroup>
 </Project>
