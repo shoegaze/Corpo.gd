@@ -1,0 +1,12 @@
+{
+  "$schema": "https://chickensoft.games/schemas/addons.schema.json",
+  "path": "addons", // default
+  "cache": ".addons", // default
+  "addons": {
+    "gdUnit4": {
+      "url": "https://github.com/MikeSchulze/gdUnit4.git",
+      "checkout": "master",
+      "subfolder": "addons/gdUnit4"
+    }
+  }
+}

@@ -1,5 +1,11 @@
+# Intellij
 Corpo.sln.DotSettings.user
 
+# GodotEnv
+addons/*
+!addons/.editorconfig
+
+# Project
 logs/
 
 # Created by https://www.toptal.com/developers/gitignore/api/godot
@@ -210,3 +216,6 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,intellij+all,macos,windows,linux
+addons/*
+!addons/.editorconfig
+.addons/*
