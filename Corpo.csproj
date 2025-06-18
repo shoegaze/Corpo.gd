@@ -24,4 +24,7 @@
     <Compile Include="src\prebuild\packages\generate-json\.build\dist\csharp\**\*.cs"/>
     <Compile Remove="src\Engine\**"/>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="test\.gdignore" />
+  </ItemGroup>
 </Project>
