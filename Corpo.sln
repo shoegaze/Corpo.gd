@@ -3,6 +3,11 @@
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C86AC41A-FE6C-47AF-895F-8FA40E597F82}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{AEBB41F2-E459-4BB0-96BD-5564C88C6479}"
+	ProjectSection(SolutionItems) = preProject
+		test\CorpoTest\test\ExampleTest.cs = test\CorpoTest\test\ExampleTest.cs
+		test\CorpoTest\test\ExampleTest.cs.uid = test\CorpoTest\test\ExampleTest.cs.uid
+		test\CorpoTest\CorpoTest.csproj = test\CorpoTest\CorpoTest.csproj
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamSports", "src\TeamSports\TeamSports.csproj", "{FCEE288D-5479-44A1-8A4C-A89E360ACB9A}"
 EndProject
