@@ -27,6 +27,12 @@ public sealed class ScreenService(
   public GodotScreen CurrentScreen => screens.Count > 0 ? screens.Peek() : null;
 
 
+  public void AttachRoot(GodotScreen screen) {
+    screens.Push(screen);
+
+    screen.OnFocus();
+  }
+
   // TODO: Call this in some _Update method
   public void UpdateScreen() {
     ulong timeNowMs = timePreviousMs;
@@ -40,7 +46,7 @@ public sealed class ScreenService(
   public void Enter(GodotScreen screen) {
     logger.Info($"Entering: {screen}");
 
-    nodeService.RootNode.AddChild(screen);
+    nodeService.MainNode.AddChild(screen);
 
     screens.Push(screen);
     screen.OnCreate();
@@ -61,7 +67,7 @@ public sealed class ScreenService(
 
     logger.Info($"Exiting: {previousScreen}");
 
-    nodeService.RootNode.RemoveChild(previousScreen);
+    nodeService.MainNode.RemoveChild(previousScreen);
     previousScreen.OnDismiss();
 
     if (screens.Count == 0) {
@@ -76,6 +82,6 @@ public sealed class ScreenService(
   }
 
   private void Tick(float dt) {
-    CurrentScreen?.Tick(dt, GameInput.FromGlobal());
+    CurrentScreen?.Tick(dt, GameInput.Poll());
   }
 }

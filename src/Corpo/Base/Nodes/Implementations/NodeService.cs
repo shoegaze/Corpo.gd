@@ -7,10 +7,10 @@ namespace Corpo.Base.Nodes.Implementations;
 // ReSharper disable once ClassNeverInstantiated.Global
 public sealed class NodeService : INodeService {
 
-  public Node RootNode { get; private set; }
+  public Node MainNode { get; private set; }
 
 
-  public void LoadRoot(Node rootNode) {
-    RootNode = rootNode;
+  public void AttachMain(Node rootNode) {
+    MainNode = rootNode;
   }
 }

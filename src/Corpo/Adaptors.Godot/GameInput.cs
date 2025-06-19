@@ -22,7 +22,7 @@ public struct GameInput(
   public readonly bool Cancel = cancel;
   public readonly bool Cycle = cycle;
 
-  public static GameInput FromGlobal() {
+  public static GameInput Poll() {
     bool up = Input.IsActionJustPressed("ui_up");
     bool down = Input.IsActionJustPressed("ui_down");
     bool right = Input.IsActionJustPressed("ui_right");

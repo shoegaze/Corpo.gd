@@ -1,22 +1,32 @@
 using Corpo.Adaptors.Godot;
 
+using Lamar;
+
+using TeamSports;
+
 
 namespace Corpo.Loading;
 
 
-// ReSharper disable once ClassNeverInstantiated.Global
 public partial class LoadingScreen : GodotScreen {
+  private Container loadingContainer;
+
+  private ILogger logger;
+
   public override string ToString() {
     return nameof(LoadingScreen);
   }
 
-  public void OnSetUp() { }
 
-  public void OnTearDown() { }
+  public override Container Services => loadingContainer;
+
+
+  public override void OnCreate() {
+    loadingContainer = BuildContainer<LoadingRegistry>(logger);
+    logger = loadingContainer.GetInstance<ILogger>();
+  }
 
   public override void OnFocus() { }
-
-  public override void OnCreate() { }
 
   public override void OnDismiss() { }
 

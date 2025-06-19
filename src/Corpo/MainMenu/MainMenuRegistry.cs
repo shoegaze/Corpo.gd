@@ -16,7 +16,7 @@ public sealed class MainMenuRegistry : ServiceRegistry {
     Scan(s => {
       s.TheCallingAssembly();
       s.WithDefaultConventions(
-        OverwriteBehavior.NewType,
+        OverwriteBehavior.Never,
         ServiceLifetime.Singleton);
 
       s.IncludeNamespaceContainingType<MainMenuRegistry>();

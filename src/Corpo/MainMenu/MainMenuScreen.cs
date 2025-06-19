@@ -7,7 +7,6 @@ using Corpo.MainMenu.Core;
 using Godot;
 
 using TeamSports;
-using TeamSports.Services;
 
 using Button = Godot.Button;
 using Container = Lamar.Container;
@@ -17,8 +16,7 @@ namespace Corpo.MainMenu;
 
 
 public partial class MainMenuScreen : GodotScreen {
-  public Container MainMenuContainer { get; private set; }
-
+  private Container mainMenuContainer;
 
   // Dependencies
   private ILogger logger;
@@ -36,24 +34,17 @@ public partial class MainMenuScreen : GodotScreen {
     return nameof(MainMenuScreen);
   }
 
+
+  public override Container Services => mainMenuContainer;
+
+
   public override void OnCreate() {
-    logger = Main.BaseContainer.GetInstance<ILogger>();
+    mainMenuContainer = BuildContainer<MainMenuRegistry>(logger);
+    logger = mainMenuContainer.GetInstance<ILogger>();
 
-    MainMenuContainer =
-        new Container(services => {
-          logger.Debug("Including main menu services...");
-          services.IncludeRegistry<MainMenuRegistry>();
-
-          services.For<IStartable>()
-             .OnCreationForAll((_, startable) => {
-                logger.Debug($"Starting service: {startable}");
-                startable.Start();
-              });
-        });
-
-    environmentService = MainMenuContainer.GetInstance<IEnvironmentService>();
-    stateService = MainMenuContainer.GetInstance<IStateService>();
-    mainMenuService = MainMenuContainer.GetInstance<IMainMenuService>();
+    environmentService = mainMenuContainer.GetInstance<IEnvironmentService>();
+    stateService = mainMenuContainer.GetInstance<IStateService>();
+    mainMenuService = mainMenuContainer.GetInstance<IMainMenuService>();
 
 
     Generated.Json.Environment.MainMenu mainMenuPath =

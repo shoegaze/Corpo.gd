@@ -3,23 +3,40 @@
 using Corpo.Adaptors.Godot;
 using Corpo.Base.Core;
 
+using Lamar;
+
+using TeamSports;
+
 
 namespace Corpo.Base;
 
 
-public sealed partial class BaseScreen : GodotScreen {
+// TODO: Define GodotRootScreen : GodotScreen, IRootScreen
+public sealed partial class BaseScreen : GodotBaseScreen {
+
+  private Container baseContainer;
+
+  private ILogger logger;
   private IBaseService baseService;
 
   public override string ToString() {
     return nameof(BaseScreen);
   }
 
-  public override void _Ready() {
-    baseService = Main.BaseContainer.GetInstance<IBaseService>();
+
+  public override Container Services => baseContainer;
+
+
+  public override void SetupRoot() {
+    baseContainer = BuildContainer<BaseRegistry>(logger);
+
+    logger = baseContainer.GetInstance<ILogger>();
+    logger.Info($"Created base screen: {this}");
+
+    baseService = baseContainer.GetInstance<IBaseService>();
   }
 
   public override void OnCreate() {
-    // TODO: Move to loader
     baseService.LoadPackages();
   }
 
@@ -30,7 +47,6 @@ public sealed partial class BaseScreen : GodotScreen {
   public override void OnDismiss() { }
 
   public override void Tick(float dt, GameInput? input) {
-    // TODO;
     throw new NotImplementedException();
   }
 }

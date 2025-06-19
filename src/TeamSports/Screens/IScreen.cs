@@ -3,7 +3,6 @@ namespace TeamSports.Screens;
 
 public interface IScreen<TInput>
 where TInput : struct {
-
   public void OnCreate();
   public void OnFocus();
   public void OnDismiss();

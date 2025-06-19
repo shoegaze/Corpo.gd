@@ -28,8 +28,12 @@ public sealed class StateService(
     Battle
   }
 
-  private readonly Stack<GameState> states = new();
+  private readonly Stack<GameState> states = [];
   private IStateLifecycle activeLifecycle;
+
+  public void Start() {
+    EnterState(GameState.Base);
+  }
 
   public void ExitState() {
     if (states.Count == 0) {
@@ -57,10 +61,7 @@ public sealed class StateService(
   private void SetUpLifecycle(GameState state) {
     activeLifecycle =
         state switch {
-          GameState.Base => new BaseLifecycle(
-                environmentService,
-                screenService
-              ),
+          GameState.Base => new BaseLifecycle(screenService),
           GameState.Overworld => new OverworldLifecycle( /* TODO */),
           GameState.Battle => new BattleLifecycle(
                 environmentService,

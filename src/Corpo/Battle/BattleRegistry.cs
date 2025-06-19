@@ -16,7 +16,7 @@ public sealed class BattleRegistry : ServiceRegistry {
     Scan(s => {
       s.TheCallingAssembly();
       s.WithDefaultConventions(
-        OverwriteBehavior.NewType,
+        OverwriteBehavior.Never,
         ServiceLifetime.Singleton);
 
       s.IncludeNamespaceContainingType<BattleRegistry>();

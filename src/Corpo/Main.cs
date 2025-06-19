@@ -1,13 +1,9 @@
-using Corpo.Base;
-using Corpo.Base.Nodes;
-using Corpo.Base.States;
-using Corpo.Base.States.Implementations;
+using Corpo.Bootstrap;
 using Corpo.Logging;
 
 using Godot;
 
 using TeamSports;
-using TeamSports.Services;
 
 using Container = Lamar.Container;
 
@@ -16,46 +12,31 @@ namespace Corpo;
 
 
 public partial class Main : Node {
-  public static Container BaseContainer { get; private set; }
+  [Export] public PackedScene BaseScene { get; private set; }
 
+
+  public override string ToString() {
+    return nameof(Main);
+  }
 
   // Main entrypoint
   public override void _Ready() {
-    ILogger logger = BuildLogger();
-    BaseContainer = BuildBaseServices(logger);
+    Container loggerContainer = BuildLoggerContainer();
+    var logger = loggerContainer.GetInstance<ILogger>();
 
-    StartGame(logger);
+    StartGameBootstrap(logger);
   }
 
-  // TODO: Refactor into separate static class
-  private ILogger BuildLogger() {
-    return new Container(new LoggerRegistry())
-       .GetInstance<ILogger>();
+  private static Container BuildLoggerContainer() {
+    return new Container(new LoggerRegistry());
   }
 
-  // TODO: Refactor into separate static class
-  private Container BuildBaseServices(ILogger logger) {
-    logger.Info("Building base services...");
+  private void StartGameBootstrap(ILogger logger) {
+    logger.Info("Starting bootstrap...");
 
-    return new Container(services => {
-      logger.Debug("Including base services registry");
-      services.IncludeRegistry<BaseRegistry>();
+    var bootstrapContext =
+        new Bootstrapper.BootstrapContext(this, BaseScene, logger);
 
-      services.For<IStartable>()
-         .OnCreationForAll((_, startable) => {
-            logger.Debug($"Starting service: {startable}");
-            startable.Start();
-          });
-    });
-  }
-
-  private void StartGame(ILogger logger) {
-    logger.Info("Starting game...");
-
-    BaseContainer.GetInstance<INodeService>()
-       .LoadRoot(this);
-
-    BaseContainer.GetInstance<IStateService>()
-       .EnterState(StateService.GameState.Base);
+    Bootstrapper.StartGame(bootstrapContext);
   }
 }

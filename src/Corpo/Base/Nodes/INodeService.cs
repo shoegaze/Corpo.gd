@@ -7,9 +7,8 @@ namespace Corpo.Base.Nodes;
 
 
 public interface INodeService : IService {
+  Node MainNode { get; }
 
-  Node RootNode { get; }
 
-
-  void LoadRoot(Node rootNode);
+  void AttachMain(Node rootNode);
 }

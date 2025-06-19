@@ -64,6 +64,6 @@ public sealed class ScreenComponentService(
       component.Update(dt);
     }
 
-    CurrentComponent.Tick(dt, GameInput.FromGlobal());
+    CurrentComponent.Tick(dt, GameInput.Poll());
   }
 }

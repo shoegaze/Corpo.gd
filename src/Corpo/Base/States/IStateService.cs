@@ -6,7 +6,7 @@ using TeamSports.Services;
 namespace Corpo.Base.States;
 
 
-public interface IStateService : IService {
+public interface IStateService : IService, IStartable {
   void EnterState(StateService.GameState state);
   void ExitState();
 }

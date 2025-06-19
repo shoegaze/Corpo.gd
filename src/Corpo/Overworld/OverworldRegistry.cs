@@ -16,7 +16,7 @@ public sealed class OverworldRegistry : ServiceRegistry {
     Scan(s => {
       s.TheCallingAssembly();
       s.WithDefaultConventions(
-        OverwriteBehavior.NewType,
+        OverwriteBehavior.Never,
         ServiceLifetime.Singleton);
 
       s.IncludeNamespaceContainingType<OverworldRegistry>();
