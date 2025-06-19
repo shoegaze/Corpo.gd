@@ -51,5 +51,5 @@ where TRegistry : ServiceRegistry, new() {
 
   public virtual void OnFocus() { }
 
-  public virtual void Tick(float dt, GameInput? input) { }
+  public virtual void Tick(float dt, CorpoInput input) { }
 }

@@ -84,6 +84,8 @@ public sealed class ScreenService(
   }
 
   private void Tick(float dt) {
-    CurrentScreen?.Tick(dt, GameInput.Poll());
+    CorpoInput input = InputExtensions.PollInput();
+
+    CurrentScreen?.Tick(dt, input);
   }
 }

@@ -24,12 +24,12 @@ public sealed partial class BaseScreen : GodotBaseScreen {
     Services = BuildServiceContainer(logger);
 
     logger = Services.GetInstance<ILogger>();
-    logger.Info($"Created base screen: {this}");
-
     baseService = Services.GetInstance<IBaseService>();
   }
 
   public override void OnCreate() {
+    logger.Info($"Created base screen: {this}");
+
     baseService.LoadPackages();
   }
 

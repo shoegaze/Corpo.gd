@@ -63,6 +63,8 @@ public sealed class ScreenComponentService(
       component.Update(dt);
     }
 
-    CurrentComponent.Tick(dt, GameInput.Poll());
+    CorpoInput input = InputExtensions.PollInput();
+
+    CurrentComponent.Tick(dt, input);
   }
 }

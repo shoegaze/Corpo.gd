@@ -7,6 +7,6 @@ namespace Corpo.Adaptors.Godot;
 
 
 public abstract partial class GodotBaseScreen
-    : GodotScreen<BaseRegistry>, IBaseScreen<GameInput> {
+    : GodotScreen<BaseRegistry>, IBaseScreen<CorpoInput> {
   public abstract void SetupRoot();
 }
