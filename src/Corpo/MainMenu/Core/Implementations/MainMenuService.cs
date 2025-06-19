@@ -13,11 +13,11 @@ public sealed class MainMenuService(
   IEnvironmentService environmentService
 ) : IMainMenuService {
 
-  public void ToggleSavesSubmenu(GodotScreen root) {
+  public void ToggleSavesSubmenu(IGodotScreen root) {
     Submenu submenuPath =
         environmentService.Environment.Path.Screen.MainMenu.Submenu;
 
-    var submenusRoot = root.GetNode(submenuPath.Root) as TabContainer;
+    var submenusRoot = root.ToNode().GetNode(submenuPath.Root) as TabContainer;
 
     if (submenusRoot!.Visible) {
       // TODO: Fade out animation
@@ -33,11 +33,12 @@ public sealed class MainMenuService(
     // Node subMenuSave = submenusRoot!.GetNode(submenuPath.Saves);
   }
 
-  public void ToggleSettingsSubmenu(GodotScreen root) {
+  public void ToggleSettingsSubmenu(IGodotScreen root) {
     Submenu submenusPaths =
         environmentService.Environment.Path.Screen.MainMenu.Submenu;
 
-    var submenusRoot = root.GetNode(submenusPaths.Root) as TabContainer;
+    var submenusRoot =
+        root.ToNode().GetNode(submenusPaths.Root) as TabContainer;
 
     if (submenusRoot!.Visible) {
       // TODO: Fade out animation

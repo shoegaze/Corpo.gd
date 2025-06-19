@@ -1,5 +1,4 @@
-﻿using Corpo.Adaptors.Godot;
-using Corpo.Base.Environments;
+﻿using Corpo.Base.Environments;
 using Corpo.Base.Screens;
 using Corpo.Base.States;
 
@@ -20,7 +19,7 @@ public class BattleLifecycle(
               environmentService.Environment.Path.Screen.Battle
             );
 
-    GodotScreen battleScreen = battleScene.Instantiate<BattleScreen>();
+    var battleScreen = battleScene.Instantiate<BattleScreen>();
 
     screenService.Enter(battleScreen);
   }

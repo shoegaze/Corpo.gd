@@ -7,6 +7,6 @@ namespace Corpo.MainMenu.Core;
 
 
 public interface IMainMenuService : IService {
-  void ToggleSavesSubmenu(GodotScreen screen);
-  void ToggleSettingsSubmenu(GodotScreen screen);
+  void ToggleSavesSubmenu(IGodotScreen root);
+  void ToggleSettingsSubmenu(IGodotScreen root);
 }

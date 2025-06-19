@@ -9,15 +9,12 @@ using Godot;
 using TeamSports;
 
 using Button = Godot.Button;
-using Container = Lamar.Container;
 
 
 namespace Corpo.MainMenu;
 
 
-public partial class MainMenuScreen : GodotScreen {
-  private Container mainMenuContainer;
-
+public partial class MainMenuScreen : GodotScreen<MainMenuRegistry> {
   // Dependencies
   private ILogger logger;
   private IEnvironmentService environmentService;
@@ -34,17 +31,13 @@ public partial class MainMenuScreen : GodotScreen {
     return nameof(MainMenuScreen);
   }
 
-
-  public override Container Services => mainMenuContainer;
-
-
   public override void OnCreate() {
-    mainMenuContainer = BuildContainer<MainMenuRegistry>(logger);
-    logger = mainMenuContainer.GetInstance<ILogger>();
+    base.OnCreate();
 
-    environmentService = mainMenuContainer.GetInstance<IEnvironmentService>();
-    stateService = mainMenuContainer.GetInstance<IStateService>();
-    mainMenuService = mainMenuContainer.GetInstance<IMainMenuService>();
+    logger = Services.GetInstance<ILogger>();
+    environmentService = Services.GetInstance<IEnvironmentService>();
+    stateService = Services.GetInstance<IStateService>();
+    mainMenuService = Services.GetInstance<IMainMenuService>();
 
 
     Generated.Json.Environment.MainMenu mainMenuPath =
@@ -70,8 +63,6 @@ public partial class MainMenuScreen : GodotScreen {
     buttonSettings.Pressed -= DoSettings;
     buttonExit.Pressed -= DoExit;
   }
-
-  public override void Tick(float dt, GameInput? input) { }
 
   // TODO: Rename to StartGame()
   private void DoNewGame() {

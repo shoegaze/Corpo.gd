@@ -1,4 +1,3 @@
-using Corpo.Adaptors.Godot;
 using Corpo.Base.Environments;
 using Corpo.Base.Screens;
 using Corpo.MainMenu;
@@ -24,8 +23,7 @@ public sealed class BaseService(
         environmentService.Environment.Path.Screen.MainMenu.Path;
 
     var mainMenuScene = GD.Load<PackedScene>(mainMenuScenePath);
-
-    GodotScreen mainMenuScreen = mainMenuScene.Instantiate<MainMenuScreen>();
+    var mainMenuScreen = mainMenuScene.Instantiate<MainMenuScreen>();
 
     screenService.Enter(mainMenuScreen);
   }

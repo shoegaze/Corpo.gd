@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using Corpo.Adaptors.Godot;
 using Corpo.Base.Nodes;
 
-using TeamSports.Repositories.Handles;
-
 using Godot;
+
+using Lamar;
 
 using TeamSports;
 
@@ -20,14 +20,15 @@ public sealed class ScreenService(
   INodeService nodeService
 ) : IScreenService {
 
-  private readonly Stack<GodotScreen> screens = new();
+  private readonly Stack<IGodotScreen> screens = new();
   private ulong timePreviousMs = Time.GetTicksMsec();
 
 
-  public GodotScreen CurrentScreen => screens.Count > 0 ? screens.Peek() : null;
+  public IGodotScreen CurrentScreen =>
+      screens.Count > 0 ? screens.Peek() : null;
 
 
-  public void AttachRoot(GodotScreen screen) {
+  public void AttachRoot(IGodotScreen screen) {
     screens.Push(screen);
 
     screen.OnFocus();
@@ -43,7 +44,8 @@ public sealed class ScreenService(
     timePreviousMs = timeNowMs;
   }
 
-  public void Enter(GodotScreen screen) {
+  public void Enter<T>(GodotScreen<T> screen)
+  where T : ServiceRegistry, new() {
     logger.Info($"Entering: {screen}");
 
     nodeService.MainNode.AddChild(screen);
@@ -63,18 +65,18 @@ public sealed class ScreenService(
       return;
     }
 
-    GodotScreen previousScreen = screens.Pop();
+    IGodotScreen previousScreen = screens.Pop();
 
     logger.Info($"Exiting: {previousScreen}");
 
-    nodeService.MainNode.RemoveChild(previousScreen);
+    nodeService.MainNode.RemoveChild(previousScreen.ToNode());
     previousScreen.OnDismiss();
 
     if (screens.Count == 0) {
       return;
     }
 
-    GodotScreen currentScreen = screens.Peek();
+    IGodotScreen currentScreen = screens.Peek();
 
     logger.Debug($"Focus on: {currentScreen}");
 

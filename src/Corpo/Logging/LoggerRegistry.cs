@@ -1,5 +1,3 @@
-using TeamSports.Repositories.Handles;
-
 using Lamar;
 
 using Microsoft.Extensions.DependencyInjection;

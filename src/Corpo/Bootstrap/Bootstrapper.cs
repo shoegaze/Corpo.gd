@@ -1,7 +1,5 @@
 #nullable enable
 
-using Corpo.Base.Nodes;
-
 using Godot;
 
 using TeamSports;
