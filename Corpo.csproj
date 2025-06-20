@@ -3,11 +3,12 @@
     <TargetFramework>net8.0</TargetFramework>
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Configurations>ExportDebug;ExportRelease;Development;Staging;Production</Configurations>
+    <Platforms>AnyCPU;x64;arm64</Platforms>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="gdUnit4.api" Version="4.3.1"/>
     <PackageReference Include="gdUnit4.test.adapter" Version="2.0.0"/>
-    <PackageReference Include="ImGui.NET" Version="1.91.0.1"/>
     <PackageReference Include="Lamar" Version="15.0.0"/>
     <PackageReference Include="Microsoft.Extensions.FileSystemGlobbing" Version="8.0.0"/>
     <PackageReference Include="Serilog" Version="4.0.0"/>
@@ -27,4 +28,59 @@
     <!-- Include prebuild generated sources -->
     <Compile Include="src\prebuild\packages\generate-json\.build\dist\csharp\**\*.cs"/>
   </ItemGroup>
+
+  <Choose>
+    <When Condition="
+      '$(Configuration)' == 'ExportDebug' Or 
+      '$(Configuration)' == 'Development'"
+    >
+      <PropertyGroup>
+        <DefineConstants>$(DefineConstants);DEVELOPMENT;DEBUG</DefineConstants>
+        <DefineConstants Condition="
+            $(DefineConstants.Contains('GODOT_PC')) And
+            ('$(Platform)'=='x64' Or '$(Platform)'=='arm64')"
+        >
+          $(DefineConstants);IMGUI
+        </DefineConstants>
+      </PropertyGroup>
+    </When>
+    <When Condition="'$(Configuration)' == 'Staging'">
+      <PropertyGroup>
+        <DefineConstants>$(DefineConstants);STAGING;RELEASE</DefineConstants>
+        <DefineConstants Condition="
+            $(DefineConstants.Contains('GODOT_PC')) And
+            ('$(Platform)'=='x64' Or '$(Platform)'=='arm64')"
+        >
+          $(DefineConstants);IMGUI
+        </DefineConstants>
+      </PropertyGroup>
+    </When>
+    <When Condition="
+      '$(Configuration)' == 'ExportRelease' Or 
+      '$(Configuration)' == 'Production'"
+    >
+      <PropertyGroup>
+        <DefineConstants>$(DefineConstants);PRODUCTION;RELEASE</DefineConstants>
+        <Optimize>true</Optimize>
+      </PropertyGroup>
+    </When>
+    <Otherwise>
+      <PropertyGroup>
+        <DefineConstants>$(DefineConstants);DEVELOPMENT</DefineConstants>
+      </PropertyGroup>
+    </Otherwise>
+  </Choose>
+
+  <Choose>
+    <When Condition="$(DefineConstants.Contains('IMGUI'))">
+      <ItemGroup>
+        <PackageReference Include="ImGui.NET" Version="1.91.0.1"/>
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <Compile Remove="addons/imgui-godot/**"/>
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
 </Project>
