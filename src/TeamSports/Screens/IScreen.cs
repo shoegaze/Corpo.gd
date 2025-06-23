@@ -3,9 +3,14 @@ namespace TeamSports.Screens;
 
 public interface IScreen<in TInput>
 where TInput : struct {
-  public void OnCreate();
-  public void OnFocus();
-  public void OnDismiss();
+  void OnCreate();
+  void OnFocus();
 
-  public void Tick(float dt, TInput input);
+  // TODO:
+  // void OnFocusIn();
+  // void OnFocusOut();
+
+  void OnDismiss();
+
+  void Tick(float dt, TInput input);
 }

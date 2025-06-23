@@ -16,8 +16,7 @@ public class BattleLifecycle(
     // TODO: Create from NodeService.GetBaseScreen(bool cache = true)
     var battleScene =
         GD.Load<PackedScene>(
-              environmentService.Environment.Path.Screen.Battle
-            );
+          environmentService.Environment.Path.Screen.Battle);
 
     var battleScreen = battleScene.Instantiate<BattleScreen>();
 

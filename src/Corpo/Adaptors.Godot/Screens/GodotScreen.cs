@@ -10,11 +10,13 @@ using TeamSports.Services;
 using Container = Lamar.Container;
 
 
-namespace Corpo.Adaptors.Godot;
+namespace Corpo.Adaptors.Godot.Screens;
 
 
-public abstract partial class GodotScreen<TRegistry> : Node, IGodotScreen
-where TRegistry : ServiceRegistry, new() {
+public abstract partial class GodotScreen<TRegistry, TInput>
+    : Node, IGodotScreen<TInput>
+where TRegistry : ServiceRegistry, new()
+where TInput : struct {
   public Container Services { get; protected set; } = null!;
 
 
@@ -49,7 +51,7 @@ where TRegistry : ServiceRegistry, new() {
     Services.Dispose();
   }
 
-  public virtual void OnFocus() { }
+  public virtual void Tick(float dt, TInput input) { }
 
-  public virtual void Tick(float dt, CorpoInput input) { }
+  public virtual void OnFocus() { }
 }

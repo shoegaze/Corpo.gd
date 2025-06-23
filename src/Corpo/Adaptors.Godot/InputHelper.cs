@@ -1,10 +1,12 @@
+using Corpo.Core;
+
 using Godot;
 
 
 namespace Corpo.Adaptors.Godot;
 
 
-public static class InputExtensions {
+public static class InputHelper {
   public static CorpoInput PollInput() {
     var horizontal =
         new Horizontal(

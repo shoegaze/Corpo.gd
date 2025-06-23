@@ -1,4 +1,4 @@
 ﻿namespace Corpo.Battle.Core.Implementations;
 
 
-public sealed class BattleService : IBattleService { }
+public sealed class BattleService : IBattleService;

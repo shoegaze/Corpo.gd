@@ -23,6 +23,7 @@ public struct GameInput(
   public readonly bool Cycle = cycle;
 
   public static GameInput FromGlobal() {
+    // TODO: Define user input actions i.e. "corpo_up"
     bool up = Input.IsActionJustPressed("ui_up");
     bool down = Input.IsActionJustPressed("ui_down");
     bool right = Input.IsActionJustPressed("ui_right");

@@ -1,5 +1,5 @@
-﻿using Corpo.Adaptors.Godot;
-using Corpo.Base.Core;
+﻿using Corpo.Base.Core;
+using Corpo.Core.Screens;
 
 using TeamSports;
 
@@ -7,7 +7,7 @@ using TeamSports;
 namespace Corpo.Base;
 
 
-public sealed partial class BaseScreen : GodotBaseScreen {
+public sealed partial class BaseScreen : CorpoBaseScreen {
 
   private ILogger logger;
   private IBaseService baseService;

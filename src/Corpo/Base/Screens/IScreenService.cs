@@ -1,6 +1,4 @@
-using Corpo.Adaptors.Godot;
-
-using Lamar;
+using Corpo.Core.Screens;
 
 using TeamSports.Services;
 
@@ -10,10 +8,12 @@ namespace Corpo.Base.Screens;
 
 public interface IScreenService : IService {
 
-  IGodotScreen CurrentScreen { get; }
+  ICorpoScreen CurrentScreen { get; }
 
 
   void UpdateScreen();
-  void Enter<T>(GodotScreen<T> screen) where T : ServiceRegistry, new();
+
+  void Enter(ICorpoScreen screen);
+
   void Dismiss();
 }

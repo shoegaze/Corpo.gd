@@ -1,4 +1,4 @@
-﻿namespace Corpo.Adaptors.Godot;
+﻿namespace Corpo.Core;
 
 
 public readonly record struct CorpoInput(

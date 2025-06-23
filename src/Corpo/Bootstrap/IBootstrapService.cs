@@ -1,13 +1,13 @@
-using Corpo.Adaptors.Godot;
-
 using Godot;
+
+using CorpoBaseScreen = Corpo.Core.Screens.CorpoBaseScreen;
 
 
 namespace Corpo.Bootstrap;
 
 
 public interface IBootstrapService {
-  GodotBaseScreen BaseScreen { get; }
+  CorpoBaseScreen BaseScreen { get; }
 
 
   void AttachBaseScreen(Node mainNode, PackedScene baseScreen);

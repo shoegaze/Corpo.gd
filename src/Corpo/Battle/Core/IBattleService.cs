@@ -4,4 +4,4 @@ using TeamSports.Services;
 namespace Corpo.Battle.Core;
 
 
-public interface IBattleService : IService { }
+public interface IBattleService : IService;

@@ -1,7 +1,7 @@
-using Corpo.Adaptors.Godot;
 using Corpo.Base.Environments;
 using Corpo.Base.States;
 using Corpo.Base.States.Implementations;
+using Corpo.Core.Screens;
 using Corpo.MainMenu.Core;
 
 using Godot;
@@ -14,7 +14,7 @@ using Button = Godot.Button;
 namespace Corpo.MainMenu;
 
 
-public partial class MainMenuScreen : GodotScreen<MainMenuRegistry> {
+public partial class MainMenuScreen : CorpoScreen<MainMenuRegistry> {
   // Dependencies
   private ILogger logger;
   private IEnvironmentService environmentService;
@@ -99,4 +99,8 @@ public partial class MainMenuScreen : GodotScreen<MainMenuRegistry> {
 
     sceneTree.Quit();
   }
+
+  // public override void Tick(float dt, CorpoInput input) {
+  //   screen.
+  // }
 }

@@ -1,5 +1,5 @@
-﻿using Corpo.Adaptors.Godot;
-using Corpo.Base.Environments;
+﻿using Corpo.Base.Environments;
+using Corpo.Core.Screens;
 using Corpo.Generated.Json.Environment;
 
 using Godot;
@@ -13,7 +13,7 @@ public sealed class MainMenuService(
   IEnvironmentService environmentService
 ) : IMainMenuService {
 
-  public void ToggleSavesSubmenu(IGodotScreen root) {
+  public void ToggleSavesSubmenu(ICorpoScreen root) {
     Submenu submenuPath =
         environmentService.Environment.Path.Screen.MainMenu.Submenu;
 
@@ -33,7 +33,7 @@ public sealed class MainMenuService(
     // Node subMenuSave = submenusRoot!.GetNode(submenuPath.Saves);
   }
 
-  public void ToggleSettingsSubmenu(IGodotScreen root) {
+  public void ToggleSettingsSubmenu(ICorpoScreen root) {
     Submenu submenusPaths =
         environmentService.Environment.Path.Screen.MainMenu.Submenu;
 

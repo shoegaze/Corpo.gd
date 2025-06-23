@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿#nullable enable
+
+using System;
 
 using Corpo.Adaptors.Godot;
 using Corpo.Base.Nodes;
+using Corpo.Core;
+using Corpo.Core.Screens;
 
 using Godot;
-
-using Lamar;
 
 using TeamSports;
 
@@ -20,72 +21,49 @@ public sealed class ScreenService(
   INodeService nodeService
 ) : IScreenService {
 
-  private readonly Stack<IGodotScreen> screens = new();
+  private readonly CorpoScreenManager screenManager = new();
   private ulong timePreviousMs = Time.GetTicksMsec();
 
 
-  public IGodotScreen CurrentScreen =>
-      screens.Count > 0 ? screens.Peek() : null;
+  public ICorpoScreen? CurrentScreen => screenManager.CurrentScreen;
 
-
-  public void AttachRoot(IGodotScreen screen) {
-    screens.Push(screen);
-
-    screen.OnFocus();
-  }
 
   // TODO: Call this in some _Update method
   public void UpdateScreen() {
     ulong timeNowMs = timePreviousMs;
     float dt = (timeNowMs - timePreviousMs) / 1000.0f;
 
-    Tick(dt);
+    if (CurrentScreen is not null) {
+      logger.Debug("Updating screen");
+
+      // TODO: Poll only in Node:_Input()
+      // TODO: Create InputService:GetInput
+      CorpoInput input = InputHelper.PollInput();
+      screenManager.CurrentScreen?.Tick(dt, input);
+    }
 
     timePreviousMs = timeNowMs;
   }
 
-  public void Enter<T>(GodotScreen<T> screen)
-  where T : ServiceRegistry, new() {
+  public void Enter(ICorpoScreen screen) {
     logger.Info($"Entering: {screen}");
 
-    nodeService.MainNode.AddChild(screen);
-
-    screens.Push(screen);
-    screen.OnCreate();
-
-    if (screen == CurrentScreen) {
-      screen.OnFocus();
-    }
+    screenManager.Enter(screen);
+    nodeService.MainNode.AddChild(screen.ToNode());
   }
 
   public void Dismiss() {
-    if (screens.Count == 0) {
+    if (screenManager.CurrentScreen is null) {
       logger.Error("No screen to dismiss", new InvalidOperationException());
 
       return;
     }
 
-    IGodotScreen previousScreen = screens.Pop();
+    ICorpoScreen? previousScreen = screenManager.CurrentScreen;
 
     logger.Info($"Exiting: {previousScreen}");
 
+    screenManager.Dismiss();
     nodeService.MainNode.RemoveChild(previousScreen.ToNode());
-    previousScreen.OnDismiss();
-
-    if (screens.Count == 0) {
-      return;
-    }
-
-    IGodotScreen currentScreen = screens.Peek();
-
-    logger.Debug($"Focus on: {currentScreen}");
-
-    currentScreen.OnFocus();
-  }
-
-  private void Tick(float dt) {
-    CorpoInput input = InputExtensions.PollInput();
-
-    CurrentScreen?.Tick(dt, input);
   }
 }

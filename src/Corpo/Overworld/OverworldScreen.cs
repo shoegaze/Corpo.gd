@@ -1,10 +1,10 @@
-﻿using Corpo.Adaptors.Godot;
+﻿using Corpo.Core.Screens;
 
 
 namespace Corpo.Overworld;
 
 
-public sealed partial class OverworldScreen : GodotScreen<OverworldRegistry> {
+public sealed partial class OverworldScreen : CorpoScreen<OverworldRegistry> {
   public override string ToString() {
     return nameof(OverworldScreen);
   }
