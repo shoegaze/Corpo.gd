@@ -3,74 +3,80 @@
     <TargetFramework>net8.0</TargetFramework>
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <Configurations>ExportDebug;ExportRelease;Development;Staging;Production</Configurations>
+    <Nullable>enable</Nullable>
+
+    <Configurations>ExportDebug;ExportRelease</Configurations>
     <Platforms>AnyCPU;x64;arm64</Platforms>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="gdUnit4.api" Version="4.3.1"/>
-    <PackageReference Include="gdUnit4.test.adapter" Version="2.0.0"/>
     <PackageReference Include="Lamar" Version="15.0.0"/>
     <PackageReference Include="Microsoft.Extensions.FileSystemGlobbing" Version="8.0.0"/>
-    <PackageReference Include="Serilog" Version="4.0.0"/>
-    <PackageReference Include="Serilog.Sinks.File" Version="6.0.0"/>
+    <PackageReference Include="Serilog" Version="4.3.0"/>
+    <PackageReference Include="Serilog.Sinks.File" Version="7.0.0"/>
     <PackageReference Include="System.Text.Json" Version="9.0.5"/>
   </ItemGroup>
+
   <ItemGroup>
-    <!-- Testing -->
-    <Compile Remove="test\**"/>
-    <EmbeddedResource Remove="test\**"/>
+    <Folder Remove="test/"/>
+    <EmbeddedResource Remove="test/**"/>
 
-    <!-- Refer to Engine project -->
-    <ProjectReference Include="src\TeamSports\TeamSports.csproj"/>
-    <EmbeddedResource Remove="src\TeamSports\**"/>
-    <Compile Remove="src\TeamSports\**"/>
-
-    <!-- Include prebuild generated sources -->
-    <Compile Include="src\prebuild\packages\generate-json\.build\dist\csharp\**\*.cs"/>
+    <Folder Remove="addons/"/>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="../TeamSports/TeamSports.csproj"/>
+    <EmbeddedResource Include="../TeamSports/lib/**"/>
+
+    <ProjectReference Include="../TeamSports.Adaptors.Godot/TeamSports.Adaptors.Godot.csproj"/>
+    <EmbeddedResource Include="../TeamSports.Adaptors.Godot/lib/**"/>
+
+    <Compile Include="addons/**/*.cs"/>
+
+    <!-- Include `prebuild` generated sources -->
+    <Compile Include="src/prebuild/packages/generate-json/.build/dist/csharp/**/*.cs"/>
+    <Compile Remove="test\**"/>
+  </ItemGroup>
+
+  <!-- Environment constants -->
   <Choose>
-    <When Condition="
-      '$(Configuration)' == 'ExportDebug' Or 
-      '$(Configuration)' == 'Development'"
-    >
+    <When Condition="'$(Configuration)' == 'ExportDebug'">
       <PropertyGroup>
         <DefineConstants>$(DefineConstants);DEVELOPMENT;DEBUG</DefineConstants>
-        <DefineConstants Condition="
-            $(DefineConstants.Contains('GODOT_PC')) And
-            ('$(Platform)'=='x64' Or '$(Platform)'=='arm64')"
-        >
-          $(DefineConstants);IMGUI
-        </DefineConstants>
       </PropertyGroup>
     </When>
+
+    <!-- TODO -->
     <When Condition="'$(Configuration)' == 'Staging'">
       <PropertyGroup>
-        <DefineConstants>$(DefineConstants);STAGING;RELEASE</DefineConstants>
-        <DefineConstants Condition="
-            $(DefineConstants.Contains('GODOT_PC')) And
-            ('$(Platform)'=='x64' Or '$(Platform)'=='arm64')"
-        >
-          $(DefineConstants);IMGUI
-        </DefineConstants>
+        <DefineConstants>$(DefineConstants);STAGING;DEBUG;RELEASE</DefineConstants>
       </PropertyGroup>
     </When>
-    <When Condition="
-      '$(Configuration)' == 'ExportRelease' Or 
-      '$(Configuration)' == 'Production'"
-    >
+
+    <When Condition="'$(Configuration)' == 'ExportRelease'">
       <PropertyGroup>
         <DefineConstants>$(DefineConstants);PRODUCTION;RELEASE</DefineConstants>
         <Optimize>true</Optimize>
       </PropertyGroup>
     </When>
+
     <Otherwise>
       <PropertyGroup>
-        <DefineConstants>$(DefineConstants);DEVELOPMENT</DefineConstants>
+        <DefineConstants>$(DefineConstants);DEVELOPMENT;DEBUG</DefineConstants>
       </PropertyGroup>
     </Otherwise>
   </Choose>
 
+  <Choose>
+    <When Condition="
+      $(DefineConstants.Contains('GODOT_PC')) And
+      $(DefineConstants.Contains('DEBUG'))">
+      <PropertyGroup>
+        <DefineConstants>$(DefineConstants);IMGUI</DefineConstants>
+      </PropertyGroup>
+    </When>
+  </Choose>
+
+  <!-- IMGUI -->
   <Choose>
     <When Condition="$(DefineConstants.Contains('IMGUI'))">
       <ItemGroup>
