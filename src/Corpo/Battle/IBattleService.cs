@@ -1,7 +1,7 @@
-using Engine.Services;
+using Corpo.Adapters.Services;
 
 
 namespace Corpo.Battle;
 
 
-public interface IBattleService : IService { }
+public interface IBattleService : ICorpoScreenBindable<IBattleScreen>;

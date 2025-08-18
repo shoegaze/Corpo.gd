@@ -1,7 +1,7 @@
-using Engine.Services;
+using Corpo.Adapters.Services;
 
 
 namespace Corpo.Overworld;
 
 
-public interface IOverworldService : IService { }
+public interface IOverworldService : ICorpoScreenBindable<IOverworldScreen>;

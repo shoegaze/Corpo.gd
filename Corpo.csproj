@@ -1,23 +1,83 @@
-<Project Sdk="Godot.NET.Sdk/4.4.0">
+<Project Sdk="Godot.NET.Sdk/4.4.1">
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <EnableDynamicLoading>true</EnableDynamicLoading>
+    <Nullable>enable</Nullable>
+
+    <Configurations>ExportDebug;ExportStaging;ExportRelease</Configurations>
+    <Platforms>AnyCPU;x64;arm64</Platforms>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Lamar" Version="15.0.0"/>
     <PackageReference Include="Microsoft.Extensions.FileSystemGlobbing" Version="8.0.0"/>
-    <PackageReference Include="Serilog" Version="4.0.0"/>
-    <PackageReference Include="Serilog.Sinks.File" Version="6.0.0"/>
+    <PackageReference Include="R3" Version="1.3.0"/>
+    <PackageReference Include="Serilog" Version="4.3.0"/>
+    <PackageReference Include="Serilog.Sinks.File" Version="7.0.0"/>
     <PackageReference Include="System.Text.Json" Version="9.0.5"/>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include=".\src\Engine\Engine.csproj"/>
 
-    <!-- Include prebuild generated sources -->
-    <Compile Include=".\src\prebuild\packages\generate-json\.build\dist\csharp\**\*.cs"/>
-    <Compile Remove="src\Engine\**"/>
-  </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Remove="src\Engine\**"/>
+    <!-- Include prebuild generated sources -->
+    <Compile Include="src/prebuild/packages/generate-json/.build/dist/csharp/**/*.cs"/>
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../TeamSports/TeamSports.csproj"/>
+    <EmbeddedResource Include="../TeamSports/lib/**"/>
+
+    <ProjectReference Include="../TeamSports.Adaptors.Godot/TeamSports.Adaptors.Godot.csproj"/>
+    <EmbeddedResource Include="../TeamSports.Adaptors.Godot/lib/**"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="src\Corpo\Adapters\Screens\Concrete\CorpoScreenWrapper.cs.uid"/>
+    <Content Include="src\Corpo\Adapters\Services\Concrete\CorpoStartableTracker.cs.uid"/>
+    <Content Include="src\Corpo\Base\IBaseScreen.cs.uid"/>
+    <Content Include="src\Corpo\Base\_Impl\BaseScreen.cs.uid"/>
+    <Content Include="src\Corpo\Base\_Impl\BaseService.cs.uid"/>
+    <Content Include="src\Corpo\Battle\Resources\IBattleResourceRepository.cs.uid"/>
+    <Content Include="src\Corpo\Battle\_Impl\BattleScreen.cs.uid"/>
+    <Content Include="src\Corpo\Loading\Models\LoaderContext.cs.uid"/>
+    <Content Include="src\Corpo\Loading\_Impl\LoadingScreen.cs.uid"/>
+    <Content Include="src\Corpo\Loading\_Impl\LoadingService.cs.uid"/>
+    <Content Include="src\Corpo\MainMenu\_Impl\MainMenuScreen.cs.uid"/>
+    <Content Include="src\Corpo\MainMenu\_Impl\MainMenuService.cs.uid"/>
+    <Content Include="src\Corpo\Overworld\Resources\IOverworldResourceRepository.cs.uid"/>
+    <Content Include="src\Corpo\Overworld\Resources\IOverworldResourcesService.cs.uid"/>
+    <Content Include="src\Corpo\Overworld\_Impl\OverworldResourcesService.cs.uid"/>
+    <Content Include="src\Corpo\Overworld\_Impl\OverworldScreen.cs.uid"/>
+    <Content Include="src\Corpo\Overworld\_Impl\OverworldService.cs.uid"/>
+  </ItemGroup>
+
+  <!-- Environment flags -->
+  <Choose>
+    <When Condition="$(Configuration) == 'ExportDebug'">
+      <PropertyGroup>
+        <DefineConstants>$(DefineConstants);DEVELOPMENT</DefineConstants>
+      </PropertyGroup>
+    </When>
+
+    <When Condition="$(Configuration) == 'ExportStaging'">
+      <PropertyGroup>
+        <DefineConstants>$(DefineConstants);STAGING</DefineConstants>
+      </PropertyGroup>
+    </When>
+
+    <When Condition="$(Configuration) == 'ExportRelease'">
+      <PropertyGroup>
+        <DefineConstants>$(DefineConstants);PRODUCTION</DefineConstants>
+      </PropertyGroup>
+    </When>
+
+    <Otherwise>
+      <PropertyGroup>
+        <DefineConstants>$(DefineConstants);DEVELOPMENT</DefineConstants>
+      </PropertyGroup>
+    </Otherwise>
+  </Choose>
+
+  <!-- ImGui -->
+  <PropertyGroup>
+    <DefineConstants Condition="$(Platform) == 'x64' Or $(Platform) == 'arm64'">$(DefineConstants);IMGUI</DefineConstants>
+  </PropertyGroup>
 </Project>

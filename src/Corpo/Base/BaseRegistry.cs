@@ -1,5 +1,3 @@
-using Corpo.Logging;
-
 using Lamar;
 using Lamar.Scanning.Conventions;
 
@@ -11,15 +9,15 @@ namespace Corpo.Base;
 
 public sealed class BaseRegistry : ServiceRegistry {
   public BaseRegistry() {
-    IncludeRegistry<LoggerRegistry>();
+    Scan(
+      s => {
+        s.TheCallingAssembly();
 
-    Scan(s => {
-      s.TheCallingAssembly();
-      s.WithDefaultConventions(
-        OverwriteBehavior.NewType,
-        ServiceLifetime.Singleton);
+        s.WithDefaultConventions(
+          OverwriteBehavior.NewType,
+          ServiceLifetime.Singleton);
 
-      s.IncludeNamespaceContainingType<BaseRegistry>();
-    });
+        s.IncludeNamespaceContainingType<BaseRegistry>();
+      });
   }
 }

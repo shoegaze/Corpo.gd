@@ -13,13 +13,15 @@ public sealed class OverworldRegistry : ServiceRegistry {
   public OverworldRegistry() {
     IncludeRegistry<BaseRegistry>();
 
-    Scan(s => {
-      s.TheCallingAssembly();
-      s.WithDefaultConventions(
-        OverwriteBehavior.NewType,
-        ServiceLifetime.Singleton);
+    Scan(
+      s => {
+        s.TheCallingAssembly();
 
-      s.IncludeNamespaceContainingType<OverworldRegistry>();
-    });
+        s.WithDefaultConventions(
+          OverwriteBehavior.NewType,
+          ServiceLifetime.Singleton);
+
+        s.IncludeNamespaceContainingType<OverworldRegistry>();
+      });
   }
 }

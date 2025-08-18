@@ -1,12 +1,8 @@
-using Corpo.Base;
-using Corpo.Base.Nodes;
-using Corpo.Base.States;
-using Corpo.Logging;
-
-using Engine;
-using Engine.Services;
+using Corpo.Bootstrap;
 
 using Godot;
+
+using TeamSports.Services.Game;
 
 using Container = Lamar.Container;
 
@@ -15,44 +11,15 @@ namespace Corpo;
 
 
 public partial class Main : Node {
-  public static Container BaseContainer { get; private set; }
-
+  public static Container BaseContainer { get; private set; } = null!;
 
   // Main entrypoint
   public override void _Ready() {
-    ILogger logger = BuildLogger();
-    BaseContainer = BuildBaseServices(logger);
+    BaseContainer = Bootstrapper.GetBootstrapContainer();
 
-    StartGame(logger);
-  }
+    Bootstrapper.StartServices(BaseContainer, this);
 
-  private ILogger BuildLogger() {
-    return new Container(new LoggerRegistry())
-       .GetInstance<ILogger>();
-  }
-
-  private Container BuildBaseServices(ILogger logger) {
-    logger.Info("Building base services...");
-
-    return new Container(services => {
-      logger.Debug("Including base services registry");
-      services.IncludeRegistry<BaseRegistry>();
-
-      services.For<IStartable>()
-         .OnCreationForAll((_, startable) => {
-            logger.Debug($"Starting service: {startable}");
-            startable.Start();
-          });
-    });
-  }
-
-  private void StartGame(ILogger logger) {
-    logger.Info("Starting game...");
-
-    BaseContainer.GetInstance<INodeService>()
-       .LoadRoot(this);
-
-    BaseContainer.GetInstance<IStateService>()
-       .EnterState(StateService.GameState.Base);
+    BaseContainer.GetInstance<IGameService>()
+     .StartGame();
   }
 }

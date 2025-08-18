@@ -1,12 +1,15 @@
-using Corpo.Adaptors.Godot;
-
-using Engine.Services;
+using Corpo.Adapters.Services;
 
 
 namespace Corpo.MainMenu;
 
 
-public interface IMainMenuService : IService {
-  void ToggleSavesSubmenu(GodotScreen screen);
-  void ToggleSettingsSubmenu(GodotScreen screen);
+public interface IMainMenuService : ICorpoScreenService<IMainMenuScreen> {
+  void ToggleSavesSubmenu();
+  void ToggleSettingsSubmenu();
+
+  void DoNewGame();
+  void DoLoadGame();
+  void DoSettings();
+  void DoExit();
 }
