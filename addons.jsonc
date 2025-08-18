@@ -1,0 +1,11 @@
+// Godot addons configuration file for use with the GodotEnv tool.
+// See https://github.com/chickensoft-games/GodotEnv for more info.
+{
+  "$schema": "https://chickensoft.games/schemas/addons.schema.json",
+  "addons": {
+    "R3.Godot": {
+      "url": "https://github.com/Cysharp/R3",
+      "subfolder": "src/R3.Godot/addons/R3.Godot"
+    }
+  }
+}
