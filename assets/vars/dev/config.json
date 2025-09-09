@@ -1,0 +1,33 @@
+{
+  "paths": {
+    "screens": {
+      "group": "Screens",
+      "items": {
+        "BaseScreen": {
+          "views": {}
+        },
+        "LoadingScreen": {
+          "views": {}
+        },
+        "OverworldScreen": {
+          "views": {}
+        },
+        "BattleScreen": {
+          "views": {}
+        },
+        "MainMenuScreen": {
+          "views": {
+            "buttons": "%Buttons_Layout",
+            "buttons.newGame": "%NewGame_Button",
+            "buttons.loadGame": "%LoadGame_Button",
+            "buttons.settings": "%Settings_Button",
+            "buttons.exit": "%Exit_Button",
+            "submenus": "%Submenus",
+            "submenus.saves": "%Saves_Submenu",
+            "submenus.settings": "%Settings_Submenu"
+          }
+        }
+      }
+    }
+  }
+}
