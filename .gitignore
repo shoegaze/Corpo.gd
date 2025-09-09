@@ -1,6 +1,9 @@
-Corpo.sln.DotSettings.user
-
 logs/
+
+.addons/
+addons/
+
+Corpo.sln.DotSettings.user
 
 # Created by https://www.toptal.com/developers/gitignore/api/godot
 # Edit at https://www.toptal.com/developers/gitignore?templates=godot
