@@ -1,10 +1,5 @@
-using Corpo.Base;
-using Corpo.Base.Nodes;
-using Corpo.Base.States;
-using Corpo.Logging;
-
-using Engine;
-using Engine.Services;
+using Corpo.Bootstrap;
+using Corpo.Core.Game;
 
 using Godot;
 
@@ -15,44 +10,23 @@ namespace Corpo;
 
 
 public partial class Main : Node {
-  public static Container BaseContainer { get; private set; }
+  // TODO: ServicesHelper?
+  public static Container ServicesContainer { get; private set; } = null!;
 
 
   // Main entrypoint
   public override void _Ready() {
-    ILogger logger = BuildLogger();
-    BaseContainer = BuildBaseServices(logger);
+    ServicesContainer = BuildServicesContainer();
 
-    StartGame(logger);
+    StartGame(ServicesContainer);
   }
 
-  private ILogger BuildLogger() {
-    return new Container(new LoggerRegistry())
-       .GetInstance<ILogger>();
+  private static Container BuildServicesContainer() {
+    return Container.For<BootstrapRegistry>();
   }
 
-  private Container BuildBaseServices(ILogger logger) {
-    logger.Info("Building base services...");
-
-    return new Container(services => {
-      logger.Debug("Including base services registry");
-      services.IncludeRegistry<BaseRegistry>();
-
-      services.For<IStartable>()
-         .OnCreationForAll((_, startable) => {
-            logger.Debug($"Starting service: {startable}");
-            startable.Start();
-          });
-    });
-  }
-
-  private void StartGame(ILogger logger) {
-    logger.Info("Starting game...");
-
-    BaseContainer.GetInstance<INodeService>()
-       .LoadRoot(this);
-
-    BaseContainer.GetInstance<IStateService>()
-       .EnterState(StateService.GameState.Base);
+  private static void StartGame(Container services) {
+    services.GetInstance<IGameDriverService>()
+     .Start();
   }
 }

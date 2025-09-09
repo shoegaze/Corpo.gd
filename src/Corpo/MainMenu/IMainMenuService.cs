@@ -1,12 +1,14 @@
-using Corpo.Adaptors.Godot;
+using Corpo.Adapters.TeamSports.Screens;
 
-using Engine.Services;
+using TeamSports.Services;
 
 
 namespace Corpo.MainMenu;
 
 
 public interface IMainMenuService : IService {
-  void ToggleSavesSubmenu(GodotScreen screen);
-  void ToggleSettingsSubmenu(GodotScreen screen);
+  void BindScreen(ICorpoScreen screen);
+
+  void ToggleSavesSubmenu(ICorpoScreen screen);
+  void ToggleSettingsSubmenu(ICorpoScreen screen);
 }

@@ -1,23 +1,62 @@
-<Project Sdk="Godot.NET.Sdk/4.4.0">
+<Project Sdk="Godot.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
+    <RootNamespace>Corpo</RootNamespace>
+
     <EnableDynamicLoading>true</EnableDynamicLoading>
+    <Nullable>enable</Nullable>
+
+    <Configurations>Debug;ExportDebug;ExportRelease;Release</Configurations>
+    <Platforms>AnyCPU</Platforms>
   </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Lamar" Version="15.0.0"/>
-    <PackageReference Include="Microsoft.Extensions.FileSystemGlobbing" Version="8.0.0"/>
+    <PackageReference Include="Microsoft.Extensions.FileSystemGlobbing" Version="9.0.0"/>
     <PackageReference Include="Serilog" Version="4.0.0"/>
     <PackageReference Include="Serilog.Sinks.File" Version="6.0.0"/>
     <PackageReference Include="System.Text.Json" Version="9.0.5"/>
   </ItemGroup>
+
   <ItemGroup>
-    <ProjectReference Include=".\src\Engine\Engine.csproj"/>
+    <Compile Remove="engine/**"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="engine/Corpo.Adapters.TeamSports/Corpo.Adapters.TeamSports.csproj"/>
 
     <!-- Include prebuild generated sources -->
-    <Compile Include=".\src\prebuild\packages\generate-json\.build\dist\csharp\**\*.cs"/>
-    <Compile Remove="src\Engine\**"/>
+    <Compile Include="src/prebuild/packages/**/dist/csharp/**/*.cs"/>
   </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Remove="src\Engine\**"/>
-  </ItemGroup>
+
+  <!-- Environment flags -->
+  <Choose>
+    <!-- Development -->
+    <When Condition="$(Configuration) == 'ExportDebug'">
+      <PropertyGroup>
+        <DefineConstants>$(DefineConstants);DEVELOPMENT</DefineConstants>
+      </PropertyGroup>
+    </When>
+
+    <!-- Staging -->
+    <When Condition="$(Configuration) == 'ExportStaging'">
+      <PropertyGroup>
+        <DefineConstants>$(DefineConstants);STAGING</DefineConstants>
+      </PropertyGroup>
+    </When>
+
+    <!-- Production -->
+    <When Condition="$(Configuration) == 'ExportRelease'">
+      <PropertyGroup>
+        <DefineConstants>$(DefineConstants);RELEASE</DefineConstants>
+      </PropertyGroup>
+    </When>
+
+    <!-- Necessary since Godot launches without a configuration -->
+    <Otherwise>
+      <PropertyGroup>
+        <DefineConstants>$(DefineConstants);DEVELOPMENT</DefineConstants>
+      </PropertyGroup>
+    </Otherwise>
+  </Choose>
 </Project>
