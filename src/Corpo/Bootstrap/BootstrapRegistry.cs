@@ -1,8 +1,7 @@
+using Corpo.Adapters.TeamSports.Game;
 using Corpo.Core;
 
 using Lamar;
-
-using TeamSports.Services;
 
 
 namespace Corpo.Bootstrap;
@@ -13,7 +12,7 @@ public class BootstrapRegistry : ServiceRegistry {
     IncludeRegistry<CoreRegistry>();
     IncludeRegistry<ScreensRegistry>();
 
-    For<IStartable>()
+    For<ICorpoStartable>()
      .OnCreationForAll(
         (_, startable) => {
           startable.Start();

@@ -1,10 +1,7 @@
-using TeamSports.Services;
-
-
 namespace Corpo.Loading;
 
 
-public interface ILoadingService : IService {
+public interface ILoadingService {
 
   bool IsLoading { get; }
 

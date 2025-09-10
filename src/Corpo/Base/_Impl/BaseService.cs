@@ -1,7 +1,6 @@
+using Corpo.Adapters.TeamSports.Logging;
 using Corpo.Core.Screens;
 using Corpo.MainMenu;
-
-using TeamSports.Logging;
 
 
 namespace Corpo.Base._Impl;
@@ -9,7 +8,7 @@ namespace Corpo.Base._Impl;
 
 // ReSharper disable once ClassNeverInstantiated.Global
 public sealed class BaseService(
-  ILogger logger,
+  ICorpoLogger logger,
   IScreenService screenService
 ) : IBaseService {
   public void LoadPackages() {

@@ -1,7 +1,6 @@
 using Corpo.Adapters.TeamSports.Input.Concrete;
-using Corpo.Adapters.TeamSports.Screens;
 
-using TeamSports.Entities.Screens;
+using TeamSports.Core.Entities.Screens;
 
 
 namespace Corpo.Base._Impl;
@@ -11,7 +10,7 @@ namespace Corpo.Base._Impl;
 // ReSharper disable once UnusedType.Global
 public sealed class BaseScreen(
   IBaseService baseService
-) : ICorpoScreen {
+) : IBaseScreen {
 
   public string GetName() {
     return nameof(BaseScreen);
@@ -32,6 +31,10 @@ public sealed class BaseScreen(
 
   public void OnUnmount() {
     throw new System.NotImplementedException();
+  }
+
+  void IScreen<CorpoInput>.OnFocusOut(IScreen<CorpoInput> to) {
+    OnFocusOut(to);
   }
 
   public void OnFocusIn(IScreen<CorpoInput> from) {

@@ -1,10 +1,9 @@
 using System.IO;
 
+using Corpo.Adapters.TeamSports.Logging;
 using Corpo.Core.Environments;
 
 using Godot;
-
-using TeamSports.Logging;
 
 using ConfigJson = Corpo.Generated.Json.Config.Config;
 
@@ -13,7 +12,7 @@ namespace Corpo.Core.Config._Impl;
 
 
 public sealed class ConfigService(
-  ILogger logger,
+  ICorpoLogger logger,
   IEnvironmentService environmentService
 ) : IConfigService {
   public ConfigJson ConfigVars { get; private set; } = null!;

@@ -21,7 +21,7 @@ public static class Bootstrapper {
 
         services.AddSingleton<CorpoStartableTracker>();
 
-        services.For<ICorpoStartable>()
+        services.For<ICorpoGodotStartable>()
          .OnCreationForAll(
             (context, startable) => {
               context.GetInstance<CorpoStartableTracker>()

@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 
+using Corpo.Adapters.TeamSports.Logging;
 using Corpo.Adapters.TeamSports.Logging.Serilog;
 using Corpo.Core.Environments.Helpers;
 using Corpo.Core.Environments.Models;
@@ -14,7 +15,7 @@ namespace Corpo.Core.Logging._Impl;
 
 // ReSharper disable once ClassNeverInstantiated.Global
 // ReSharper disable once UnusedType.Global
-public sealed class Logger : TeamSports.Logging.ILogger {
+public sealed class Logger : ICorpoLogger {
   private const string LogSinkOutputPath = "logs";
 
   private const string FileOutputTemplate =

@@ -2,12 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
+using Corpo.Adapters.TeamSports.Logging;
 using Corpo.Adapters.TeamSports.Screens;
 using Corpo.Adapters.TeamSports.Screens.Concrete;
 using Corpo.Core.Config;
 using Corpo.Core.Node;
-
-using TeamSports.Logging;
 
 
 namespace Corpo.Core.Screens._Impl;
@@ -15,7 +14,7 @@ namespace Corpo.Core.Screens._Impl;
 
 // ReSharper disable once UnusedType.Global
 public class ScreenWrapperService(
-  ILogger logger,
+  ICorpoLogger logger,
   IConfigService configService,
   INodeService nodeService
 ) : IScreenWrapperService {

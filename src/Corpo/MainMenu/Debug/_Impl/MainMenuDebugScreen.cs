@@ -1,6 +1,7 @@
 using Corpo.Adapters.TeamSports.Input.Concrete;
 
-using TeamSports.Entities.Screens;
+using TeamSports.Core.Entities.Screens;
+
 #if IMGUI
 using ImGuiNET;
 #endif

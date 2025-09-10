@@ -1,11 +1,10 @@
 ﻿using System;
 
 using Corpo.Adapters.TeamSports.Game;
+using Corpo.Adapters.TeamSports.Logging;
 using Corpo.Adapters.TeamSports.Screens;
 
 using Godot;
-
-using TeamSports.Logging;
 
 
 namespace Corpo.MainMenu._Impl;
@@ -14,7 +13,7 @@ namespace Corpo.MainMenu._Impl;
 // ReSharper disable once ClassNeverInstantiated.Global
 // ReSharper disable once UnusedType.Global
 public sealed class MainMenuService(
-  ILogger logger,
+  ICorpoLogger logger,
   ICorpoGameService gameService
 ) : IMainMenuService {
 

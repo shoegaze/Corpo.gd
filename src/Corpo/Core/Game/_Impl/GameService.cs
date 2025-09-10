@@ -1,10 +1,9 @@
 using Corpo.Adapters.TeamSports.Game;
 using Corpo.Adapters.TeamSports.Game.Models;
+using Corpo.Adapters.TeamSports.Logging;
 using Corpo.Base;
 using Corpo.Core.Node;
 using Corpo.Core.Screens;
-
-using TeamSports.Logging;
 
 
 namespace Corpo.Core.Game._Impl;
@@ -12,7 +11,7 @@ namespace Corpo.Core.Game._Impl;
 
 // ReSharper disable once UnusedType.Global
 public sealed class GameService(
-  ILogger logger,
+  ICorpoLogger logger,
   INodeService nodeService
 ) : ICorpoGameService {
 

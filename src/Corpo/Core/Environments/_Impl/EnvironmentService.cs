@@ -1,11 +1,10 @@
 using System.IO;
 
+using Corpo.Adapters.TeamSports.Logging;
 using Corpo.Core.Environments.Helpers;
 using Corpo.Core.Environments.Models;
 
 using Godot;
-
-using TeamSports.Logging;
 
 using EnvironmentJson = Corpo.Generated.Json.Environment.Environment;
 
@@ -15,7 +14,7 @@ namespace Corpo.Core.Environments._Impl;
 
 // ReSharper disable once ClassNeverInstantiated.Global
 public sealed class EnvironmentService(
-  ILogger logger
+  ICorpoLogger logger
 ) : IEnvironmentService {
   private const string EnvRoot = "res://";
 

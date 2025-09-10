@@ -1,4 +1,4 @@
-using TeamSports.Services;
+using Corpo.Adapters.TeamSports.Game;
 
 using ConfigJson = Corpo.Generated.Json.Config.Config;
 
@@ -6,6 +6,6 @@ using ConfigJson = Corpo.Generated.Json.Config.Config;
 namespace Corpo.Core.Config;
 
 
-public interface IConfigService : IService, IStartable {
+public interface IConfigService : ICorpoStartable {
   ConfigJson ConfigVars { get; }
 }

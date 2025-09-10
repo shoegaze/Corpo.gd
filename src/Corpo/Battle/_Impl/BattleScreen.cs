@@ -1,6 +1,6 @@
 ﻿using System;
 
-using TeamSports.Entities.Screens;
+using TeamSports.Core.Entities.Screens;
 
 using CorpoInput = Corpo.Adapters.TeamSports.Input.Concrete.CorpoInput;
 

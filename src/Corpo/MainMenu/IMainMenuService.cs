@@ -1,12 +1,10 @@
 using Corpo.Adapters.TeamSports.Screens;
 
-using TeamSports.Services;
-
 
 namespace Corpo.MainMenu;
 
 
-public interface IMainMenuService : IService {
+public interface IMainMenuService {
   void BindScreen(ICorpoScreen screen);
 
   void ToggleSavesSubmenu(ICorpoScreen screen);

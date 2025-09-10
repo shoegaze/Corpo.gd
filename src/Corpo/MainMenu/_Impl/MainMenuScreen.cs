@@ -5,7 +5,7 @@ using Corpo.Adapters.TeamSports.Screens;
 using Corpo.Core.Screens;
 using Corpo.MainMenu.Debug;
 
-using TeamSports.Entities.Screens;
+using TeamSports.Core.Entities.Screens;
 
 
 namespace Corpo.MainMenu._Impl;

@@ -1,10 +1,7 @@
-using TeamSports.Services;
-
-
 namespace Corpo.Base;
 
 
-public interface IBaseService : IService {
+public interface IBaseService {
   // TODO: Make async
   public void LoadPackages();
   public void ShowMainMenu();
