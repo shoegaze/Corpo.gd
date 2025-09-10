@@ -4,4 +4,4 @@ using Corpo.Adapters.TeamSports.Screens;
 namespace Corpo.MainMenu;
 
 
-public interface IMainMenuScreen : ICorpoScreen;
+public interface IMainMenuScreen : IScreen;

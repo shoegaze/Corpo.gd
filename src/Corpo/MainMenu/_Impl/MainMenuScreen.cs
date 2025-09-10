@@ -50,12 +50,12 @@ public sealed class MainMenuScreen(
     throw new NotImplementedException();
   }
 
-  public void OnFocusIn(ICorpoScreen from) {
+  public void OnFocusIn(IScreen from) {
     // DEBUG:
     screenService.EnterScreen<IMainMenuDebugScreen>(focusImmediately: false);
   }
 
-  public void OnFocusOut(ICorpoScreen to) {
+  public void OnFocusOut(IScreen to) {
     throw new NotImplementedException();
   }
 

@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using TeamSports.Adapters.Godot.Services;
 
 using Container = Lamar.Container;
+using IGodotStartable = Corpo.Adapters.TeamSports.Game.IGodotStartable;
 
 
 namespace Corpo.Bootstrap;
@@ -19,12 +20,12 @@ public static class Bootstrapper {
       services => {
         services.IncludeRegistry<BootstrapRegistry>();
 
-        services.AddSingleton<CorpoStartableTracker>();
+        services.AddSingleton<StartablesTracker>();
 
-        services.For<ICorpoGodotStartable>()
+        services.For<IGodotStartable>()
          .OnCreationForAll(
             (context, startable) => {
-              context.GetInstance<CorpoStartableTracker>()
+              context.GetInstance<StartablesTracker>()
                .Startables
                .Add(startable);
             });
@@ -32,10 +33,12 @@ public static class Bootstrapper {
   }
 
   public static void StartServices(Container container, Node rootNode) {
-    var tracker = container.GetInstance<CorpoStartableTracker>();
+    var tracker = container.GetInstance<StartablesTracker>();
     var startables = tracker.Startables;
 
-    var godotStartContext = new IGodotStartable.GodotStartContext(GameRoot: rootNode);
+    var godotStartContext =
+      new TeamSports.Adapters.Godot.Services.IGodotStartable.GodotStartContext(
+        GameRoot: rootNode);
 
     foreach (var startable in startables) {
       startable.GodotStart(godotStartContext);

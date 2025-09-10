@@ -4,10 +4,10 @@ using Corpo.Adapters.TeamSports.Input.Concrete.Fragments.Debug;
 using Godot_Input = Godot.Input;
 
 
-namespace Corpo.Adapters.TeamSports.Input.Concrete;
+namespace Corpo.Adapters.TeamSports.Input.Concrete.Helpers;
 
 
-public static class CorpoInputHelper {
+public static class InputHelper {
   public static CorpoInput PollInput() {
     var horizontal =
       new HorizontalInput(

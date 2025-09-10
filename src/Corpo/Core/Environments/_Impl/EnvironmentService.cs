@@ -14,7 +14,7 @@ namespace Corpo.Core.Environments._Impl;
 
 // ReSharper disable once ClassNeverInstantiated.Global
 public sealed class EnvironmentService(
-  ICorpoLogger logger
+  ILogger logger
 ) : IEnvironmentService {
   private const string EnvRoot = "res://";
 

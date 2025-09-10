@@ -5,8 +5,8 @@ namespace Corpo.MainMenu;
 
 
 public interface IMainMenuService {
-  void BindScreen(ICorpoScreen screen);
+  void BindScreen(IScreen screen);
 
-  void ToggleSavesSubmenu(ICorpoScreen screen);
-  void ToggleSettingsSubmenu(ICorpoScreen screen);
+  void ToggleSavesSubmenu(IScreen screen);
+  void ToggleSettingsSubmenu(IScreen screen);
 }

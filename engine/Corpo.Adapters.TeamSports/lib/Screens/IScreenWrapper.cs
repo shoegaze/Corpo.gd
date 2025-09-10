@@ -6,4 +6,5 @@ using TeamSports.Adapters.Godot.Screens;
 namespace Corpo.Adapters.TeamSports.Screens;
 
 
-public interface ICorpoScreen : IGodotScreen<CorpoInput>;
+public interface IScreenWrapper
+  : IGodotScreenWrapper<IScreen, CorpoInput>;

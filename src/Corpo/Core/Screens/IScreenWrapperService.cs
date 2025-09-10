@@ -5,7 +5,7 @@ namespace Corpo.Core.Screens;
 
 
 public interface IScreenWrapperService {
-  ICorpoScreenWrapper Wrap(ICorpoScreen screen);
-  ICorpoScreenWrapper GetWrapper(ICorpoScreen screen);
-  void FreeWrapper(ICorpoScreen screen);
+  IScreenWrapper Wrap(IScreen screen);
+  IScreenWrapper GetWrapper(IScreen screen);
+  void FreeWrapper(IScreen screen);
 }

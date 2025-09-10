@@ -1,6 +1,7 @@
 ﻿using System;
 
 using Corpo.Adapters.TeamSports.Input.Concrete;
+using Corpo.Adapters.TeamSports.Input.Concrete.Helpers;
 using Corpo.Adapters.TeamSports.Logging;
 using Corpo.Adapters.TeamSports.Screens;
 using Corpo.Adapters.TeamSports.Screens.Concrete;
@@ -14,14 +15,14 @@ namespace Corpo.Core.Screens._Impl;
 // ReSharper disable once ClassNeverInstantiated.Global
 // ReSharper disable once UnusedType.Global
 public sealed class ScreenService(
-  ICorpoLogger logger,
+  ILogger logger,
   IScreenWrapperService screenWrapperService
 ) : IScreenService {
 
-  private readonly CorpoScreenManager screensManager = new();
+  private readonly ScreenManager screensManager = new();
   private ulong timePreviousMs = Time.GetTicksMsec();
 
-  public ICorpoScreen? CurrentScreen => screensManager.ActiveScreen;
+  public IScreen? CurrentScreen => screensManager.ActiveScreen;
 
   public void UpdateScreens() {
     // TODO: Update screens from CurrentScreen down to origin
@@ -38,7 +39,7 @@ public sealed class ScreenService(
 
       // TODO: Poll only in Node:_Input()
       // TODO: Create InputService:GetInput
-      CorpoInput input = CorpoInputHelper.PollInput();
+      CorpoInput input = InputHelper.PollInput();
       screensManager.ActiveScreen?.Tick(dt, input);
     }
 
@@ -46,7 +47,7 @@ public sealed class ScreenService(
   }
 
   public void EnterScreen<TScreen>(bool focusImmediately = true)
-  where TScreen : ICorpoScreen {
+  where TScreen : IScreen {
     logger.Debug($"Loading scene type: {typeof(TScreen)}");
 
     var screen = Main.ServicesContainer.GetInstance<TScreen>();
@@ -70,7 +71,7 @@ public sealed class ScreenService(
       return;
     }
 
-    ICorpoScreen previousScreen = screensManager.ActiveScreen;
+    IScreen previousScreen = screensManager.ActiveScreen;
 
     logger.Info($"Exiting: {previousScreen}");
 

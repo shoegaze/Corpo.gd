@@ -6,12 +6,12 @@ namespace Corpo.Core.Screens;
 
 public interface IScreenService {
 
-  ICorpoScreen? CurrentScreen { get; }
+  IScreen? CurrentScreen { get; }
 
   void UpdateScreens();
 
   void EnterScreen<TScreen>(bool focusImmediately = true)
-  where TScreen : ICorpoScreen;
+  where TScreen : IScreen;
 
   void ExitScreen();
 }

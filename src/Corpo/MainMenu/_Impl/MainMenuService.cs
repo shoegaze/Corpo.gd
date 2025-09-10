@@ -13,8 +13,8 @@ namespace Corpo.MainMenu._Impl;
 // ReSharper disable once ClassNeverInstantiated.Global
 // ReSharper disable once UnusedType.Global
 public sealed class MainMenuService(
-  ICorpoLogger logger,
-  ICorpoGameService gameService
+  ILogger logger,
+  IGameService gameService
 ) : IMainMenuService {
 
   public IMainMenuScreen ScreenModel { get; private set; } = null!;
@@ -77,15 +77,15 @@ public sealed class MainMenuService(
     throw new NotImplementedException();
   }
 
-  public void BindScreen(ICorpoScreen screen) {
+  public void BindScreen(IScreen screen) {
     throw new NotImplementedException();
   }
 
-  public void ToggleSavesSubmenu(ICorpoScreen screen) {
+  public void ToggleSavesSubmenu(IScreen screen) {
     throw new NotImplementedException();
   }
 
-  public void ToggleSettingsSubmenu(ICorpoScreen screen) {
+  public void ToggleSettingsSubmenu(IScreen screen) {
     throw new NotImplementedException();
   }
 }

@@ -5,4 +5,4 @@ namespace Corpo.Core.Settings;
 
 
 // TODO
-public interface ISettingsService : ICorpoStartable;
+public interface ISettingsService : IStartable;

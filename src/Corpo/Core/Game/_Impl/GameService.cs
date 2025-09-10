@@ -11,11 +11,11 @@ namespace Corpo.Core.Game._Impl;
 
 // ReSharper disable once UnusedType.Global
 public sealed class GameService(
-  ICorpoLogger logger,
+  ILogger logger,
   INodeService nodeService
-) : ICorpoGameService {
+) : IGameService {
 
-  public void StartGame(CorpoStartContext ctx) {
+  public void StartGame(GameStartContext ctx) {
     logger.Info("Starting game...");
 
     Main.ServicesContainer.GetInstance<IScreenService>()

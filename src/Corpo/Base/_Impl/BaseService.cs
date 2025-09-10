@@ -8,7 +8,7 @@ namespace Corpo.Base._Impl;
 
 // ReSharper disable once ClassNeverInstantiated.Global
 public sealed class BaseService(
-  ICorpoLogger logger,
+  ILogger logger,
   IScreenService screenService
 ) : IBaseService {
   public void LoadPackages() {

@@ -9,19 +9,21 @@ using Corpo.Core.Environments.Models;
 using Serilog;
 using Serilog.Events;
 
+using ILogger = Corpo.Adapters.TeamSports.Logging.ILogger;
+
 
 namespace Corpo.Core.Logging._Impl;
 
 
 // ReSharper disable once ClassNeverInstantiated.Global
 // ReSharper disable once UnusedType.Global
-public sealed class Logger : ICorpoLogger {
+public sealed class Logger : ILogger {
   private const string LogSinkOutputPath = "logs";
 
   private const string FileOutputTemplate =
     "{Timestamp:yyyy-MM-dd HH:mm:ss.fff} [{Level:u3}] {Message}{NewLine}{Exception}";
 
-  private readonly ILogger logger;
+  private readonly Serilog.ILogger logger;
 
   public Logger() {
     logger = GetLogger();
@@ -51,7 +53,7 @@ public sealed class Logger : ICorpoLogger {
     logger.Fatal("{Message}{NewLine}{Exception}", message, '\n', exception);
   }
 
-  private ILogger GetLogger() {
+  private Serilog.ILogger GetLogger() {
     var mode = EnvironmentHelper.GetEnvironmentMode();
 
     return mode switch {
@@ -79,7 +81,7 @@ public sealed class Logger : ICorpoLogger {
     return $"log.{envName}-.txt";
   }
 
-  private ILogger MakeDevelopmentLogger() {
+  private Serilog.ILogger MakeDevelopmentLogger() {
     string logFilePath = Path.Combine(LogSinkOutputPath, GetLogFileName());
 
     // TODO: Route to separate loggers for each level
@@ -99,7 +101,7 @@ public sealed class Logger : ICorpoLogger {
     return developmentLogger;
   }
 
-  private ILogger MakeStagingLogger() {
+  private Serilog.ILogger MakeStagingLogger() {
     string logFilePath = Path.Combine(LogSinkOutputPath, GetLogFileName());
 
     var stagingLogger =
@@ -116,10 +118,10 @@ public sealed class Logger : ICorpoLogger {
     return stagingLogger;
   }
 
-  private ILogger MakeProductionLogger() {
+  private Serilog.ILogger MakeProductionLogger() {
     string logFilePath = Path.Combine(LogSinkOutputPath, GetLogFileName());
 
-    ILogger productionLogger =
+    Serilog.ILogger productionLogger =
       new LoggerConfiguration()
        .MinimumLevel.Error()
        .WriteTo.File(logFilePath, outputTemplate: FileOutputTemplate)

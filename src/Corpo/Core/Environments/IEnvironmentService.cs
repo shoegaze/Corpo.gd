@@ -7,7 +7,7 @@ using Environment = Corpo.Generated.Json.Environment.Environment;
 namespace Corpo.Core.Environments;
 
 
-public interface IEnvironmentService : ICorpoStartable {
+public interface IEnvironmentService : IStartable {
   EnvironmentMode Mode { get; }
 
   Environment EnvironmentVars { get; }

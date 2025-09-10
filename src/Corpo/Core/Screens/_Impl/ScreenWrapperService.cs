@@ -14,12 +14,12 @@ namespace Corpo.Core.Screens._Impl;
 
 // ReSharper disable once UnusedType.Global
 public class ScreenWrapperService(
-  ICorpoLogger logger,
+  ILogger logger,
   IConfigService configService,
   INodeService nodeService
 ) : IScreenWrapperService {
 
-  public ICorpoScreenWrapper Wrap(ICorpoScreen screen) {
+  public IScreenWrapper Wrap(IScreen screen) {
     logger.Debug($"Creating screen wrapper for: {screen}");
 
     if (HasWrapper(screen)) {
@@ -32,19 +32,19 @@ public class ScreenWrapperService(
 
     string screensGroup = configService.ConfigVars.Paths.Screens.Group;
 
-    return CorpoScreenWrapper.Build(
+    return ScreenWrapper.Build(
       screen,
       screensGroup,
       parent: nodeService.Screens);
   }
 
-  private bool HasWrapper(ICorpoScreen screen) {
+  private bool HasWrapper(IScreen screen) {
     return GetScreenWrappers()
      .ToList()
      .Any(wrapper => wrapper.Screen == screen);
   }
 
-  public ICorpoScreenWrapper GetWrapper(ICorpoScreen screen) {
+  public IScreenWrapper GetWrapper(IScreen screen) {
     var wrapper =
       GetScreenWrappers()
        .ToList()
@@ -60,7 +60,7 @@ public class ScreenWrapperService(
     return wrapper!;
   }
 
-  public void FreeWrapper(ICorpoScreen screen) {
+  public void FreeWrapper(IScreen screen) {
     logger.Debug($"Freeing wrapper for screen: {screen}");
 
     GetWrapper(screen)
@@ -68,7 +68,7 @@ public class ScreenWrapperService(
      .QueueFree();
   }
 
-  private IEnumerable<ICorpoScreenWrapper> GetScreenWrappers() {
+  private IEnumerable<IScreenWrapper> GetScreenWrappers() {
     string screensGroup =
       configService.ConfigVars.Paths.Screens.Group;
 
@@ -76,6 +76,6 @@ public class ScreenWrapperService(
     return nodeService.RootContainer
      .GetTree()
      .GetNodesInGroup(screensGroup)
-     .OfType<ICorpoScreenWrapper>();
+     .OfType<IScreenWrapper>();
   }
 }

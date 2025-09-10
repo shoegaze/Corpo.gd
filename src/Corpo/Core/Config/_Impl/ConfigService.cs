@@ -12,7 +12,7 @@ namespace Corpo.Core.Config._Impl;
 
 
 public sealed class ConfigService(
-  ICorpoLogger logger,
+  ILogger logger,
   IEnvironmentService environmentService
 ) : IConfigService {
   public ConfigJson ConfigVars { get; private set; } = null!;

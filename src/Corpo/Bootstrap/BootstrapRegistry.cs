@@ -12,7 +12,7 @@ public class BootstrapRegistry : ServiceRegistry {
     IncludeRegistry<CoreRegistry>();
     IncludeRegistry<ScreensRegistry>();
 
-    For<ICorpoStartable>()
+    For<IStartable>()
      .OnCreationForAll(
         (_, startable) => {
           startable.Start();
