@@ -1,4 +1,4 @@
-using TeamSports.Logging;
+using TeamSports.Core.Logging;
 
 
 namespace Corpo.Adapters.TeamSports.Logging;

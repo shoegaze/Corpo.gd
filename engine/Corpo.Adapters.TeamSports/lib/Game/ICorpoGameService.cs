@@ -1,6 +1,6 @@
 using Corpo.Adapters.TeamSports.Game.Models;
 
-using TeamSports.Services.Game;
+using TeamSports.Core.Services.Game;
 
 
 namespace Corpo.Adapters.TeamSports.Game;
