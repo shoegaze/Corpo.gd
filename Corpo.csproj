@@ -1,4 +1,4 @@
-<Project Sdk="Godot.NET.Sdk">
+<Project Sdk="Godot.NET.Sdk/4.4.1">
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
     <RootNamespace>Corpo</RootNamespace>
@@ -6,7 +6,7 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <Nullable>enable</Nullable>
 
-    <Configurations>Debug;ExportDebug;ExportRelease;Release</Configurations>
+    <Configurations>ExportDebug;ExportRelease</Configurations>
     <Platforms>AnyCPU</Platforms>
   </PropertyGroup>
 
@@ -20,9 +20,6 @@
 
   <ItemGroup>
     <Compile Remove="engine/**"/>
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="engine/Corpo.Adapters.TeamSports/Corpo.Adapters.TeamSports.csproj"/>
 
     <!-- Include prebuild generated sources -->
