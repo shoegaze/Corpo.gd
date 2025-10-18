@@ -1,14 +1,20 @@
 using Corpo.Adapters.TeamSports.Input.Concrete.Fragments;
 using Corpo.Adapters.TeamSports.Input.Concrete.Fragments.Debug;
 
+using TeamSports.Core.Game.Providers;
+
 using Godot_Input = Godot.Input;
 
 
-namespace Corpo.Adapters.TeamSports.Input.Concrete.Helpers;
+namespace Corpo.Adapters.TeamSports.Input.Concrete.Providers;
 
 
-public static class InputHelper {
-  public static CorpoInput PollInput() {
+public class CorpoInputProvider : IInputProvider<CorpoUserInput> {
+  public CorpoUserInput PollInput() {
+    return _PollInput();
+  }
+
+  private static CorpoUserInput _PollInput() {
     var horizontal =
       new HorizontalInput(
         Left: Godot_Input.IsActionJustPressed("ui_left"),
@@ -29,7 +35,7 @@ public static class InputHelper {
       new DebugInput(
         ToggleEnabled: Godot_Input.IsActionJustPressed("ui_debug_toggle"));
 
-    return new CorpoInput(
+    return new CorpoUserInput(
       Horizontal: horizontal,
       Vertical: vertical,
       Selection: selection,
