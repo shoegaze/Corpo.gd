@@ -2,14 +2,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
+using Corpo._Core.Config;
+using Corpo._Core.Node;
 using Corpo.Adapters.TeamSports.Logging;
 using Corpo.Adapters.TeamSports.Screens;
 using Corpo.Adapters.TeamSports.Screens.Concrete;
-using Corpo.Core.Config;
-using Corpo.Core.Node;
+
+using TeamSports.Adapters.Godot.Screens.Bindings.Helpers;
 
 
-namespace Corpo.Core.Screens._Impl;
+namespace Corpo._Core.Screens._Impl;
 
 
 // ReSharper disable once UnusedType.Global
@@ -19,7 +21,7 @@ public class ScreenWrapperService(
   INodeService nodeService
 ) : IScreenWrapperService {
 
-  public IScreenWrapper Wrap(IScreen screen) {
+  public ICorpoScreenWrapper Wrap(ICorpoScreen screen) {
     logger.Debug($"Creating screen wrapper for: {screen}");
 
     if (HasWrapper(screen)) {
@@ -32,43 +34,47 @@ public class ScreenWrapperService(
 
     string screensGroup = configService.ConfigVars.Paths.Screens.Group;
 
-    return ScreenWrapper.Build(
-      screen,
+    var wrapper = new CorpoScreenWrapper(screen);
+
+    ScreenWrapperHelper.ConfigureGodotNode(
+      wrapper,
       screensGroup,
       parent: nodeService.Screens);
+
+    return wrapper;
   }
 
-  private bool HasWrapper(IScreen screen) {
+  private bool HasWrapper(ICorpoScreen corpoScreen) {
     return GetScreenWrappers()
      .ToList()
-     .Any(wrapper => wrapper.Screen == screen);
+     .Any(wrapper => wrapper.InnerScreen == corpoScreen);
   }
 
-  public IScreenWrapper GetWrapper(IScreen screen) {
+  private ICorpoScreenWrapper GetWrapper(ICorpoScreen corpoScreen) {
     var wrapper =
       GetScreenWrappers()
        .ToList()
-       .Find(wrapper => wrapper.Screen == screen);
+       .Find(wrapper => wrapper.InnerScreen == corpoScreen);
 
 
     if (wrapper is null) {
       logger.Error(
-        $"Screen wrapper node of screen {screen} not found",
+        $"Screen wrapper node of screen {corpoScreen} not found",
         new InvalidOperationException());
     }
 
     return wrapper!;
   }
 
-  public void FreeWrapper(IScreen screen) {
-    logger.Debug($"Freeing wrapper for screen: {screen}");
+  public void FreeWrapper(ICorpoScreen corpoScreen) {
+    logger.Debug($"Freeing wrapper for screen: {corpoScreen}");
 
-    GetWrapper(screen)
+    GetWrapper(corpoScreen)
      .GetNode()
      .QueueFree();
   }
 
-  private IEnumerable<IScreenWrapper> GetScreenWrappers() {
+  private IEnumerable<ICorpoScreenWrapper> GetScreenWrappers() {
     string screensGroup =
       configService.ConfigVars.Paths.Screens.Group;
 
@@ -76,6 +82,6 @@ public class ScreenWrapperService(
     return nodeService.RootContainer
      .GetTree()
      .GetNodesInGroup(screensGroup)
-     .OfType<IScreenWrapper>();
+     .OfType<ICorpoScreenWrapper>();
   }
 }

@@ -1,28 +1,29 @@
 ﻿using System;
 
-using Corpo.Adapters.TeamSports.Input.Concrete;
-using Corpo.Adapters.TeamSports.Input.Concrete.Helpers;
+using Corpo._Core.App;
 using Corpo.Adapters.TeamSports.Logging;
 using Corpo.Adapters.TeamSports.Screens;
 using Corpo.Adapters.TeamSports.Screens.Concrete;
 
 using Godot;
 
+using Main = Corpo._Core.Runtime.Main;
 
-namespace Corpo.Core.Screens._Impl;
+
+namespace Corpo._Core.Screens._Impl;
 
 
 // ReSharper disable once ClassNeverInstantiated.Global
 // ReSharper disable once UnusedType.Global
-public sealed class ScreenService(
+public sealed class ScreensService(
   ILogger logger,
+  ICorpoAppService appService,
   IScreenWrapperService screenWrapperService
-) : IScreenService {
-
-  private readonly ScreenManager screensManager = new();
+) : IScreensService {
+  private readonly CorpoScreenManager screenManager = new();
   private ulong timePreviousMs = Time.GetTicksMsec();
 
-  public IScreen? CurrentScreen => screensManager.ActiveScreen;
+  private ICorpoScreen? CurrentScreen => screenManager.CurrentScreen;
 
   public void UpdateScreens() {
     // TODO: Update screens from CurrentScreen down to origin
@@ -37,17 +38,15 @@ public sealed class ScreenService(
     if (CurrentScreen is not null) {
       logger.Debug("Updating screen");
 
-      // TODO: Poll only in Node:_Input()
-      // TODO: Create InputService:GetInput
-      CorpoInput input = InputHelper.PollInput();
-      screensManager.ActiveScreen?.Tick(dt, input);
+      var input = appService.Providers.InputProvider.PollInput();
+      screenManager.Tick(dt, input);
     }
 
     timePreviousMs = timeNowMs;
   }
 
-  public void EnterScreen<TScreen>(bool focusImmediately = true)
-  where TScreen : IScreen {
+  public void EnterScreen<TScreen>()
+  where TScreen : ICorpoScreen {
     logger.Debug($"Loading scene type: {typeof(TScreen)}");
 
     var screen = Main.ServicesContainer.GetInstance<TScreen>();
@@ -58,24 +57,23 @@ public sealed class ScreenService(
     screen.OnCreate();
 
     logger.Info($"Entering screen: {screen}");
-    logger.Debug($"Focusing immediately?: {focusImmediately}");
 
-    screensManager.Enter(screen, focusImmediately);
+    screenManager.Enter(screen);
     screenWrapperService.Wrap(screen);
   }
 
   public void ExitScreen() {
-    if (screensManager.ActiveScreen is null) {
+    if (screenManager.CurrentScreen is null) {
       logger.Error("No screen to dismiss", new InvalidOperationException());
 
       return;
     }
 
-    IScreen previousScreen = screensManager.ActiveScreen;
+    var previousScreen = screenManager.CurrentScreen;
 
     logger.Info($"Exiting: {previousScreen}");
 
-    screensManager.Exit();
+    screenManager.Exit();
     screenWrapperService.FreeWrapper(previousScreen);
   }
 }
