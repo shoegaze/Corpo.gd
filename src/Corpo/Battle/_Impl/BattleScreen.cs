@@ -1,8 +1,8 @@
 ﻿using System;
 
-using TeamSports.Core.Entities.Screens;
+using Corpo.Adapters.TeamSports.Input.Concrete;
 
-using CorpoInput = Corpo.Adapters.TeamSports.Input.Concrete.CorpoInput;
+using TeamSports.Core.Entities.Screens;
 
 
 namespace Corpo.Battle._Impl;
@@ -11,15 +11,15 @@ namespace Corpo.Battle._Impl;
 // ReSharper disable once ClassNeverInstantiated.Global
 // ReSharper disable once UnusedType.Global
 public sealed class BattleScreen : IBattleScreen {
-  public void Tick(float dt, CorpoInput input) {
+  public void Tick(double dt, CorpoUserInput userInput) {
     throw new NotImplementedException();
   }
 
   public override string ToString() {
-    return GetName();
+    return GetEntityName();
   }
 
-  public string GetName() {
+  public string GetEntityName() {
     return nameof(BattleScreen);
   }
 
@@ -39,11 +39,19 @@ public sealed class BattleScreen : IBattleScreen {
     throw new NotImplementedException();
   }
 
-  public void OnFocusIn(IScreen<CorpoInput> from) {
+  public void OnFocusIn(IScreen<CorpoUserInput> from) {
     throw new NotImplementedException();
   }
 
-  public void OnFocusOut(IScreen<CorpoInput> to) {
+  public void OnFocusOut(IScreen<CorpoUserInput> to) {
+    throw new NotImplementedException();
+  }
+
+  public void Pause() {
+    throw new NotImplementedException();
+  }
+
+  public void Unpause() {
     throw new NotImplementedException();
   }
 }

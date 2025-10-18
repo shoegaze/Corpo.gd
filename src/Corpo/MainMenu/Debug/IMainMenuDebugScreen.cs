@@ -1,4 +1,3 @@
-using Corpo.Adapters.TeamSports.Screens;
 using Corpo.Adapters.TeamSports.Screens.Debug;
 
 

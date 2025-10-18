@@ -12,7 +12,7 @@ public sealed class BaseScreen(
   IBaseService baseService
 ) : IBaseScreen {
 
-  public string GetName() {
+  public string GetEntityName() {
     return nameof(BaseScreen);
   }
 
@@ -33,17 +33,23 @@ public sealed class BaseScreen(
     throw new System.NotImplementedException();
   }
 
-  void IScreen<CorpoInput>.OnFocusOut(IScreen<CorpoInput> to) {
-    OnFocusOut(to);
-  }
-
-  public void OnFocusIn(IScreen<CorpoInput> from) {
+  public void OnFocusIn(IScreen<CorpoUserInput>? from) {
     baseService.ShowMainMenu();
   }
 
-  public void OnFocusOut(IScreen<CorpoInput> to) {
+  public void OnFocusOut(IScreen<CorpoUserInput>? to) {
     throw new System.NotImplementedException();
   }
 
-  public void Tick(float dt, CorpoInput input) { }
+  public void Tick(double dt, CorpoUserInput userInput) {
+    throw new System.NotImplementedException();
+  }
+
+  public void Pause() {
+    throw new System.NotImplementedException();
+  }
+
+  public void Unpause() {
+    throw new System.NotImplementedException();
+  }
 }

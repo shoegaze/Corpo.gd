@@ -1,8 +1,8 @@
 using System;
 
+using Corpo._Core.Screens;
 using Corpo.Adapters.TeamSports.Input.Concrete;
 using Corpo.Adapters.TeamSports.Screens;
-using Corpo.Core.Screens;
 using Corpo.MainMenu.Debug;
 
 using TeamSports.Core.Entities.Screens;
@@ -14,15 +14,19 @@ namespace Corpo.MainMenu._Impl;
 // ReSharper disable once ClassNeverInstantiated.Global
 // ReSharper disable once UnusedType.Global
 public sealed class MainMenuScreen(
-  IScreenService screenService,
+  IScreensService screensService,
   IMainMenuService mainMenuService
 ) : IMainMenuScreen {
 
-  public override string ToString() {
-    return GetName();
+  public void Tick(double dt, CorpoUserInput userInput) {
+    throw new NotImplementedException();
   }
 
-  public string GetName() {
+  public override string ToString() {
+    return GetEntityName();
+  }
+
+  public string GetEntityName() {
     return nameof(MainMenuScreen);
   }
 
@@ -42,24 +46,33 @@ public sealed class MainMenuScreen(
     throw new NotImplementedException();
   }
 
-  public void OnFocusIn(IScreen<CorpoInput> from) {
+  public void OnFocusIn(IScreen<CorpoUserInput>? from) {
     throw new NotImplementedException();
   }
 
-  public void OnFocusOut(IScreen<CorpoInput> to) {
+  public void OnFocusOut(IScreen<CorpoUserInput>? to) {
     throw new NotImplementedException();
   }
 
-  public void OnFocusIn(IScreen from) {
+  public void OnFocusIn(ICorpoScreen from) {
     // DEBUG:
-    screenService.EnterScreen<IMainMenuDebugScreen>(focusImmediately: false);
+    screensService.EnterScreen<IMainMenuDebugScreen>(
+      /* TODO: focusImmediately: false*/);
   }
 
-  public void OnFocusOut(IScreen to) {
+  public void OnFocusOut(ICorpoScreen to) {
     throw new NotImplementedException();
   }
 
-  public void Tick(float dt, CorpoInput input) {
+  public void Tick(float dt, CorpoUserInput userInput) {
+    throw new NotImplementedException();
+  }
+
+  public void Pause() {
+    throw new NotImplementedException();
+  }
+
+  public void Unpause() {
     throw new NotImplementedException();
   }
 }

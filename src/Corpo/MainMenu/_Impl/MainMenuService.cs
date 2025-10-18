@@ -1,6 +1,6 @@
 ﻿using System;
 
-using Corpo.Adapters.TeamSports.Game;
+using Corpo._Core.App;
 using Corpo.Adapters.TeamSports.Logging;
 using Corpo.Adapters.TeamSports.Screens;
 
@@ -14,7 +14,7 @@ namespace Corpo.MainMenu._Impl;
 // ReSharper disable once UnusedType.Global
 public sealed class MainMenuService(
   ILogger logger,
-  IGameService gameService
+  ICorpoAppService appService
 ) : IMainMenuService {
 
   public IMainMenuScreen ScreenModel { get; private set; } = null!;
@@ -70,22 +70,22 @@ public sealed class MainMenuService(
   public void DoExit() {
     logger.Info("[User Action]: Exiting game");
 
-    gameService.ExitGame();
+    // TODO: gameService.ExitGame();
   }
 
   public void BindScreen(IMainMenuScreen screen) {
     throw new NotImplementedException();
   }
 
-  public void BindScreen(IScreen screen) {
+  public void BindScreen(ICorpoScreen corpoScreen) {
     throw new NotImplementedException();
   }
 
-  public void ToggleSavesSubmenu(IScreen screen) {
+  public void ToggleSavesSubmenu(ICorpoScreen corpoScreen) {
     throw new NotImplementedException();
   }
 
-  public void ToggleSettingsSubmenu(IScreen screen) {
+  public void ToggleSettingsSubmenu(ICorpoScreen corpoScreen) {
     throw new NotImplementedException();
   }
 }

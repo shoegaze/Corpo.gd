@@ -14,18 +14,14 @@ namespace Corpo.MainMenu.Debug._Impl;
 public sealed class MainMenuDebugScreen : IMainMenuDebugScreen {
 
   public override string ToString() {
-    return GetName();
+    return GetEntityName();
   }
 
-  public string GetName() {
+  public string GetEntityName() {
     return nameof(MainMenuDebugScreen);
   }
 
-  public void Initialize() {
-    // TODO
-  }
-
-  public void DrawDebug(float dt, CorpoInput input) {
+  public void DrawDebug(float dt, CorpoUserInput userInput) {
 #if IMGUI
     ImGui.Begin("Starting debug screen");
     ImGui.Text("Hello, world!");
@@ -47,14 +43,23 @@ public sealed class MainMenuDebugScreen : IMainMenuDebugScreen {
     throw new System.NotImplementedException();
   }
 
-  public void OnFocusIn(IScreen<CorpoInput> from) {
+  public void OnFocusIn(IScreen<CorpoUserInput> from) {
     throw new System.NotImplementedException();
   }
 
-  public void OnFocusOut(IScreen<CorpoInput> to) {
+  public void OnFocusOut(IScreen<CorpoUserInput> to) {
     throw new System.NotImplementedException();
   }
 
-  public void Tick(float dt, CorpoInput input) { }
+  public void Tick(double dt, CorpoUserInput userInput) {
+    throw new System.NotImplementedException();
+  }
 
+  public void Pause() {
+    throw new System.NotImplementedException();
+  }
+
+  public void Unpause() {
+    throw new System.NotImplementedException();
+  }
 }

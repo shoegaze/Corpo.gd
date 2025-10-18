@@ -18,7 +18,7 @@ public sealed class
 
     logger.Info("Starting game...");
 
-    // Main.ServicesContainer.GetInstance<IScreenService>()
+    // Main.ServicesContainer.GetInstance<IScreensService>()
     //  .EnterScreen<IBaseScreen>(focusImmediately: true);
   }
 

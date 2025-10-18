@@ -10,11 +10,15 @@ namespace Corpo.Overworld._Impl;
 
 // ReSharper disable once UnusedType.Global
 public sealed class OverworldScreen : IOverworldScreen {
-  public override string ToString() {
-    return GetName();
+  public void Tick(double dt, CorpoUserInput input) {
+    throw new NotImplementedException();
   }
 
-  public string GetName() {
+  public override string ToString() {
+    return GetEntityName();
+  }
+
+  public string GetEntityName() {
     return nameof(OverworldScreen);
   }
 
@@ -34,15 +38,19 @@ public sealed class OverworldScreen : IOverworldScreen {
     throw new NotImplementedException();
   }
 
-  public void OnFocusIn(IScreen<CorpoInput> from) {
+  public void OnFocusIn(IScreen<CorpoUserInput>? from) {
     throw new NotImplementedException();
   }
 
-  public void OnFocusOut(IScreen<CorpoInput> to) {
+  public void OnFocusOut(IScreen<CorpoUserInput>? to) {
     throw new NotImplementedException();
   }
 
-  public void Tick(float dt, CorpoInput input) {
+  public void Pause() {
+    throw new NotImplementedException();
+  }
+
+  public void Unpause() {
     throw new NotImplementedException();
   }
 }
