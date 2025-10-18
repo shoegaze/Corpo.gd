@@ -23,6 +23,6 @@ public partial class Main : CorpoBootstrap {
 
   private static void StartGame(Container services) {
     services.GetInstance<IScreensService>()
-     .EnterScreen<IBaseCorpoScreen>();
+     .EnterScreen<IBaseScreen>();
   }
 }
