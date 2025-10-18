@@ -6,6 +6,6 @@ using TeamSports.Adapters.Godot.Services;
 namespace Corpo.Adapters.TeamSports.Screens;
 
 
-public interface IScreenBindable<in TScreen>
-  : IGodotScreenBindable<TScreen, CorpoInput>
-where TScreen : IScreen;
+public interface ICorpoScreenBindable<in TScreen>
+  : IGodotScreenBindable<TScreen, CorpoUserInput>
+where TScreen : ICorpoScreen;
