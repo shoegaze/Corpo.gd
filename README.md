@@ -4,14 +4,14 @@
 
 ### Godot Requirements
 
-- Godot Version: `Godot_v4.2.1-stable_mono_*` 
+- Godot Version: `Godot_v4.5.1-stable_mono_*`
 
 Currently only tested on `windows`
 
 ### .NET Requirements
 
-- Godot SDK Version: `Godot.NET.Sdk/4.2.1`
-- Target Framework: `net6.0`
+- Godot SDK Version: `Godot.NET.Sdk/4.5.1`
+- Target Framework: `net9.0`
 
 ### Node.js Requirements
 
@@ -29,31 +29,31 @@ The following assume you are in the project root (`Corpo/`)
 #### Initial Setup
 
 ```bash
-$ cd Precompilation
-$ npm i
+$ cd src/prebuild
+$ npm ci
 ```
 
-This installs the necessary npm packages for the precompilation phase.
+This installs the necessary npm packages for the prebuild phase.
 
-#### Precompilation Phase
+#### Prebuild Phase
 
 ```bash
-$ cd Precompilation
+$ cd src/prebuild
 $ npm start
 ```
 
-This (re)generates JSON object definitions.
+This (re-)generates JSON object definitions.
 
 So far only needed for initial setup or the type definitions under `Precompilation/Sources` are changed.
 
 #### Godot Build+Run
 
 ```bash
-$ PATH_TO_GODOT_EXECUTABLE --path PATH_TO_PROJECT_ROOT
+$ {PATH_TO_GODOT_EXECUTABLE} --path {PATH_TO_PROJECT_ROOT}
 ```
 
-- Replace `PATH_TO_GODOT_EXECUTABLE` with the path to the Godot executable file (e.g. to `Godot_v4.2.1-stable_mono_win64.exe`)
-- Replace `PATH_TO_PROJECT_ROOT` with the path to the `Corpo` project root
+- Replace `{PATH_TO_GODOT_EXECUTABLE}` with the path to the Godot executable file (e.g. to `Godot_v4.2.1-stable_mono_win64.exe`)
+- Replace `{PATH_TO_PROJECT_ROOT}` with the path to the `Corpo` project root
 
 This will run the project via the commandline.
 
