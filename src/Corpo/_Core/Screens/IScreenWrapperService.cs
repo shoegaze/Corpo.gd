@@ -10,7 +10,7 @@ namespace Corpo._Core.Screens;
 public interface IScreenWrapperService {
   ICorpoScreenWrapper Wrap(ICorpoScreen screen);
 
-  void FreeWrapper(ICorpoScreen corpoScreen);
+  void FreeWrapper(ICorpoScreen screen);
 
   // TODO:
   // IScreenWrapper GetWrapper(IScreen screen);

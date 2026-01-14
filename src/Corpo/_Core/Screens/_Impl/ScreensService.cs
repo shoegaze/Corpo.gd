@@ -38,7 +38,7 @@ public sealed class ScreensService(
     if (CurrentScreen is not null) {
       logger.Debug("Updating screen");
 
-      var input = appService.Providers.InputProvider.PollInput();
+      var input = appService.GetApp().Providers.InputProvider.PollInput();
       screenManager.Tick(dt, input);
     }
 

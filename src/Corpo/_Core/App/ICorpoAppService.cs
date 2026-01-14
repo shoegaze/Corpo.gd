@@ -1,12 +1,10 @@
 using Corpo._App;
-using Corpo._App.Providers;
 
 using TeamSports.Adapters.Godot.Services;
+using TeamSports.Core.Game;
 
 
 namespace Corpo._Core.App;
 
 
-public interface ICorpoAppService : IGodotAppService<CorpoApp> {
-  CorpoProvidersAggregate Providers { get; }
-}
+public interface ICorpoAppService : IGodotAppService<CorpoApp>, IStartable;

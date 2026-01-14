@@ -20,6 +20,7 @@ public class ScreenWrapperService(
   IConfigService configService,
   INodeService nodeService
 ) : IScreenWrapperService {
+  private string ScreensGroup => configService.ConfigVars.Paths.Screens.Group;
 
   public ICorpoScreenWrapper Wrap(ICorpoScreen screen) {
     logger.Debug($"Creating screen wrapper for: {screen}");
@@ -32,56 +33,51 @@ public class ScreenWrapperService(
       return null!;
     }
 
-    string screensGroup = configService.ConfigVars.Paths.Screens.Group;
-
     var wrapper = new CorpoScreenWrapper(screen);
 
     ScreenWrapperHelper.ConfigureGodotNode(
       wrapper,
-      screensGroup,
-      parent: nodeService.Screens);
+      group: ScreensGroup,
+      parent: nodeService.Nodes.Screens);
 
     return wrapper;
   }
 
-  private bool HasWrapper(ICorpoScreen corpoScreen) {
+  private bool HasWrapper(ICorpoScreen screen) {
     return GetScreenWrappers()
      .ToList()
-     .Any(wrapper => wrapper.InnerScreen == corpoScreen);
+     .Any(wrapper => wrapper.InnerScreen == screen);
   }
 
-  private ICorpoScreenWrapper GetWrapper(ICorpoScreen corpoScreen) {
+  private ICorpoScreenWrapper GetWrapper(ICorpoScreen screen) {
     var wrapper =
       GetScreenWrappers()
        .ToList()
-       .Find(wrapper => wrapper.InnerScreen == corpoScreen);
+       .Find(wrapper => wrapper.InnerScreen == screen);
 
 
     if (wrapper is null) {
       logger.Error(
-        $"Screen wrapper node of screen {corpoScreen} not found",
+        $"Screen wrapper node of screen {screen} not found",
         new InvalidOperationException());
     }
 
     return wrapper!;
   }
 
-  public void FreeWrapper(ICorpoScreen corpoScreen) {
-    logger.Debug($"Freeing wrapper for screen: {corpoScreen}");
+  public void FreeWrapper(ICorpoScreen screen) {
+    logger.Debug($"Freeing wrapper for screen: {screen}");
 
-    GetWrapper(corpoScreen)
+    GetWrapper(screen)
      .GetNode()
      .QueueFree();
   }
 
   private IEnumerable<ICorpoScreenWrapper> GetScreenWrappers() {
-    string screensGroup =
-      configService.ConfigVars.Paths.Screens.Group;
-
     // TODO?: Cache nodes and only validate when retrieving
-    return nodeService.RootContainer
+    return nodeService.Nodes.Root
      .GetTree()
-     .GetNodesInGroup(screensGroup)
+     .GetNodesInGroup(ScreensGroup)
      .OfType<ICorpoScreenWrapper>();
   }
 }

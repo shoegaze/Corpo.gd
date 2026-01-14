@@ -39,11 +39,11 @@ public sealed class BattleScreen : IBattleScreen {
     throw new NotImplementedException();
   }
 
-  public void OnFocusIn(IScreen<CorpoUserInput> from) {
+  public void OnFocusIn(IScreen<CorpoUserInput>? from) {
     throw new NotImplementedException();
   }
 
-  public void OnFocusOut(IScreen<CorpoUserInput> to) {
+  public void OnFocusOut(IScreen<CorpoUserInput>? to) {
     throw new NotImplementedException();
   }
 

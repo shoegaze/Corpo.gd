@@ -43,11 +43,11 @@ public sealed class MainMenuDebugScreen : IMainMenuDebugScreen {
     throw new System.NotImplementedException();
   }
 
-  public void OnFocusIn(IScreen<CorpoUserInput> from) {
+  public void OnFocusIn(IScreen<CorpoUserInput>? from) {
     throw new System.NotImplementedException();
   }
 
-  public void OnFocusOut(IScreen<CorpoUserInput> to) {
+  public void OnFocusOut(IScreen<CorpoUserInput>? to) {
     throw new System.NotImplementedException();
   }
 
