@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://de75gen2rhspk"
-path="res://.godot/imported/IBMPlexMono-ExtraLight.ttf-5ea7c9727e715923ce7ba7c9ee390d9b.fontdata"
+path="res://.godot/imported/IBMPlexMono-ExtraLight.ttf-02cbcf31a8624c6870e3be262c29338f.fontdata"
 
 [deps]
 
-source_file="res://assets/Text/Fonts/IBM-Plex-Mono/IBMPlexMono-ExtraLight.ttf"
-dest_files=["res://.godot/imported/IBMPlexMono-ExtraLight.ttf-5ea7c9727e715923ce7ba7c9ee390d9b.fontdata"]
+source_file="res://assets/text/Fonts/IBM-Plex-Mono/IBMPlexMono-ExtraLight.ttf"
+dest_files=["res://.godot/imported/IBMPlexMono-ExtraLight.ttf-02cbcf31a8624c6870e3be262c29338f.fontdata"]
 
 [params]
 
@@ -21,6 +21,7 @@ msdf_pixel_range=8
 msdf_size=48
 allow_system_fallback=true
 force_autohinter=false
+modulate_color_glyphs=false
 hinting=1
 subpixel_positioning=1
 keep_rounding_remainders=true

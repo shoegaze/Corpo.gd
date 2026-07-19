@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Corpo._Core.Config;
-using Corpo._Core.Node;
+using Corpo._Core.Nodes;
 using Corpo.Adapters.TeamSports.Logging;
 using Corpo.Adapters.TeamSports.Screens;
 using Corpo.Adapters.TeamSports.Screens.Concrete;
@@ -28,7 +28,8 @@ public class ScreenWrapperService(
     if (HasWrapper(screen)) {
       logger.Error(
         $"Duplicate screen wrapper found for: {screen}",
-        new InvalidOperationException());
+        new InvalidOperationException()
+      );
 
       return null!;
     }
@@ -38,7 +39,8 @@ public class ScreenWrapperService(
     ScreenWrapperHelper.ConfigureGodotNode(
       wrapper,
       group: ScreensGroup,
-      parent: nodeService.Nodes.Screens);
+      parent: nodeService.Nodes.Screens
+    );
 
     return wrapper;
   }
@@ -59,7 +61,8 @@ public class ScreenWrapperService(
     if (wrapper is null) {
       logger.Error(
         $"Screen wrapper node of screen {screen} not found",
-        new InvalidOperationException());
+        new InvalidOperationException()
+      );
     }
 
     return wrapper!;

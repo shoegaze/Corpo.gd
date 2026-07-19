@@ -1,8 +1,5 @@
 using System.IO;
 
-using Corpo._Core.Environments;
-using Corpo.Adapters.TeamSports.Logging;
-
 using Godot;
 
 using ConfigJson = Corpo.Generated.Json.Config.Config;

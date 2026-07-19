@@ -1,8 +1,1 @@
-﻿**/.env*
-!**/.env.default
-
-**/.build/
-
-node_modules/
-
-.eslintcache
+﻿node_modules/

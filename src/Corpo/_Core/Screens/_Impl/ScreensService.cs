@@ -1,9 +1,9 @@
 ﻿using System;
 
-using Corpo._Core.App;
 using Corpo.Adapters.TeamSports.Logging;
 using Corpo.Adapters.TeamSports.Screens;
 using Corpo.Adapters.TeamSports.Screens.Concrete;
+using Corpo.Prototype._Core.App;
 
 using Godot;
 

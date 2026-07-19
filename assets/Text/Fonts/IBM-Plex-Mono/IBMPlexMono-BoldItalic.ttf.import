@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://dishp1vh7ulcg"
-path="res://.godot/imported/IBMPlexMono-BoldItalic.ttf-32cba9fe16e3f0dfab2713699b68c209.fontdata"
+path="res://.godot/imported/IBMPlexMono-BoldItalic.ttf-1c2d2f6ea72493eba0b1cec205b5504c.fontdata"
 
 [deps]
 
-source_file="res://assets/Text/Fonts/IBM-Plex-Mono/IBMPlexMono-BoldItalic.ttf"
-dest_files=["res://.godot/imported/IBMPlexMono-BoldItalic.ttf-32cba9fe16e3f0dfab2713699b68c209.fontdata"]
+source_file="res://assets/text/Fonts/IBM-Plex-Mono/IBMPlexMono-BoldItalic.ttf"
+dest_files=["res://.godot/imported/IBMPlexMono-BoldItalic.ttf-1c2d2f6ea72493eba0b1cec205b5504c.fontdata"]
 
 [params]
 
@@ -21,6 +21,7 @@ msdf_pixel_range=8
 msdf_size=48
 allow_system_fallback=true
 force_autohinter=false
+modulate_color_glyphs=false
 hinting=1
 subpixel_positioning=1
 keep_rounding_remainders=true

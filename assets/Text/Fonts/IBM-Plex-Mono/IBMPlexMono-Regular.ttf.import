@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://bwh5ed2ghc0yr"
-path="res://.godot/imported/IBMPlexMono-Regular.ttf-cc5ebdd6961a17af622d0b347cff4d3b.fontdata"
+path="res://.godot/imported/IBMPlexMono-Regular.ttf-75c582fccf218ee8f32c53b710d9b6b5.fontdata"
 
 [deps]
 
-source_file="res://assets/Text/Fonts/IBM-Plex-Mono/IBMPlexMono-Regular.ttf"
-dest_files=["res://.godot/imported/IBMPlexMono-Regular.ttf-cc5ebdd6961a17af622d0b347cff4d3b.fontdata"]
+source_file="res://assets/text/Fonts/IBM-Plex-Mono/IBMPlexMono-Regular.ttf"
+dest_files=["res://.godot/imported/IBMPlexMono-Regular.ttf-75c582fccf218ee8f32c53b710d9b6b5.fontdata"]
 
 [params]
 
@@ -21,6 +21,7 @@ msdf_pixel_range=8
 msdf_size=48
 allow_system_fallback=true
 force_autohinter=false
+modulate_color_glyphs=false
 hinting=1
 subpixel_positioning=1
 keep_rounding_remainders=true

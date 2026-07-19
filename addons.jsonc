@@ -3,6 +3,11 @@
 {
   "$schema": "https://chickensoft.games/schemas/addons.schema.json",
   "addons": {
+    "imgui-godot": {
+      "url": "https://github.com/pkdawson/imgui-godot",
+      "checkout": "6.x",
+      "subfolder": "addons/imgui-godot"
+    },
     "R3.Godot": {
       "url": "https://github.com/Cysharp/R3",
       "subfolder": "src/R3.Godot/addons/R3.Godot"
